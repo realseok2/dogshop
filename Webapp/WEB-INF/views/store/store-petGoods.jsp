@@ -117,10 +117,6 @@
 
 
 
-
-
-
-
         <!-- 사진 추가시 for문 돌려야 하는 부분 -->
          <div class="row petSupplies-img">
         	<c:forEach var ="i" begin="1" end="${fn:length(sMap.boardList)}">
