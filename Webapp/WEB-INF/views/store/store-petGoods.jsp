@@ -117,10 +117,6 @@
 
 
 
-
-
-
-
         <!-- 사진 추가시 for문 돌려야 하는 부분 -->
          <div class="row petSupplies-img">
         	<c:forEach var ="i" begin="1" end="${fn:length(sMap.boardList)}">
@@ -131,7 +127,7 @@
 		              <figcaption>
 		                <!-- 상품 삭제 버튼 -->
 		                <div class="pt-0">
-		                  <button type="button" class="close main-modal-icon rounded-circle" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		                  <button type="button" class="close main-modal-icon rounded-circle" data-del="${sMap.boardList.boardNo }" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 		                </div>
 		                <!-- //상품 삭제 버튼 -->
 		                <h5 class="mt-5">${sMap.shopVo.shopTitle }</h5>
