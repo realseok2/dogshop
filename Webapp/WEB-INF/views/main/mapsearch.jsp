@@ -88,15 +88,15 @@
 					<div class="row mapSearch-body">
 						<div class="mapSearch-info">
 							<ul class="list-unstyled">
-								<li>Store_name</li>
+								<li>Store_Name</li>
 								<li id="infotitle">준오헤어 신논현점</li>
 							</ul>
 							<ul class="list-unstyled">
-								<li>Opening_hours</li>
+								<li>Opening_Hours</li>
 								<li>09:30 ~ 21:30</li>
 							</ul>
 							<ul class="list-unstyled">
-								<li>Store_contect_number</li>
+								<li>Store_Contect_Number</li>
 								<li id="infonumber">02-2052-0605</li>
 							</ul>
 							<ul class="list-unstyled">
@@ -108,14 +108,11 @@
 								<li>aaa@naver.com</li>
 							</ul>
 							<ul class="list-unstyled">
-								<li>Parking_space</li>
+								<li>Parking_Space</li>
 								<li>지상 1층 외 넓은 주차장 보유(매장에 있으신 시간에 한해 주차쿠폰 발급)</li>
 							</ul>
 						</div>
-						<a href="" class="img-mapSearch-location"><img
-							src="${pageContext.request.contextPath }/assets/image/default.png"
-							class="img-responsive rounded img-mapSearch"
-							alt="Responsive image"></a>
+						<a href="" class="img-mapSearch-location"><img src="${pageContext.request.contextPath }/assets/image/default.png" class="img-responsive rounded img-mapSearch" alt="Responsive image"></a>
 					</div>
 					<hr class="mb-4">
 				</div>
