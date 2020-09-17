@@ -189,7 +189,7 @@
 															<div class="petLicenseTitle text-center">반려동물 등록증</div>
 															<!-- 이름변경: .petLicenseTitle.html() 변경 -->
 															<div class="petLicenseName text-center">
-																<label class="lblName">펫 이름</label>
+																<label class="lblName">${result.dogName }</label>
 															</div>
 															<div class="petLicenseSubTitle">
 																종&nbsp;&nbsp;&nbsp;&nbsp;류 :  <br>나&nbsp;&nbsp;&nbsp;&nbsp;이
@@ -197,7 +197,7 @@
 															</div>
 															<!-- 종류변경: .lblKind.val() 변경 / 나이변경: .lblAge.val() 변경 / 몸무게변경: .lblWeight.val()변경 -->
 															<div class="petLicenseContents">
-																<label class="lblKind"></label>${result.dogName }<br>
+																<label class="lblKind"></label>${result.dogType }<br>
 																<label class="lblAge"></label> ${result.dogAge}살<br>
 																<label class="lblWeight"></label> ${result.dogWeight}kg
 															</div>
