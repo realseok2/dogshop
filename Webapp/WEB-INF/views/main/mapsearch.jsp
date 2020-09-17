@@ -88,23 +88,27 @@
 					<div class="row mapSearch-body">
 						<div class="mapSearch-info">
 							<ul class="list-unstyled">
-								<li>매장명</li>
+								<li>Store_name</li>
 								<li id="infotitle">준오헤어 신논현점</li>
 							</ul>
 							<ul class="list-unstyled">
-								<li>영업시간</li>
+								<li>Opening_hours</li>
 								<li>09:30 ~ 21:30</li>
 							</ul>
 							<ul class="list-unstyled">
-								<li>전화번호</li>
+								<li>Store_contect_number</li>
 								<li id="infonumber">02-2052-0605</li>
 							</ul>
 							<ul class="list-unstyled">
-								<li>주소</li>
+								<li>Address</li>
 								<li id="infoaddress">서울특별시 강남구 역삼동 809번지 2층</li>
 							</ul>
 							<ul class="list-unstyled">
-								<li>주차</li>
+								<li>Email</li>
+								<li>aaa@naver.com</li>
+							</ul>
+							<ul class="list-unstyled">
+								<li>Parking_space</li>
 								<li>지상 1층 외 넓은 주차장 보유(매장에 있으신 시간에 한해 주차쿠폰 발급)</li>
 							</ul>
 						</div>
