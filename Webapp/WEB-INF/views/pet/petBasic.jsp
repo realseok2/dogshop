@@ -19,6 +19,19 @@
 <!-- Custom styles for this template -->
 <link href="${pageContext.request.contextPath}/assets/css/common.css"
 	rel="stylesheet">
+<link href="${pageContext.request.contextPath}/assets/css/common2.css"
+	rel="stylesheet">
+
+<style>
+	#petmargin{
+		margin-left : 220px;
+		width : 470px;
+	}
+	#testimg{
+		width : 150px;
+	}
+	
+</style>
 
 </head>
 
@@ -167,80 +180,60 @@
 
 										<c:forEach items="${pList }" var="result" varStatus="status">
 											<c:if test="${status.first}">
-												<div class="carousel-item active">
-													<img id="petImg-Size"
-														class="d-block imgSize rounded-circle"
-														src="${pageContext.request.contextPath}/dogshop/${result.dogImg}"
-														alt="dogImg">
-													<div class="carousel-caption d-none d-md-block">
-														<div class="listSearch-info replaceInfo">
-
-															<ul class="list-unstyled">
-																<li>반려견 이름</li>
-																<li><c:out value="${result.dogName}" /></li>
-															</ul>
-
-															<ul class="list-unstyled">
-																<li>견종</li>
-																<li><c:out value="${result.dogType}" /></li>
-															</ul>
-
-															<ul class="list-unstyled">
-																<li>반려견 나이</li>
-																<li><c:out value="${result.dogAge}살" /></li>
-															</ul>
-
-															<ul class="list-unstyled">
-																<li>반려견 몸무게</li>
-																<li><c:out value="${result.dogWeight}kg" /></li>
-															</ul>
-
-															<ul class="list-unstyled">
-																<li>반려견 특징 및 기타사항</li>
-																<li><c:out value="${result.dogEtc}" /></li>
-															</ul>
-
-															<button type="button" class="btn btn-primary btn-sm mt-5" data-toggle="modal" data-target="#myModal1">수정</button>
+											<div class="carousel-item active">
+												<div id="petmargin" class="col-md-9 petLicenseWrap rounded-lg">
+														<div class="petLicense rounded-lg">
+															<div class="petLicensePicture">
+																<img id="testimg" src="${pageContext.request.contextPath}/dogshop/${result.dogImg}" alt=" ">
+															</div>
+															<div class="petLicenseTitle text-center">반려동물 등록증</div>
+															<!-- 이름변경: .petLicenseTitle.html() 변경 -->
+															<div class="petLicenseName text-center">
+																<label class="lblName">${result.dogName }</label>
+															</div>
+															<div class="petLicenseSubTitle">
+																종&nbsp;&nbsp;&nbsp;&nbsp;류 :  <br>나&nbsp;&nbsp;&nbsp;&nbsp;이
+																:<br>몸무게 : 
+															</div>
+															<!-- 종류변경: .lblKind.val() 변경 / 나이변경: .lblAge.val() 변경 / 몸무게변경: .lblWeight.val()변경 -->
+															<div class="petLicenseContents">
+																<label class="lblKind"></label>${result.dogType }<br>
+																<label class="lblAge"></label> ${result.dogAge}살<br>
+																<label class="lblWeight"></label> ${result.dogWeight}kg
+															</div>
+															<div class="petLicenseStamp text-center">페타그램</div>
+															<div class="petLicenseFooter text-center">페 타 그 램</div>
+															<input type="hidden" class="lblNo" value="">
 														</div>
 													</div>
-
-													
-													<!-- 인디케이터 끝 -->
 												</div>
 											</c:if>
 
 											<c:if test="${status.index ne 0}">
 												<div class="carousel-item">
-													<img id="petImg-Size" class="d-block imgSize rounded-circle" src="${pageContext.request.contextPath}/dogshop/${result.dogImg}" alt="dogImg">
-													<div class="carousel-caption d-none d-md-block">
-														<div class="listSearch-info replaceInfo">
-	
-															<ul class="list-unstyled">
-																<li>반려견 이름</li>
-																<li><c:out value="${result.dogName}" /></li>
-															</ul>
-	
-															<ul class="list-unstyled">
-																<li>견종</li>
-																<li><c:out value="${result.dogType}" /></li>
-															</ul>
-	
-															<ul class="list-unstyled">
-																<li>반려견 나이</li>
-																<li><c:out value="${result.dogAge}살" /></li>
-															</ul>
-	
-															<ul class="list-unstyled">
-																<li>반려견 몸무게</li>
-																<li><c:out value="${result.dogWeight}kg" /></li>
-															</ul>
-	
-															<ul class="list-unstyled">
-																<li>반려견 특징 및 기타사항</li>
-																<li><c:out value="${result.dogEtc}" /></li>
-															</ul>
-	
-															<button type="button" class="btn btn-primary btn-sm mt-5" data-toggle="modal" data-target="#myModal1">수정</button>
+													<div id="petmargin" class="col-md-9 petLicenseWrap rounded-lg">
+														<div class="petLicense rounded-lg">
+															<div class="petLicensePicture">
+																<img id="testimg" src="${pageContext.request.contextPath}/dogshop/${result.dogImg}" alt=" ">
+															</div>
+															<div class="petLicenseTitle text-center">반려동물 등록증</div>
+															<!-- 이름변경: .petLicenseTitle.html() 변경 -->
+															<div class="petLicenseName text-center">
+																<label class="lblName">펫 이름</label>
+															</div>
+															<div class="petLicenseSubTitle">
+																종&nbsp;&nbsp;&nbsp;&nbsp;류 :  <br>나&nbsp;&nbsp;&nbsp;&nbsp;이
+																:<br>몸무게 : 
+															</div>
+															<!-- 종류변경: .lblKind.val() 변경 / 나이변경: .lblAge.val() 변경 / 몸무게변경: .lblWeight.val()변경 -->
+															<div class="petLicenseContents">
+																<label class="lblKind"></label>${result.dogName }<br>
+																<label class="lblAge"></label> ${result.dogAge}살<br>
+																<label class="lblWeight"></label> ${result.dogWeight}kg
+															</div>
+															<div class="petLicenseStamp text-center">페타그램</div>
+															<div class="petLicenseFooter text-center">페 타 그 램</div>
+															<input type="hidden" class="lblNo" value="">
 														</div>
 													</div>
 												</div>
@@ -264,37 +257,12 @@
 
 											<c:if test="${status.index ne 0}"> --%>
 
-
-
-										<!-- 인디케이터 -->
-										<ul class="carousel-indicators">
-
-											<c:choose>
-												<c:when test="${status.first }">
-													<li data-target="#demo" data-slide-to="${pList }" class="active"></li>
-												</c:when>
-												
-												<c:otherwise>
-													<c:forEach var="pList" begin="0" end="${fn:length(pList)-1 }" step="1">
-														<li data-target="#demo" data-slide-to="${pList }"></li>
-													</c:forEach>
-												</c:otherwise>
-											</c:choose>
-											
-									
-										</ul>
-										<!-- 인디케이터 끝 -->
 										
 									</div>
 								</div>
 							</div>
 						</c:otherwise>
 					</c:choose>
-			
-
-
-
-
 
 					<hr class="mb-4">
 
@@ -341,59 +309,6 @@
 
 	<!-- Modal -->
 	<!-- 애견 등록증 수정 -->
-	<div class="modal fade" id="myModal1" tabindex="-1" role="dialog"
-		aria-labelledby="myModal1Label" aria-hidden="true">
-		<div class="modal-dialog modal-dialog-centered">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h4 class="modal-title" id="myModal1Label">마이펫 수정</h4>
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-
-				<div class="modal-body">
-
-					<div id="petVisited-modal1">
-
-						<ul class="list-unstyled">
-							<li>이름</li>
-							<li>호두</li>
-						</ul>
-
-						<ul class="list-unstyled">
-							<li>몸무게</li>
-							<li>3.2kg</li>
-						</ul>
-
-						<ul class="list-unstyled">
-							<li>종류</li>
-							<li>푸들</li>
-						</ul>
-
-						<ul class="list-unstyled">
-							<li>나이</li>
-							<li>23개월</li>
-						</ul>
-
-					</div>
-
-					<img
-						src="${pageContext.request.contextPath}/assets/image/lolozouai.jpg"
-						class="img-responsive rounded" id="img-modal"
-						alt="Responsive image">
-
-				</div>
-
-				<div class="modal-footer">
-					<button type="button" class="btn btn-danger btn-sm" onclick="location.href = '${pageContext.request.contextPath}/pet/'">삭제</button>
-					<button type="button" class="btn btn-primary btn-sm" onclick="location.href = '${pageContext.request.contextPath}/pet/petModify'">수정</button>
-					<button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
-				</div>
-			</div>
-		</div>
-	</div>
 
 
 	<!-- 별점주기 -->
