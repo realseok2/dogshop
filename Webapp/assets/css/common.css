@@ -373,7 +373,7 @@ a:hover {text-decoration: none; color: blueviolet;}
   .map-search {width: 850px; height: auto; margin: auto;}
 
   /* 지도로 매장검색 매장이미지 기본설정 */
-  .img-mapSearch {width: auto; height: 243.75px; float: right;}
+  .img-mapSearch {width: 250; height: 250px; float: right;}
   .img-mapSearch-location {width: auto; height: auto; margin-left: 6.75%;} 
 
   /* 리스트 */
@@ -389,8 +389,8 @@ a:hover {text-decoration: none; color: blueviolet;}
   .list-search {width: 850px; height: 400px; margin: auto;}
 
   /* 리스트로 매장검색 매장이미지 기본설정 */
-  .img-listSearch {width: auto; height: 243.75px; float: right;}
-  .img-listSearch-location {width: auto; height: auto; margin-left: 5%;}
+  .img-listSearch {width: 250px; height: 250px; float: right;}
+  .img-listSearch-location {width: 250px; height: 250px; margin-left: 30%;}
 
   /* 리스트로 매장검색 테이블 */
   .listSearch {margin-top: 4.25%; margin-bottom: 3%;}
