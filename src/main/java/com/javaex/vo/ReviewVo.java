@@ -5,9 +5,8 @@ public class ReviewVo {
 	private int shopno;
 	private int userno;
 	private int regno;
-	private int spoint;
+	private double spoint;
 	private String sdesc;
-	private int confirm;
 	public int getReviewno() {
 		return reviewno;
 	}
@@ -32,10 +31,10 @@ public class ReviewVo {
 	public void setRegno(int regno) {
 		this.regno = regno;
 	}
-	public int getSpoint() {
+	public double getSpoint() {
 		return spoint;
 	}
-	public void setSpoint(int spoint) {
+	public void setSpoint(double spoint) {
 		this.spoint = spoint;
 	}
 	public String getSdesc() {
@@ -44,17 +43,11 @@ public class ReviewVo {
 	public void setSdesc(String sdesc) {
 		this.sdesc = sdesc;
 	}
-	public int getConfirm() {
-		return confirm;
-	}
-	public void setConfirm(int confirm) {
-		this.confirm = confirm;
-	}
 	@Override
 	public String toString() {
 		return "ReviewVo [reviewno=" + reviewno + ", shopno=" + shopno + ", userno=" + userno + ", regno=" + regno
-				+ ", spoint=" + spoint + ", sdesc=" + sdesc + ", confirm=" + confirm + "]";
+				+ ", spoint=" + spoint + ", sdesc=" + sdesc + "]";
 	}
-	
 
+	
 }

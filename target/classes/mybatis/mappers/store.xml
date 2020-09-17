@@ -52,4 +52,6 @@
 			    shopDomain 	= 	#{shopDomain}
 		]]>
 	</update>
+	
+	
 </mapper>
