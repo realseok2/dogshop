@@ -127,7 +127,11 @@
 		              <figcaption>
 		                <!-- 상품 삭제 버튼 -->
 		                <div class="pt-0">
-		                  <button type="button" class="close main-modal-icon rounded-circle" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+<<<<<<< HEAD
+		                  <button type="button" class="close main-modal-icon rounded-circle" data-del="${sMap.boardList[fn:length(sMap.boardList)-i].boardNo }" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+=======
+		                  <button id="delXbutton"type="button" class="close main-modal-icon rounded-circle" data-del="${sMap.boardList[fn:length(sMap.boardList)-i].boardNo}" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+>>>>>>> refs/heads/heontae
 		                </div>
 		                <!-- //상품 삭제 버튼 -->
 		                <h5 class="mt-5">${sMap.shopVo.shopTitle }</h5>
@@ -176,6 +180,22 @@
 <!-- footer -->
 	<c:import url="/WEB-INF/views/include/store-footer.jsp"></c:import>  
 <!-- /footer -->
+
+<script type="text/javascript">
+	$("#delXbutton").on("click",function() {
+		var del = $(this).data("del");
+
+		$.ajax({
+			url : "${pageContext.request.contextPath }/store/${shopDomain}/read",
+			type : "post",
+			/* contentType : "application/json", */
+			data : {
+				regdate : regdate
+			},
+			dataType : "json"
+			});
+	})
+</script>	 
 
 
   <!-- 첫번째칸 문자 강조 words wrapper -->
