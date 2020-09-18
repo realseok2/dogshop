@@ -422,7 +422,9 @@
 					spoint : spoint,
 					sdesc : sdesc
 				},
-				dataType : "json"
+				dataType : "json",
+				success : window.location.href = "${pageContext.request.contextPath}/pet/petBasic"
+
 					
 			});
 		});
