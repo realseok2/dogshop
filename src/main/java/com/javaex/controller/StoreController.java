@@ -203,4 +203,13 @@ public class StoreController {
 		return "";
 	}
 	
+	//보드테이블 삭제
+	@ResponseBody
+	@RequestMapping("/boardDel")
+	public int boardDel(@PathVariable("shopDomain") String shopDomain,
+							  @RequestParam("del") int boardNo) 	{
+		int count  = storeService.boardDel(boardNo);
+		
+		return count;
+	}
 }

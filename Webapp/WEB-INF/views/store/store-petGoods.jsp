@@ -37,10 +37,11 @@
     <!-- ================================여기 부분부터 내용이 달라집니다.================================ -->
     <div class="container">
       <header class="py-1 mt-4">
+      	<c:if test="${sMap.shopVo.shopNo == session.shopNo }">
+           	<button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target=".productAdd" style=float:right>상품 추가</button>
+        </c:if>
         <h2 class="display-5">Pet Supplies</h2>
-       	 	<c:if test="${sMap.shopVo.shopNo == session.shopNo }">
-             	<button type="button" class="btn btn-link" data-toggle="modal" data-target=".productAdd">상품 추가</button>
-          	</c:if>
+           
         <hr class="mb-1">
       </header>
 
@@ -121,18 +122,26 @@
          <div class="row petSupplies-img">
         	<c:forEach var ="i" begin="1" end="${fn:length(sMap.boardList)}">
 		          <!-- 열번째 사진 들어갈 곳 -->
-		          <div class="col-md-4 pr-0">
-		            <figure class="snip1273 pointer-cursor">
+		          <div class="col-md-4 pr-0" id="imgline" data-no="${sMap.boardList[fn:length(sMap.boardList)-i].boardNo}">
+		            <figure class="snip1273 pointer-cursor" >
 		             <img src="${pageContext.request.contextPath}/dogshop/${sMap.boardList[fn:length(sMap.boardList)-i].img}">
 		              <figcaption>
 		                <!-- 상품 삭제 버튼 -->
+
 		                <div class="pt-0">
 		                  <button type="button" class="close main-modal-icon rounded-circle" data-del="${sMap.boardList[fn:length(sMap.boardList)-i].boardNo }" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 		                  <button id="delXbutton"type="button" class="close main-modal-icon rounded-circle" data-del="${sMap.boardList[fn:length(sMap.boardList)-i].boardNo}" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 		                </div>
+
+		                <c:if test="${sMap.shopVo.shopNo == session.shopNo }">
+			                <div class="pt-0">
+			                  <button type="button" class="close main-modal-icon rounded-circle" data-del="${sMap.boardList[fn:length(sMap.boardList)-i].boardNo}" data-menuNo="${param.menuNo}"  data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			                </div>
+		                </c:if>
 		                <!-- //상품 삭제 버튼 -->
-		                <h5 class="mt-5">${sMap.shopVo.shopTitle }</h5>
-		                <p class="mt-5 pt-4">${sMap.shopVo.shopTitle }</p>                    
+		                <p class="mt-5"></p>    
+		                <h5 class="mt-5 pt-4">${sMap.shopVo.shopTitle }</h5>
+		                                
 		              </figcaption>
 		           </figure>
 		          </div>
@@ -161,7 +170,7 @@
 	            <button type="submit" class="btn btn-primary btn-sm">추가</button>
 	            <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">취소</button>
 	          </div>
-	          <input type="hidden" value="${param.menuNo }" name="menuNo">
+	          <input  type="hidden" value="${param.menuNo }" name="menuNo">
 	        </div>
 	      </div>
 	    </div>
@@ -179,19 +188,27 @@
 <!-- /footer -->
 
 <script type="text/javascript">
-	$("#delXbutton").on("click",function() {
+	$(".close").on("click",function() {
 		var del = $(this).data("del");
-
+		var menuNo = $(this).data("menuno");
+		
+		
 		$.ajax({
-			url : "${pageContext.request.contextPath }/store/${shopDomain}/read",
+			url : "${pageContext.request.contextPath }/store/${shopDomain}/boardDel",
 			type : "post",
 			/* contentType : "application/json", */
 			data : {
-				regdate : regdate
+				del : del,
+				menuNo : menuNo
 			},
-			dataType : "json"
-			});
-	})
+			dataType : "json",
+			success : function (count){
+				if(count = 1 ){
+					$("#imgline[data-no='" + del + "']").remove();
+				}
+			}
+		});
+	});
 </script>	 
 
 
