@@ -24,10 +24,10 @@
 	</select>
 	
 	<select id="getspoint" parameterType="int"
-	resultType="int">
+	resultType="Integer">
 			select  avg(spoint)
 			from    review
-			where   shopno=#{shopno}
+			where   shopno=#{shopno,jdbcType = VARCHAR}
 	</select>
 
 </mapper>

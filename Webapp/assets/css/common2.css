@@ -83,6 +83,7 @@ DATE : 2020.08.05 ~
     .star-input > .input > input:focus+label,
     .star-input > .input > input:checked+label {background-size: 200px; background-position: 0 bottom;}
     .star-input > .input > label:hover~label {background-image: none;}
+    .star-input>.input>label[for="p0"]{width: 0px;}
     .star-input > .input > label[for="p1"] {width: 20px; z-index: 10;}
     .star-input > .input > label[for="p2"] {width: 40px; z-index: 9;}
     .star-input > .input > label[for="p3"] {width: 60px; z-index: 8;}

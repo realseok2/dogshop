@@ -22,8 +22,12 @@ public class ReviewDao {
 	public void reserved(int regno) {
 		sqlSession.update("reservation.reserved", regno);
 	}
-	public int getspoint(int shopno) {
-		return sqlSession.selectOne("review.getspoint",shopno);
-		
+	public Integer getspoint(int shopno) {
+		if(sqlSession.selectOne("review.getspoint",shopno) == null) {
+			return 0;
+		}
+		else {
+		 return sqlSession.selectOne("review.getspoint",shopno);
+		}
 	}
 }

@@ -44,18 +44,16 @@
               <table class="table text-center">
                 <colgroup>
                   <col width="15%">
+                  <col width="40%">
                   <col width="20%">
-                  <col width="25%">
-                  <col width="15%">
                   <col width="15%">
                   <col width="10%">
                 </colgroup>
                 <thead>
                   <tr>
                     <th scope="col">사진</th>
-                    <th scope="col">나눔분야</th>
                     <th scope="col">내용</th>
-                    <th scope="col">지역</th>
+                    <th scope="col">나눔분야</th>
                     <th scope="col">작성자</th>
                     <th scope="col">작성일</th>
                   </tr>
@@ -63,14 +61,21 @@
                 <tbody>
                     <tr>
                     	<td>img</td>
-                    	<td>애견옷</td>
                     	<td>무료나눔합니다</td>
-                    	<td>경기도</td>
+                    	<td>애견옷</td>
                     	<td>홍길동</td>
                     	<td>08-12</td>
                     </tr>
                 </tbody>
 				</table>
+				
+				<div class="text-center">
+              		&lt; 1 2 3 4 5 &gt; 
+              		<button type="button" class="btn btn-outline-dark"style=float:right onclick = "location.href = '${pageContext.request.contextPath }/shareWriteForm' ">글 작성</button>
+            	</div>
+           		
+       
+				
 				</div></div>	</div></div>
 	
 	

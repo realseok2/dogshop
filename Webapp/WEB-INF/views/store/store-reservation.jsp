@@ -51,20 +51,18 @@
           <p class="mt-1"></p>
           
           <!-- 별표 점수매기기 -->
-          <span class="star-input">
-            <span class="input">
-              <input type="radio" name="star-input" value="${spoint}" id="p${spoint*2}" checked><label for="p${spoint*2}">${spoint}</label>
-            </span>
-            
-                <output for="star-input"><b>${spoint}</b>점</output>
-            	<c:if test="${empty spoint}">
-            	<output for="star-input"><b>0</b>점</output>
-           		</c:if>
-          </span>
-          <!-- /. 별표 점수매기기 -->
-          
-          <h6 class="reviewTitle">리뷰 51개 | 1개월 | 3개월 | 6개월</h6>
-          
+          <c:if test="${not empty spoint }">
+	          <span class="star-input">
+	            <span class="input">
+	              <input type="radio" name="star-input" value="${spoint}" id="p${spoint*2}" checked><label for="p${spoint*2}">${spoint}</label>
+	            </span>
+	            
+	                <output for="star-input"><b>${spoint}</b>점</output>
+	            	
+	          </span>
+	          <!-- /. 별표 점수매기기 -->
+	          <h6 class="reviewTitle">리뷰 51개 | 1개월 | 3개월 | 6개월</h6>
+          </c:if>
           <!-- 예약설정 버튼 -->
           <p><a class="btn btn-secondary btn-example" href="#layer2" role="button">예약설정 &raquo;</a></p>
           <!-- /. 예약설정 버튼 -->

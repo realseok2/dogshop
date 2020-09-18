@@ -47,9 +47,9 @@ public class StoreController {
 	//매장관리 페이지-예약관리
 	@RequestMapping("/store-reservation")
 	public String StoreReservation(@PathVariable("shopDomain") String shopDomain , Model model) {
+		
 		Map<String,Object> sMap = storeService.StoreMain(shopDomain);
 		ShopVo shopVo = (ShopVo)sMap.get("shopVo");
-		
 		int spoint = reviewservice.getspoint(shopVo.getShopNo());
 		model.addAttribute("spoint",spoint);
 		model.addAttribute("sMap", sMap);
