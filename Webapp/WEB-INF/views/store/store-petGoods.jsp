@@ -127,11 +127,8 @@
 		              <figcaption>
 		                <!-- 상품 삭제 버튼 -->
 		                <div class="pt-0">
-<<<<<<< HEAD
 		                  <button type="button" class="close main-modal-icon rounded-circle" data-del="${sMap.boardList[fn:length(sMap.boardList)-i].boardNo }" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-=======
 		                  <button id="delXbutton"type="button" class="close main-modal-icon rounded-circle" data-del="${sMap.boardList[fn:length(sMap.boardList)-i].boardNo}" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
->>>>>>> refs/heads/heontae
 		                </div>
 		                <!-- //상품 삭제 버튼 -->
 		                <h5 class="mt-5">${sMap.shopVo.shopTitle }</h5>
