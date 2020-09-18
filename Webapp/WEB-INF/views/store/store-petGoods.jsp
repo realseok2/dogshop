@@ -200,7 +200,7 @@
 			data : {
 				del : del,
 				menuNo : menuNo
-			},
+			}, 
 			dataType : "json",
 			success : function (count){
 				if(count = 1 ){
