@@ -189,7 +189,7 @@
 															<div class="petLicenseTitle text-center">반려동물 등록증</div>
 															<!-- 이름변경: .petLicenseTitle.html() 변경 -->
 															<div class="petLicenseName text-center">
-																<label class="lblName">펫 이름</label>
+																<label class="lblName">${result.dogName }</label>
 															</div>
 															<div class="petLicenseSubTitle">
 																종&nbsp;&nbsp;&nbsp;&nbsp;류 :  <br>나&nbsp;&nbsp;&nbsp;&nbsp;이
@@ -197,7 +197,7 @@
 															</div>
 															<!-- 종류변경: .lblKind.val() 변경 / 나이변경: .lblAge.val() 변경 / 몸무게변경: .lblWeight.val()변경 -->
 															<div class="petLicenseContents">
-																<label class="lblKind"></label>${result.dogName }<br>
+																<label class="lblKind"></label>${result.dogType }<br>
 																<label class="lblAge"></label> ${result.dogAge}살<br>
 																<label class="lblWeight"></label> ${result.dogWeight}kg
 															</div>
@@ -219,7 +219,7 @@
 															<div class="petLicenseTitle text-center">반려동물 등록증</div>
 															<!-- 이름변경: .petLicenseTitle.html() 변경 -->
 															<div class="petLicenseName text-center">
-																<label class="lblName">펫 이름</label>
+																<label class="lblName">${result.dogName}</label>
 															</div>
 															<div class="petLicenseSubTitle">
 																종&nbsp;&nbsp;&nbsp;&nbsp;류 :  <br>나&nbsp;&nbsp;&nbsp;&nbsp;이
@@ -325,24 +325,13 @@
 				</div>
 
 				<div class="modal-body text-center">
-					<span class="star-input"> <span class="input"> <input
-							type="radio" name="star-input" id="p1" value="0.5"><label
-							for="p1">0.5</label> <input type="radio" name="star-input"
-							id="p2" value="1"><label for="p2">1</label> <input
-							type="radio" name="star-input" id="p3" value="1.5"><label
-							for="p3">1.5</label> <input type="radio" name="star-input"
-							id="p4" value="2"><label for="p4">2</label> <input
-							type="radio" name="star-input" id="p5" value="2.5"><label
-							for="p5">2.5</label> <input type="radio" name="star-input"
-							id="p6" value="3"><label for="p6">3</label> <input
-							type="radio" name="star-input" id="p7" value="3.5"><label
-							for="p7">3.5</label> <input type="radio" name="star-input"
-							id="p8" value="4"><label for="p8">4</label> <input
-							type="radio" name="star-input" id="p9" value="4.5"><label
-							for="p9">4.5</label> <input type="radio" name="star-input"
-							id="p10" value="5"><label for="p10">5</label>
-					</span> <output for="star-input">
-							<b>0</b>점
+					<span class="star-input"> <span class="input"> 
+					<c:forEach var="i" begin="1" end ="10" >
+						<input type="radio" name="star-input" id="p${i }" value="${i*0.5 }" data-no="${i-1}" class="testStarP">
+						<label for="p${i }">${i*0.5 }</label>
+					</c:forEach>
+					</span> <output for="star-input" id="starpoint">
+							<b id="spoint">0</b>점
 						</output>
 					</span>
 
@@ -373,11 +362,7 @@
 		src="${pageContext.request.contextPath}/assets/bootstrap/jquery/jquery.min.js"></script>
 	<script
 		src="${pageContext.request.contextPath}/assets/bootstrap/js/bootstrap.bundle.min.js"></script>
-
 	<!-- 캐러셀 -->
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-		crossorigin="anonymous"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
 		integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
@@ -415,6 +400,34 @@
 			});
 		};
 		starRating();
+	</script>
+	<script type="text/javascript">
+	var no;
+	
+	$(".testStarP").on("click", function(){
+		console.log("별");
+		no = $(this).data("no");
+		console.log(no);
+		
+		$(".btn-primary").on("click", function(){
+			var spoint = $('[name="star-input"]').eq(no).val();
+			var sdesc = $('.form-control').val();
+			console.log(spoint);
+			console.log(sdesc);
+			
+			$.ajax({
+				url : "${pageContext.request.contextPath }/review",
+				type : "post",
+				data : {
+					spoint : spoint,
+					sdesc : sdesc
+				},
+				dataType : "json"
+					
+			});
+		});
+	});
+		
 	</script>
 </body>
 
