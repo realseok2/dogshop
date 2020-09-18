@@ -22,7 +22,6 @@
   <!-- Bootstrap core JavaScript -->
   <script src="${pageContext.request.contextPath}/assets/bootstrap/jquery/jquery.min.js"></script>
   <script src="${pageContext.request.contextPath}/assets/bootstrap/js/bootstrap.bundle.min.js"></script>
-  
 
 </head> 
 
@@ -49,23 +48,18 @@
           
           <h2>${sMap.shopVo.shopTitle }</h2>
           
-          <p class="mt-1">(매장 소개 간략)</p>
+          <p class="mt-1"></p>
           
           <!-- 별표 점수매기기 -->
           <span class="star-input">
             <span class="input">
-              <input type="radio" name="star-input" id="p1" value="0.5"><label for="p1">0.5</label>
-              <input type="radio" name="star-input" id="p2" value="1.0"><label for="p2">1.0</label>
-              <input type="radio" name="star-input" id="p3" value="1.5"><label for="p3">1.5</label>
-              <input type="radio" name="star-input" id="p4" value="2.0"><label for="p4">2.0</label>
-              <input type="radio" name="star-input" id="p5" value="2.5"><label for="p5">2.5</label>
-              <input type="radio" name="star-input" id="p6" value="3.0"><label for="p6">3.0</label>
-              <input type="radio" name="star-input" id="p7" value="3.5"><label for="p7">3.5</label>
-              <input type="radio" name="star-input" id="p8" value="4.0"><label for="p8">4.0</label>
-              <input type="radio" name="star-input" id="p9" value="4.5"><label for="p9">4.5</label>
-              <input type="radio" name="star-input" id="p10" value="5.0"><label for="p10">5.0</label>
+              <input type="radio" name="star-input" value="${spoint}" id="p${spoint*2}" checked><label for="p${spoint*2}">${spoint}</label>
             </span>
-            <output for="star-input"><b>0</b>점</output>
+            
+                <output for="star-input"><b>${spoint}</b>점</output>
+            	<c:if test="${empty spoint}">
+            	<output for="star-input"><b>0</b>점</output>
+           		</c:if>
           </span>
           <!-- /. 별표 점수매기기 -->
           

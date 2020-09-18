@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.javaex.service.ReviewService;
 import com.javaex.service.StoreService;
 import com.javaex.vo.BoardVo;
 import com.javaex.vo.DogVo;
@@ -30,6 +31,9 @@ import com.javaex.vo.UserVo;
 public class StoreController {
 	@Autowired
 	StoreService storeService;
+	@Autowired
+	ReviewService reviewservice;
+	
 	
 	//매장 메인페이지
 	@RequestMapping("/main")
@@ -44,7 +48,10 @@ public class StoreController {
 	@RequestMapping("/store-reservation")
 	public String StoreReservation(@PathVariable("shopDomain") String shopDomain , Model model) {
 		Map<String,Object> sMap = storeService.StoreMain(shopDomain);
+		ShopVo shopVo = (ShopVo)sMap.get("shopVo");
 		
+		int spoint = reviewservice.getspoint(shopVo.getShopNo());
+		model.addAttribute("spoint",spoint);
 		model.addAttribute("sMap", sMap);
 		
 		return "store/store-reservation";

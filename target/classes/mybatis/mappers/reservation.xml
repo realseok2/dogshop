@@ -13,7 +13,8 @@
 							#{username},
 							#{regdate},
 							#{usercontact},
-							#{reserved})
+							#{reserved}
+							)
 	]]>
 	</insert>
 	
@@ -31,7 +32,7 @@
 	<!-- 방문내역리스트 -->
 	<select id="getrList" parameterType="int" resultType="com.javaex.vo.VisitVo">
 	<![CDATA[
-			select d.dogname dogname, s.shoptitle shoptitle, r.regdate regdate, d.dogweight dogweight
+			select d.dogname dogname, s.shoptitle shoptitle, r.regdate regdate, d.dogweight dogweight, r.reserved reserved
 			from reservation r, dog d, shop s
 			where d.userno = r.userno
 			and s.shopno = r.shopno
@@ -40,6 +41,13 @@
 			order by regdate desc 
 	]]>
 	</select>
+	<update id="reserved" parameterType = "int">
+	<![CDATA[
+		update 		 reservation
+		set			 reserved=0
+		where	regno=#{regno}
+	]]>
+	</update>
 	
 	
 	

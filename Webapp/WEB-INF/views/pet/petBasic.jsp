@@ -280,15 +280,26 @@
 						</thead>
 						<tbody>
 							<c:forEach items="${rList}" var="visitvo">
-								<tr>
-									<td>${visitvo.dogName}</td>
-									<td>${visitvo.shopTitle}</td>
-									<td>${visitvo.regdate}</td>
-									<td>${visitvo.dogweight}</td>
-									<td><button type="button" class="btn btn-link btn-sm" data-toggle="modal" data-target="#myModal2">
-                					   	미작성
-                  					</button></td>
-								</tr>
+								<c:if test="${1 eq visitvo.reserved}">
+										<tr>
+											<td>${visitvo.dogName}</td>
+											<td>${visitvo.shopTitle}</td>
+											<td>${visitvo.regdate}</td>
+											<td>${visitvo.dogweight}</td>
+											<td><button type="button" class="btn btn-link btn-sm" data-toggle="modal" data-target="#myModal2">
+		                					   	미작성
+		                  					</button></td>
+										</tr>
+								</c:if>
+								<c:if test="${1 ne visitvo.reserved}">
+										<tr>
+											<td>${visitvo.dogName}</td>
+											<td>${visitvo.shopTitle}</td>
+											<td>${visitvo.regdate}</td>
+											<td>${visitvo.dogweight}</td>
+											<td>작성완료</td>
+										</tr>
+								</c:if>
 							</c:forEach>
 						</tbody>
 					</table>

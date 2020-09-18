@@ -19,4 +19,11 @@ public class ReviewDao {
 	public int writereview(ReviewVo reviewvo) {
 		return sqlSession.insert("review.writeview", reviewvo);
 	}
+	public void reserved(int regno) {
+		sqlSession.update("reservation.reserved", regno);
+	}
+	public int getspoint(int shopno) {
+		return sqlSession.selectOne("review.getspoint",shopno);
+		
+	}
 }

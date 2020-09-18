@@ -22,4 +22,12 @@
 		from    reservation
 		where   userno = #{userno}
 	</select>
+	
+	<select id="getspoint" parameterType="int"
+	resultType="int">
+			select  avg(spoint)
+			from    review
+			where   shopno=#{shopno}
+	</select>
+
 </mapper>

@@ -15,17 +15,21 @@
 <title>리스트로 매장찾기</title>
 
 <!-- Bootstrap core CSS -->
-<link href="${pageContext.request.contextPath }/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link
+	href="${pageContext.request.contextPath }/assets/bootstrap/css/bootstrap.min.css"
+	rel="stylesheet">
 
 <!-- Custom styles for this template -->
-<link href="${pageContext.request.contextPath }/assets/css/common.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/assets/css/common.css"
+	rel="stylesheet">
+
 
 </head>
 
 <body class="bg-light">
 
 	<!-- header -->
-		<c:import url="/WEB-INF/views/include/main-header.jsp"></c:import>
+	<c:import url="/WEB-INF/views/include/main-header.jsp"></c:import>
 	<!-- header -->
 	<!-- Page Content -->
 
@@ -48,17 +52,21 @@
 					<!-- <span class="badge badge-secondary badge-pill">3</span> -->
 				</h4>
 				<ul class="list-group mb-3">
-					<li class="list-group-item d-flex justify-content-between lh-condensed">
+					<li
+						class="list-group-item d-flex justify-content-between lh-condensed">
 						<div>
 							<h6 class="my-0">
-								<a href="${pageContext.request.contextPath }/mapsearch">지도로 찾기</a>
+								<a href="${pageContext.request.contextPath }/mapsearch">지도로
+									찾기</a>
 							</h6>
 						</div>
 					</li>
-					<li class="list-group-item d-flex justify-content-between lh-condensed">
+					<li
+						class="list-group-item d-flex justify-content-between lh-condensed">
 						<div>
 							<h6 class="my-0">
-								<a href="${pageContext.request.contextPath }/listsearch">리스트로 찾기</a>
+								<a href="${pageContext.request.contextPath }/listsearch">리스트로
+									찾기</a>
 							</h6>
 						</div>
 					</li>
@@ -91,14 +99,26 @@
 								<li>주소</li>
 								<li id="infoaddress"></li>
 							</ul>
+							<ul class="list-unstyled">
+								<li>별점</li>
+								<li><span class="star-input"> <span class="input"> <input
+										type="radio" name="star-input" value="${spoint}"
+										id="p${spoint*2}" checked><label id="test-spoint" for="p${spoint*2}"></label>
+								</span> <output for="star-input">
+										<b id="spoint-t"></b>
+									</output>
+								</span>
+
+							</ul>
 
 						</div>
-							<a href="" class="img-listSearch-location"> <img
-								src="${pageContext.request.contextPath }/assets/image/default.png"
-								class="img-responsive rounded img-listSearch"
-								id = "listPage_img"
-								alt="Responsive image">
-							</a>
+
+
+						<a href="" class="img-listSearch-location"> <img
+							src="${pageContext.request.contextPath }/assets/image/default.png"
+							class="img-responsive rounded img-listSearch" id="listPage_img"
+							alt="Responsive image">
+						</a>
 					</div>
 				</div>
 
@@ -115,7 +135,8 @@
 						<c:forEach items="${sList}" var="shopVo">
 							<tr class="shopinfo" data-shopDomain="${shopVo.shopDomain}">
 								<td>${shopVo.shopNo}</td>
-								<td><a href="${pageContext.request.contextPath }/store/${shopVo.shopDomain}/main">${shopVo.shopTitle}</a></td>
+								<td><a
+									href="${pageContext.request.contextPath }/store/${shopVo.shopDomain}/main">${shopVo.shopTitle}</a></td>
 								<td>${shopVo.shopAddress}</td>
 								<td>${shopVo.shopNumber}</td>
 							</tr>
@@ -128,35 +149,44 @@
 	</div>
 	<!-- //Page Content -->
 
-	 <!-- /.Footer -->
-	<c:import url="/WEB-INF/views/include/main-footer.jsp"></c:import>  
-	 <!-- /.Footer -->
+	<!-- /.Footer -->
+	<c:import url="/WEB-INF/views/include/main-footer.jsp"></c:import>
+	<!-- /.Footer -->
 
 	<!-- Bootstrap core JavaScript -->
-	<script src="${pageContext.request.contextPath }/assets/bootstrap/jquery/jquery.min.js"></script>
-	<script src="${pageContext.request.contextPath }/assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath }/assets/bootstrap/jquery/jquery.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath }/assets/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 <script type="text/javascript">
-	$(".shopinfo").on("click", function() {
-		var shopDomain = $(this).data("shopdomain");
-		
-		$.ajax({
-			url : "${pageContext.request.contextPath }/selectStore",
-			type : "post",
-			/* contentType : "application/json", */
-			data : {
-				shopDomain : shopDomain
-			},
-			dataType : "json",
-			success : function (shopVo){
-					$("#infotitle").text(shopVo.shopTitle);
-					$("#infonumber").text(shopVo.shopNumber);
-					$("#infoaddress").text(shopVo.shopAddress);
-					$('#listPage_img').attr("src", "${pageContext.request.contextPath}/dogshop/"+shopVo.shopLogo);
-					
-				}
-			});
-	})
+	$(".shopinfo").on(
+			"click",
+			function() {
+				var shopDomain = $(this).data("shopdomain");
+
+				$.ajax({
+					url : "${pageContext.request.contextPath }/selectStore",
+					type : "post",
+					/* contentType : "application/json", */
+					data : {
+						shopDomain : shopDomain
+					},
+					dataType : "json",
+					success : function(map) {
+						$("#infotitle").text(map.shopVo.shopTitle);
+						$("#infonumber").text(map.shopVo.shopNumber);
+						$("#infoaddress").text(map.shopVo.shopAddress);
+						$('#listPage_img').attr("src",
+								"${pageContext.request.contextPath}/dogshop/"+ map.shopVo.shopLogo);
+						$('input[name=star-input]').attr("id", "p"+${'map.spoint'}*2);
+						$('input[name=star-input]').attr("value", "p"+${'map.spoint'});
+						$('input[name=star-input]').attr("for", "p"+${'map.spoint'}*2);
+						$("#test-spoint").attr("for","p"+${'map.spoint*2'});
+						$('#spoint-t').html(${'map.spoint'}+"점");
+					}
+				});
+			})
 </script>
 
 </html>

@@ -5,7 +5,7 @@ public class VisitVo {
 	private String shopTitle;
 	private String regdate;
 	private double dogweight;
-	private String confirm;
+	private String reserved;
 	
 	public VisitVo(){}
 
@@ -41,20 +41,22 @@ public class VisitVo {
 		this.dogweight = dogweight;
 	}
 
-	public String getConfirm() {
-		return confirm;
+	public String getReserved() {
+		return reserved;
 	}
 
-	public void setConfirm(String confirm) {
-		this.confirm = confirm;
+	public void setReserved(String reserved) {
+		this.reserved = reserved;
 	}
 
 	@Override
 	public String toString() {
 		return "VisitVo [dogName=" + dogName + ", shopTitle=" + shopTitle + ", regdate=" + regdate + ", dogweight="
-				+ dogweight + ", confirm=" + confirm + "]";
+				+ dogweight + ", reserved=" + reserved + "]";
 	}
+
 	
+
 	
 
 }

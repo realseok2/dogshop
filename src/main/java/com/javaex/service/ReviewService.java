@@ -18,6 +18,13 @@ public class ReviewService {
 		ReservationVo vo = reviewdao.tets(userno);
 		reviewvo.setShopno(vo.getShopno());
 		reviewvo.setRegno(vo.getRegno());
-		return reviewdao.writereview(reviewvo);
+		int result = reviewdao.writereview(reviewvo);
+		if(result == 1) {
+			reviewdao.reserved(vo.getRegno());
+		}
+		return result;
+	}
+	public int getspoint(int shopno) {
+		return reviewdao.getspoint(shopno);
 	}
 }
