@@ -154,6 +154,11 @@ public class StoreService {
 		}
 	}
 	
+	//글 삭제
+	public int boardDel(int boardNo) {
+		return storeDao.boardDel(boardNo);
+	}
+	
 	//글 목록 검색
 	public Map<String,Object> boardSelect(int menuNo) {
 		List<BoardVo> boardList = storeDao.boardSelect(menuNo);
