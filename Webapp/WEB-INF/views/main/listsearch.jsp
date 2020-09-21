@@ -35,11 +35,11 @@
 
 	<div class="container">
 		<div id="content-head" class="py-5 text-left">
-			<h2>매장찾기</h2>
+			<h2>Store_Search</h2>
 			<div id="location">
 				<ul class="list-inline">
-					<li>매장찾기</li>
-					<li class="last">리스트로 찾기</li>
+					<li>Store_Search</li>
+					<li class="last">list</li>
 				</ul>
 			</div>
 		</div>
@@ -79,22 +79,22 @@
 						<div class="listSearch-info">
 
 							<ul class="list-unstyled">
-								<li>매장명</li>
+								<li>Store_Name</li>
 								<li id="infotitle"></li>
 							</ul>
 
 							<ul class="list-unstyled">
-								<li>영업시간</li>
+								<li>Opening Hours</li>
 								<li>09:30 ~ 21:30</li>
 							</ul>
 
 							<ul class="list-unstyled">
-								<li>전화번호</li>
+								<li>Contect_Us_Number</li>
 								<li id="infonumber"></li>
 							</ul>
 
 							<ul class="list-unstyled">
-								<li>주소</li>
+								<li>Store_Address</li>
 								<li id="infoaddress"></li>
 							</ul>
 							<ul class="list-unstyled">
@@ -123,9 +123,9 @@
 					<thead>
 						<tr>
 							<th scope="col">No.</th>
-							<th scope="col">매장명</th>
-							<th scope="col">매장 주소</th>
-							<th scope="col">매장 번호</th>
+							<th scope="col">Store_Name</th>
+							<th scope="col">Store_Address</th>
+							<th scope="col">Store_Us_Number</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -179,8 +179,7 @@
 						$("#infonumber").text(map.shopVo.shopNumber);
 						$("#infoaddress").text(map.shopVo.shopAddress);
 						$("#infoEmail").text(map.shopVo.shopEmail);
-						$('#listPage_img').attr("src",
-								"${pageContext.request.contextPath}/dogshop/"+ map.shopVo.shopLogo);
+						$('#listPage_img').attr("src","${pageContext.request.contextPath}/dogshop/"+ map.shopVo.shopLogo);
 						$('input[name=star-input]').attr("id", "p"+${'map.spoint'}*2);
 						$('input[name=star-input]').attr("value", "p"+${'map.spoint'});
 						$('input[name=star-input]').attr("for", "p"+${'map.spoint'}*2);
