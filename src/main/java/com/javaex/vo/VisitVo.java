@@ -6,7 +6,25 @@ public class VisitVo {
 	private String regdate;
 	private double dogweight;
 	private String reserved;
+	private int regno, shopno;
 	
+	
+	public int getRegno() {
+		return regno;
+	}
+
+	public void setRegno(int regno) {
+		this.regno = regno;
+	}
+
+	public int getShopno() {
+		return shopno;
+	}
+
+	public void setShopno(int shopno) {
+		this.shopno = shopno;
+	}
+
 	public VisitVo(){}
 
 	public String getDogName() {
@@ -52,8 +70,9 @@ public class VisitVo {
 	@Override
 	public String toString() {
 		return "VisitVo [dogName=" + dogName + ", shopTitle=" + shopTitle + ", regdate=" + regdate + ", dogweight="
-				+ dogweight + ", reserved=" + reserved + "]";
+				+ dogweight + ", reserved=" + reserved + ", regno=" + regno + ", shopno=" + shopno + "]";
 	}
+
 
 	
 

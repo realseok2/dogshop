@@ -7,6 +7,7 @@ public class ReviewVo {
 	private int regno;
 	private double spoint;
 	private String sdesc;
+	
 	public int getReviewno() {
 		return reviewno;
 	}

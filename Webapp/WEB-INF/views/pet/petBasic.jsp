@@ -162,8 +162,8 @@
 						<c:when test="${empty pList}">
 							<div class="row">
 								<img id="petImg-Size" class="d-block imgSize rounded-circle"
-									src="${pageContext.request.contextPath}/assets/image/lolozouai04.jpg"
-									onerror="this.src='${pageContext.request.contextPath}/assets/image/lolozouai.jpg';">
+									src="${pageContext.request.contextPath}/assets/image/default2.jpg"
+									onerror="this.src='${pageContext.request.contextPath}/assets/image/default2';">
 								<div class="text-center center-block pt-5 mt-5">
 									<h5 class="mt-4"><strong>등록된 반려견이 없습니다.</strong></h5>
 									<br><br>
@@ -289,6 +289,8 @@
 											<td><button type="button" class="btn btn-link btn-sm" data-toggle="modal" data-target="#myModal2">
 		                					   	미작성
 		                  					</button></td>
+		                					<td><input type="hidden" id="getregno" value="${visitvo.regno }"></td>
+		                					<td><input type="hidden" id="getshopno" value="${visitvo.shopno }"></td>
 										</tr>
 								</c:if>
 								<c:if test="${1 ne visitvo.reserved}">
@@ -358,7 +360,7 @@
 				</div>
 
 				<div class="modal-footer">
-					<button type="button" class="btn btn-primary">확인</button>
+					<button id="datatesta" type="button" class="btn btn-primary" >확인</button>
 					<button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
 				</div>
 			</div>
@@ -416,26 +418,31 @@
 	var no;
 	
 	$(".testStarP").on("click", function(){
-		console.log("별");
 		no = $(this).data("no");
-		console.log(no);
 		
 		$(".btn-primary").on("click", function(){
 			var spoint = $('[name="star-input"]').eq(no).val();
 			var sdesc = $('.form-control').val();
-			console.log(spoint);
-			console.log(sdesc);
+			var regno = $("#getregno").val();
+			var shopno = $("#getshopno").val();
+			
+			
 			
 			$.ajax({
 				url : "${pageContext.request.contextPath }/review",
 				type : "post",
 				data : {
 					spoint : spoint,
-					sdesc : sdesc
+					sdesc : sdesc,
+					regno : regno,
+					shopno : shopno
 				},
 				dataType : "json",
-				success : window.location.href = "${pageContext.request.contextPath}/pet/petBasic"
-
+				success : function (result){
+					if(result=1){
+						window.location.href = "${pageContext.request.contextPath}/pet/petBasic"
+					}
+				 }
 					
 			});
 		});

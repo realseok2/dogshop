@@ -13,8 +13,8 @@ public class ReviewDao {
 	@Autowired
 	private SqlSession sqlSession;
 	
-	public ReservationVo tets(int userno) {
-		return sqlSession.selectOne("review.test",userno);
+	public ReservationVo test(ReviewVo reviewVo) {
+		return sqlSession.selectOne("review.test",reviewVo);
 	}
 	public int writereview(ReviewVo reviewvo) {
 		return sqlSession.insert("review.writeview", reviewvo);

@@ -18,12 +18,12 @@ public class ReviewController {
 	@Autowired
 	private ReviewService reviewService;
 	
+	//리뷰 작성
 	@ResponseBody
 	@RequestMapping("/review")
 	public int review(@ModelAttribute ReviewVo reviewvo,
 						 HttpSession session)
 	{
-		
 		SessionVo sessionVo = (SessionVo)session.getAttribute("session");
 		int userNo = sessionVo.getUserNo();
 		reviewvo.setUserno(userNo);

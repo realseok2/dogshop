@@ -15,12 +15,13 @@
 		]]>
 	</insert>
 
-	<select id="test" parameterType="int"
+	<select id="test" parameterType="com.javaex.vo.ReservationVo"
 	resultType="com.javaex.vo.ReservationVo">
 		select  shopno,
 			    regno
 		from    reservation
 		where   userno = #{userno}
+		and		regno	= #{regno}
 	</select>
 	
 	<select id="getspoint" parameterType="int"

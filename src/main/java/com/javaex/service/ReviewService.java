@@ -14,8 +14,7 @@ public class ReviewService {
 	private ReviewDao reviewdao;
 	
 	public int writereview(ReviewVo reviewvo) {
-		int userno = reviewvo.getUserno();
-		ReservationVo vo = reviewdao.tets(userno);
+		ReservationVo vo = reviewdao.test(reviewvo);
 		
 		reviewvo.setShopno(vo.getShopno());
 		reviewvo.setRegno(vo.getRegno());
