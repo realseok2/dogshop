@@ -59,7 +59,7 @@
 
 
 
-      <p class="mt-5 mb-3 text-muted">PENTAGRAM &copy; 2020</p>
+      <p class="mt-5 mb-3 text-muted">PETAGRAM &copy; 2020</p>
     </form>
   </div>
   <!-- /.container -->
