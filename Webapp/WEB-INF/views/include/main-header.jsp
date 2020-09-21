@@ -32,7 +32,7 @@
             <a class="nav-link" href="#">고객센터</a>
           </li>
         </ul>
-
+ 
 		<c:choose>
 			<c:when test="${empty session }">
 		        <ul class="navbar-nav ml-auto">
