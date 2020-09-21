@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
@@ -35,11 +34,11 @@
 
 	<div class="container">
 		<div id="content-head" class="py-5 text-left">
-			<h2>매장찾기</h2>
+			<h2>Store_Search</h2>
 			<div id="location">
 				<ul class="list-inline">
-					<li>매장찾기</li>
-					<li class="last">리스트로 찾기</li>
+					<li>Store_Search</li>
+					<li class="last">List</li>
 				</ul>
 			</div>
 		</div>
@@ -56,8 +55,8 @@
 						class="list-group-item d-flex justify-content-between lh-condensed">
 						<div>
 							<h6 class="my-0">
-								<a href="${pageContext.request.contextPath }/mapsearch">지도로
-									찾기</a>
+								<a href="${pageContext.request.contextPath }/mapsearch">Map</a>
+								<a href="${pageContext.request.contextPath }/listsearch">List</a>
 							</h6>
 						</div>
 					</li>
@@ -65,8 +64,8 @@
 						class="list-group-item d-flex justify-content-between lh-condensed">
 						<div>
 							<h6 class="my-0">
-								<a href="${pageContext.request.contextPath }/listsearch">리스트로
-									찾기</a>
+								<a href="${pageContext.request.contextPath }/listsearch">List</a>
+								<a href="${pageContext.request.contextPath }/mapsearch">Map</a>
 							</h6>
 						</div>
 					</li>
@@ -76,27 +75,27 @@
 
 			<div class="col-md-10 order-md-2">
 				<div>
-					<div class="row listSearch-body">
+					<div class="row listSearch-body pl-4">
 
 						<div class="listSearch-info">
 
 							<ul class="list-unstyled">
-								<li>매장명</li>
+								<li>Store_Name</li>
 								<li id="infotitle"></li>
 							</ul>
 
 							<ul class="list-unstyled">
-								<li>영업시간</li>
+								<li>Opening Hours</li>
 								<li>09:30 ~ 21:30</li>
 							</ul>
 
 							<ul class="list-unstyled">
-								<li>전화번호</li>
+								<li>Contect_Us_Number</li>
 								<li id="infonumber"></li>
 							</ul>
 
 							<ul class="list-unstyled">
-								<li>주소</li>
+								<li>Store_Address</li>
 								<li id="infoaddress"></li>
 							</ul>
 							<ul class="list-unstyled">
@@ -110,7 +109,9 @@
 								</span>
 
 							</ul>
-
+								<li>Email</li>
+								<li>aaa@naver.com</li>
+							</ul>
 						</div>
 
 
@@ -119,6 +120,7 @@
 							class="img-responsive rounded img-listSearch" id="listPage_img"
 							alt="Responsive image">
 						</a>
+							<a href="" class="img-listSearch-location ml-5 pl-5"><img src="${pageContext.request.contextPath }/assets/image/default.png" class="img-responsive rounded img-listSearch" id = "listPage_img" alt="Responsive image"></a>
 					</div>
 				</div>
 
@@ -126,9 +128,9 @@
 					<thead>
 						<tr>
 							<th scope="col">No.</th>
-							<th scope="col">매장명</th>
-							<th scope="col">매장 주소</th>
-							<th scope="col">매장 번호</th>
+							<th scope="col">Store_Name</th>
+							<th scope="col">Store_Address</th>
+							<th scope="col">Contect_Us_Number</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -138,6 +140,8 @@
 								<td><a
 									href="${pageContext.request.contextPath }/store/${shopVo.shopDomain}/main">${shopVo.shopTitle}</a></td>
 								<td>${shopVo.shopAddress}</td>
+								<td><a href="${pageContext.request.contextPath }/store/${shopVo.shopDomain}/main">${shopVo.shopTitle}</a></td>
+								<td class="center-block pr-3 ml-5">${shopVo.shopAddress}</td>
 								<td>${shopVo.shopNumber}</td>
 							</tr>
 						</c:forEach>
