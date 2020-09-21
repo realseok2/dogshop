@@ -136,8 +136,6 @@
 								<td class="center-block pr-3 ml-5">${shopVo.shopAddress}</td>
 								<td><a
 									href="${pageContext.request.contextPath }/store/${shopVo.shopDomain}/main">${shopVo.shopTitle}</a></td>
-								<td>${shopVo.shopAddress}</td>
-								<td>${shopVo.shopNumber}</td>
 							</tr>
 						</c:forEach>
 					</tbody>
