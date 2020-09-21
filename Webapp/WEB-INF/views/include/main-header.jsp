@@ -26,7 +26,7 @@
             <a class="nav-link" href="${pageContext.request.contextPath}/shareMain">Share_Petagram</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Bargaining</a>
+            <a class="nav-link" href="${pageContext.request.contextPath}/share">Bargaining</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Service_Center</a>

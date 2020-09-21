@@ -19,6 +19,19 @@
 <!-- Custom styles for this template -->
 <link href="${pageContext.request.contextPath}/assets/css/common.css"
 	rel="stylesheet">
+<link href="${pageContext.request.contextPath}/assets/css/common2.css"
+	rel="stylesheet">
+
+<style>
+	#petmargin{
+		margin-left : 220px;
+		width : 470px;
+	}
+	#testimg{
+		width : 150px;
+	}
+	
+</style>
 
 </head>
 
@@ -149,8 +162,8 @@
 						<c:when test="${empty pList}">
 							<div class="row">
 								<img id="petImg-Size" class="d-block imgSize rounded-circle"
-									src="${pageContext.request.contextPath}/assets/image/lolozouai04.jpg"
-									onerror="this.src='${pageContext.request.contextPath}/assets/image/lolozouai.jpg';">
+									src="${pageContext.request.contextPath}/assets/image/default2.jpg"
+									onerror="this.src='${pageContext.request.contextPath}/assets/image/default2';">
 								<div class="text-center center-block pt-5 mt-5">
 									<h5 class="mt-4"><strong>등록된 반려견이 없습니다.</strong></h5>
 									<br><br>
@@ -167,80 +180,60 @@
 
 										<c:forEach items="${pList }" var="result" varStatus="status">
 											<c:if test="${status.first}">
-												<div class="carousel-item active">
-													<img id="petImg-Size"
-														class="d-block imgSize rounded-circle"
-														src="${pageContext.request.contextPath}/dogshop/${result.dogImg}"
-														alt="dogImg">
-													<div class="carousel-caption d-none d-md-block">
-														<div class="listSearch-info replaceInfo">
-
-															<ul class="list-unstyled">
-																<li>반려견 이름</li>
-																<li><c:out value="${result.dogName}" /></li>
-															</ul>
-
-															<ul class="list-unstyled">
-																<li>견종</li>
-																<li><c:out value="${result.dogType}" /></li>
-															</ul>
-
-															<ul class="list-unstyled">
-																<li>반려견 나이</li>
-																<li><c:out value="${result.dogAge}살" /></li>
-															</ul>
-
-															<ul class="list-unstyled">
-																<li>반려견 몸무게</li>
-																<li><c:out value="${result.dogWeight}kg" /></li>
-															</ul>
-
-															<ul class="list-unstyled">
-																<li>반려견 특징 및 기타사항</li>
-																<li><c:out value="${result.dogEtc}" /></li>
-															</ul>
-
-															<button type="button" class="btn btn-primary btn-sm mt-5" data-toggle="modal" data-target="#myModal1">수정</button>
+											<div class="carousel-item active">
+												<div id="petmargin" class="col-md-9 petLicenseWrap rounded-lg">
+														<div class="petLicense rounded-lg">
+															<div class="petLicensePicture">
+																<img id="testimg" src="${pageContext.request.contextPath}/dogshop/${result.dogImg}" alt=" ">
+															</div>
+															<div class="petLicenseTitle text-center">반려동물 등록증</div>
+															<!-- 이름변경: .petLicenseTitle.html() 변경 -->
+															<div class="petLicenseName text-center">
+																<label class="lblName">${result.dogName }</label>
+															</div>
+															<div class="petLicenseSubTitle">
+																종&nbsp;&nbsp;&nbsp;&nbsp;류 :  <br>나&nbsp;&nbsp;&nbsp;&nbsp;이
+																:<br>몸무게 : 
+															</div>
+															<!-- 종류변경: .lblKind.val() 변경 / 나이변경: .lblAge.val() 변경 / 몸무게변경: .lblWeight.val()변경 -->
+															<div class="petLicenseContents">
+																<label class="lblKind"></label>${result.dogType }<br>
+																<label class="lblAge"></label> ${result.dogAge}살<br>
+																<label class="lblWeight"></label> ${result.dogWeight}kg
+															</div>
+															<div class="petLicenseStamp text-center">페타그램</div>
+															<div class="petLicenseFooter text-center">페 타 그 램</div>
+															<input type="hidden" class="lblNo" value="">
 														</div>
 													</div>
-
-													
-													<!-- 인디케이터 끝 -->
 												</div>
 											</c:if>
 
 											<c:if test="${status.index ne 0}">
 												<div class="carousel-item">
-													<img id="petImg-Size" class="d-block imgSize rounded-circle" src="${pageContext.request.contextPath}/dogshop/${result.dogImg}" alt="dogImg">
-													<div class="carousel-caption d-none d-md-block">
-														<div class="listSearch-info replaceInfo">
-	
-															<ul class="list-unstyled">
-																<li>반려견 이름</li>
-																<li><c:out value="${result.dogName}" /></li>
-															</ul>
-	
-															<ul class="list-unstyled">
-																<li>견종</li>
-																<li><c:out value="${result.dogType}" /></li>
-															</ul>
-	
-															<ul class="list-unstyled">
-																<li>반려견 나이</li>
-																<li><c:out value="${result.dogAge}살" /></li>
-															</ul>
-	
-															<ul class="list-unstyled">
-																<li>반려견 몸무게</li>
-																<li><c:out value="${result.dogWeight}kg" /></li>
-															</ul>
-	
-															<ul class="list-unstyled">
-																<li>반려견 특징 및 기타사항</li>
-																<li><c:out value="${result.dogEtc}" /></li>
-															</ul>
-	
-															<button type="button" class="btn btn-primary btn-sm mt-5" data-toggle="modal" data-target="#myModal1">수정</button>
+													<div id="petmargin" class="col-md-9 petLicenseWrap rounded-lg">
+														<div class="petLicense rounded-lg">
+															<div class="petLicensePicture">
+																<img id="testimg" src="${pageContext.request.contextPath}/dogshop/${result.dogImg}" alt=" ">
+															</div>
+															<div class="petLicenseTitle text-center">반려동물 등록증</div>
+															<!-- 이름변경: .petLicenseTitle.html() 변경 -->
+															<div class="petLicenseName text-center">
+																<label class="lblName">${result.dogName}</label>
+															</div>
+															<div class="petLicenseSubTitle">
+																종&nbsp;&nbsp;&nbsp;&nbsp;류 :  <br>나&nbsp;&nbsp;&nbsp;&nbsp;이
+																:<br>몸무게 : 
+															</div>
+															<!-- 종류변경: .lblKind.val() 변경 / 나이변경: .lblAge.val() 변경 / 몸무게변경: .lblWeight.val()변경 -->
+															<div class="petLicenseContents">
+																<label class="lblKind"></label>${result.dogName }<br>
+																<label class="lblAge"></label> ${result.dogAge}살<br>
+																<label class="lblWeight"></label> ${result.dogWeight}kg
+															</div>
+															<div class="petLicenseStamp text-center">페타그램</div>
+															<div class="petLicenseFooter text-center">페 타 그 램</div>
+															<input type="hidden" class="lblNo" value="">
 														</div>
 													</div>
 												</div>
@@ -264,37 +257,12 @@
 
 											<c:if test="${status.index ne 0}"> --%>
 
-
-
-										<!-- 인디케이터 -->
-										<ul class="carousel-indicators">
-
-											<c:choose>
-												<c:when test="${status.first }">
-													<li data-target="#demo" data-slide-to="${pList }" class="active"></li>
-												</c:when>
-												
-												<c:otherwise>
-													<c:forEach var="pList" begin="0" end="${fn:length(pList)-1 }" step="1">
-														<li data-target="#demo" data-slide-to="${pList }"></li>
-													</c:forEach>
-												</c:otherwise>
-											</c:choose>
-											
-									
-										</ul>
-										<!-- 인디케이터 끝 -->
 										
 									</div>
 								</div>
 							</div>
 						</c:otherwise>
 					</c:choose>
-			
-
-
-
-
 
 					<hr class="mb-4">
 
@@ -312,15 +280,28 @@
 						</thead>
 						<tbody>
 							<c:forEach items="${rList}" var="visitvo">
-								<tr>
-									<td>${visitvo.dogName}</td>
-									<td>${visitvo.shopTitle}</td>
-									<td>${visitvo.regdate}</td>
-									<td>${visitvo.dogweight}</td>
-									<td><button type="button" class="btn btn-link btn-sm" data-toggle="modal" data-target="#myModal2">
-                					   	미작성
-                  					</button></td>
-								</tr>
+								<c:if test="${1 eq visitvo.reserved}">
+										<tr>
+											<td>${visitvo.dogName}</td>
+											<td>${visitvo.shopTitle}</td>
+											<td>${visitvo.regdate}</td>
+											<td>${visitvo.dogweight}</td>
+											<td><button type="button" class="btn btn-link btn-sm" data-toggle="modal" data-target="#myModal2">
+		                					   	미작성
+		                  					</button></td>
+		                					<td><input type="hidden" id="getregno" value="${visitvo.regno }"></td>
+		                					<td><input type="hidden" id="getshopno" value="${visitvo.shopno }"></td>
+										</tr>
+								</c:if>
+								<c:if test="${1 ne visitvo.reserved}">
+										<tr>
+											<td>${visitvo.dogName}</td>
+											<td>${visitvo.shopTitle}</td>
+											<td>${visitvo.regdate}</td>
+											<td>${visitvo.dogweight}</td>
+											<td>작성완료</td>
+										</tr>
+								</c:if>
 							</c:forEach>
 						</tbody>
 					</table>
@@ -341,59 +322,6 @@
 
 	<!-- Modal -->
 	<!-- 애견 등록증 수정 -->
-	<div class="modal fade" id="myModal1" tabindex="-1" role="dialog"
-		aria-labelledby="myModal1Label" aria-hidden="true">
-		<div class="modal-dialog modal-dialog-centered">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h4 class="modal-title" id="myModal1Label">마이펫 수정</h4>
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-
-				<div class="modal-body">
-
-					<div id="petVisited-modal1">
-
-						<ul class="list-unstyled">
-							<li>이름</li>
-							<li>호두</li>
-						</ul>
-
-						<ul class="list-unstyled">
-							<li>몸무게</li>
-							<li>3.2kg</li>
-						</ul>
-
-						<ul class="list-unstyled">
-							<li>종류</li>
-							<li>푸들</li>
-						</ul>
-
-						<ul class="list-unstyled">
-							<li>나이</li>
-							<li>23개월</li>
-						</ul>
-
-					</div>
-
-					<img
-						src="${pageContext.request.contextPath}/assets/image/lolozouai.jpg"
-						class="img-responsive rounded" id="img-modal"
-						alt="Responsive image">
-
-				</div>
-
-				<div class="modal-footer">
-					<button type="button" class="btn btn-danger btn-sm" onclick="location.href = '${pageContext.request.contextPath}/pet/'">삭제</button>
-					<button type="button" class="btn btn-primary btn-sm" onclick="location.href = '${pageContext.request.contextPath}/pet/petModify'">수정</button>
-					<button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
-				</div>
-			</div>
-		</div>
-	</div>
 
 
 	<!-- 별점주기 -->
@@ -410,24 +338,13 @@
 				</div>
 
 				<div class="modal-body text-center">
-					<span class="star-input"> <span class="input"> <input
-							type="radio" name="star-input" id="p1" value="0.5"><label
-							for="p1">0.5</label> <input type="radio" name="star-input"
-							id="p2" value="1"><label for="p2">1</label> <input
-							type="radio" name="star-input" id="p3" value="1.5"><label
-							for="p3">1.5</label> <input type="radio" name="star-input"
-							id="p4" value="2"><label for="p4">2</label> <input
-							type="radio" name="star-input" id="p5" value="2.5"><label
-							for="p5">2.5</label> <input type="radio" name="star-input"
-							id="p6" value="3"><label for="p6">3</label> <input
-							type="radio" name="star-input" id="p7" value="3.5"><label
-							for="p7">3.5</label> <input type="radio" name="star-input"
-							id="p8" value="4"><label for="p8">4</label> <input
-							type="radio" name="star-input" id="p9" value="4.5"><label
-							for="p9">4.5</label> <input type="radio" name="star-input"
-							id="p10" value="5"><label for="p10">5</label>
-					</span> <output for="star-input">
-							<b>0</b>점
+					<span class="star-input"> <span class="input"> 
+					<c:forEach var="i" begin="1" end ="10" >
+						<input type="radio" name="star-input" id="p${i }" value="${i*0.5 }" data-no="${i-1}" class="testStarP">
+						<label for="p${i }">${i*0.5 }</label>
+					</c:forEach>
+					</span> <output for="star-input" id="starpoint">
+							<b id="spoint">0</b>점
 						</output>
 					</span>
 
@@ -443,7 +360,7 @@
 				</div>
 
 				<div class="modal-footer">
-					<button type="button" class="btn btn-primary">확인</button>
+					<button id="datatesta" type="button" class="btn btn-primary" >확인</button>
 					<button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
 				</div>
 			</div>
@@ -458,11 +375,7 @@
 		src="${pageContext.request.contextPath}/assets/bootstrap/jquery/jquery.min.js"></script>
 	<script
 		src="${pageContext.request.contextPath}/assets/bootstrap/js/bootstrap.bundle.min.js"></script>
-
 	<!-- 캐러셀 -->
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-		crossorigin="anonymous"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
 		integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
@@ -500,6 +413,41 @@
 			});
 		};
 		starRating();
+	</script>
+	<script type="text/javascript">
+	var no;
+	
+	$(".testStarP").on("click", function(){
+		no = $(this).data("no");
+		
+		$(".btn-primary").on("click", function(){
+			var spoint = $('[name="star-input"]').eq(no).val();
+			var sdesc = $('.form-control').val();
+			var regno = $("#getregno").val();
+			var shopno = $("#getshopno").val();
+			
+			
+			
+			$.ajax({
+				url : "${pageContext.request.contextPath }/review",
+				type : "post",
+				data : {
+					spoint : spoint,
+					sdesc : sdesc,
+					regno : regno,
+					shopno : shopno
+				},
+				dataType : "json",
+				success : function (result){
+					if(result=1){
+						window.location.href = "${pageContext.request.contextPath}/pet/petBasic"
+					}
+				 }
+					
+			});
+		});
+	});
+		
 	</script>
 </body>
 
