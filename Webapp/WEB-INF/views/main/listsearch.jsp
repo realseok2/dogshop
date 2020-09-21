@@ -125,7 +125,7 @@
 							<th scope="col">No.</th>
 							<th scope="col">Store_Name</th>
 							<th scope="col">Store_Address</th>
-							<th scope="col">Store_Us_Number</th>
+							<th scope="col">Contect_Us_Number</th>
 						</tr>
 					</thead>
 					<tbody>

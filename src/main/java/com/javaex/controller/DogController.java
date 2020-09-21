@@ -47,12 +47,12 @@ public class DogController {
 
 	//	마이펫 추가
 	@RequestMapping("/add")
-	public String add(@ModelAttribute DogVo DogVo , MultipartFile file, HttpSession session ,Model model) {
+	public String add(@ModelAttribute DogVo dogVo , MultipartFile file, HttpSession session ,Model model) {
 		SessionVo sessionVo = (SessionVo)session.getAttribute("session");
 		
 		int userNo = sessionVo.getUserNo();
 		
-		DogService.add(DogVo,file,userNo);
+		DogService.add(dogVo,file,userNo);
 		return "redirect:/pet/petBasic";
 	}	
 	
