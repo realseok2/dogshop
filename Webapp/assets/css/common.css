@@ -216,6 +216,65 @@ a:hover {text-decoration: none; color: blueviolet;}
   .snip1273.hover figcaption:after {
     opacity: 0.1;
   }
+  
+  
+  
+  
+  
+  
+  
+  
+  /* Share_petagram */
+  .share-font-weight { font-weight: bold;}
+  .share-petagram-img {width: 349px; height: auto; border: solid 1px; border-radius: 1%; border-color: #ecdfe0;}
+  .share-petagram-img:first-child {margin-left: 1.8%;}
+  .share-petagram-img:not(:first-child) { margin-left: 2.5%;}
+  .share-basic {margin-left: 3%; margin-top: 1.5%; margin-bottom: 1.5%;}
+  .share-basic > .main-header {float: right; border: 0; outline: 0; background-color: #f8f9fa;}
+  .share-basic > img {width: 9%; height: 9%; border-radius: 70%; margin-right: 3%;}
+  .share-body-img > img {width: 348px; height:350px;}
+  .share-body-content {margin: 2%;}
+  .share-body-content > .share-basic > .main-icon {border: 0; outline: 0; background-color: #f8f9fa;}
+  .share-body-content > .share-basic > .save-icon {float: right;}
+  .share-body-content > div > .replyArea {outline: 0; border: 0; color: #ff00ff; background-color: #f8f9fa;}
+  .share-footer {width: 100%; height: 85.8px;}
+  .share-footer > textarea {resize: none; width: 87.5%; height: 100%; border: 0; outline: 0; background-color: #f8f9fa;}
+  .share-footer > button {width: 11%; padding: 0; margin-right: 0.5%; float: right; height: 100%; border: 0; outline: 0; background-color: #f8f9fa; color: gray;}
+  .etc-basic {margin-right: 3%;}
+
+  /* Share_Detail */
+    /* main-detail */
+  .share-petagram-detail-wrap {border: solid 1px; overflow: hidden; padding: 0; border-color: #ecdfe0;}
+  .share-petagram-detail-wrap .img-area {width: 60%; height: 600px; float: left; margin: 2.5%; background-size: cover; background-position: center;}
+  .detail-wrap-content {width: 35%; height: auto; float: right; padding-top: 2.5%; border-left: solid 1px; border-color: #ecdfe0;}
+  .detail-wrap-content > div {border-bottom: solid 1px; margin: 0; border-color: #ecdfe0;}
+
+    /* select-img */
+  .share-petagram-detail-wrap > div > .snip1273 {max-width:100%; height: 600px;}
+  .share-petagram-detail-wrap > .img-area {width: 60%; height: 600px; margin: 0; margin-top: 2.5%; margin-left: 2.5%;}
+  .share-petagram-detail-wrap > div > figure > img {width: 100%; height: 600px; margin: 0;}
+  .share-petagram-detail-wrap > div > figure > figcaption {padding-top: 45%; padding-left: 10%;}
+  .share-petagram-detail-wrap > .img-area > figure > figcaption > .detail-main-img {margin-top: 10%;}
+  .share-petagram-detail-wrap > .img-area > figure > figcaption > .detail-main-img > div {margin-bottom: 3%;}
+  
+    /* .another-img */
+  .another-img > div > img {width: 350px; height: 350px;}
+  .another-img > div > {padding: 0;}
+  .another-img > div > .snip1273 {max-width: 350px; height: 350px;}
+  .another-img > div > figure > img {width: 350px; height: 350px;}
+  .another-img > div > figure > figcaption {padding-top: 45%;}
+  .another-img > div > figure > figcaption > div > button {width: 20px; height: 20px;margin-top: -50%; margin-right: -3%; background-color: rgba(255, 255, 255, 0);}
+
+  .detail-content-header {width: 100%; height: 45.8px;}
+  .detail-content-body-top {width: 100%; height: 405.8px;}
+  .detail-content-body-bottom {width: 100%; height: 90.6px;}
+  .detail-content-footer {width: 100%; height: 70.8px;}
+  .detail-content-footer > textarea {resize: none;}
+  .detail-content-footer > p {margin: 0; padding: 0;}
+  
+  
+  
+  
 /* ---------------------------------------------------------------------------------------------------------------------------------------------- */
 /* `Form */
   /* btn */
@@ -373,7 +432,7 @@ a:hover {text-decoration: none; color: blueviolet;}
   .map-search {width: 850px; height: auto; margin: auto;}
 
   /* 지도로 매장검색 매장이미지 기본설정 */
-  .img-mapSearch {width: auto; height: 243.75px; float: right;}
+  .img-mapSearch {width: 250; height: 250px; float: right;}
   .img-mapSearch-location {width: auto; height: auto; margin-left: 6.75%;} 
 
   /* 리스트 */
@@ -389,8 +448,8 @@ a:hover {text-decoration: none; color: blueviolet;}
   .list-search {width: 850px; height: 400px; margin: auto;}
 
   /* 리스트로 매장검색 매장이미지 기본설정 */
-  .img-listSearch {width: auto; height: 243.75px; float: right;}
-  .img-listSearch-location {width: auto; height: auto; margin-left: 5%;}
+  .img-listSearch {width: 250px; height: 250px; float: right;}
+  .img-listSearch-location {width: 250px; height: 250px; margin-left: 30%;}
 
   /* 리스트로 매장검색 테이블 */
   .listSearch {margin-top: 4.25%; margin-bottom: 3%;}
@@ -406,7 +465,7 @@ a:hover {text-decoration: none; color: blueviolet;}
   .petSupplies-img > div > .snip1273 {max-width: 370px; height: 370px;}
   .petSupplies-img > div > figure > img {width: 370px; height: 370px;}
   .petSupplies-img > div > figure > figcaption {padding-top: 45%;}
-  .petSupplies-img > div > figure > figcaption > div > button {width: 20px; height: 20px;margin-top: -70%; margin-right: -3%; background-color: rgba(255, 255, 255, 0);}
+  .petSupplies-img > div > figure > figcaption > div > button {width: 20px; height: 20px;margin-top: -50%; margin-right: -3%; background-color: rgba(255, 255, 255, 0);}
   
   .petSupplies-img2 > div > figure > img {width: 450px; height: 400px;}
   .petSupplies-img2 > div > figure > img {margin-top: 10px;}
