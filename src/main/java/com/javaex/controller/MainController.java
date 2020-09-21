@@ -64,23 +64,4 @@ public class MainController {
 		return "main/share_petagram";	
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	//무료 나눔
-	@RequestMapping("/share")
-	public String share(Model model) {
-		
-		return "main/share";
-	}
->>>>>>> refs/heads/taeseok
 }
