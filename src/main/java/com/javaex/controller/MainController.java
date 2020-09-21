@@ -47,4 +47,26 @@ public class MainController {
 		
 		return "main/mapsearch";
 	}
+	
+	//share-main
+	@RequestMapping("/shareMain")
+	public String shareMain() {
+		return "main/share_petagram";	
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
