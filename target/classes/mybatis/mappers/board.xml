@@ -19,7 +19,7 @@
 		]]>
 	</select>
 	
-	<!-- 공지사항 글 등록. -->
+	<!-- 글 등록. -->
 	<insert id="boardInsert" parameterType="com.javaex.vo.BoardVo" >
 		<![CDATA[			
 			INSERT INTO board VALUES (
@@ -34,5 +34,11 @@
 		]]>
 	</insert>	
 	
-	
+	<!-- 글 삭제. -->
+	<delete id="boardDelete" parameterType="int" >
+		<![CDATA[			
+			delete board
+			where boardNo = #{boardNo}
+		]]>
+	</delete>	
 </mapper>

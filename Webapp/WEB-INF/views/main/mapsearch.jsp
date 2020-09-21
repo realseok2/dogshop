@@ -35,11 +35,11 @@
 	<div class="container">
 		<div id="content-head" class="py-5 text-left">
 			<!-- <img class="d-block mx-auto mb-4" src="./image/bootstrap-solid.svg" alt="" width="72" height="72"> -->
-			<h2>매장찾기</h2>
+			<h2>Store_Search</h2>
 			<div id="location">
 				<ul class="list-inline">
-					<li> 매장찾기 </li>
-					<li class="last">지도로 찾기 </li>
+					<li>Store_Search </li>
+					<li class="last">Map</li>
 				</ul>
 			</div>
 			<!-- <p class="lead">Below is an example form built entirely with Bootstrap’s form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p> -->
@@ -57,7 +57,7 @@
 						class="list-group-item d-flex justify-content-between lh-condensed">
 						<div>
 							<h6 class="my-0">
-								<a href="${pageContext.request.contextPath}/mapsearch">지도로 찾기</a>
+								<a href="${pageContext.request.contextPath}/listsearch">List</a>
 							</h6>
 							<!-- <small class="text-muted">Brief description</small> -->
 						</div>
@@ -66,7 +66,7 @@
 						class="list-group-item d-flex justify-content-between lh-condensed">
 						<div>
 							<h6 class="my-0">
-								<a href="${pageContext.request.contextPath}/listsearch">리스트로 찾기</a>
+								<a href="${pageContext.request.contextPath}/mapsearch">Map</a>
 							</h6>
 							<!-- <small class="text-muted">Brief description</small> -->
 						</div>
@@ -85,7 +85,7 @@
 				</div>
 				<hr class="mb-4">
 				<div>
-					<div class="row mapSearch-body">
+					<div class="row mapSearch-body pl-4">
 						<div class="mapSearch-info">
 							<ul class="list-unstyled">
 								<li>Store_Name</li>
@@ -96,23 +96,19 @@
 								<li>09:30 ~ 21:30</li>
 							</ul>
 							<ul class="list-unstyled">
-								<li>Store_Contect_Number</li>
+								<li>Contect_Us_Number</li>
 								<li id="infonumber">02-2052-0605</li>
 							</ul>
 							<ul class="list-unstyled">
-								<li>Address</li>
+								<li>Store_Address</li>
 								<li id="infoaddress">서울특별시 강남구 역삼동 809번지 2층</li>
 							</ul>
 							<ul class="list-unstyled">
 								<li>Email</li>
 								<li>aaa@naver.com</li>
 							</ul>
-							<ul class="list-unstyled">
-								<li>Parking_Space</li>
-								<li>지상 1층 외 넓은 주차장 보유(매장에 있으신 시간에 한해 주차쿠폰 발급)</li>
-							</ul>
 						</div>
-						<a href="" class="img-mapSearch-location"><img src="${pageContext.request.contextPath }/assets/image/default.png" class="img-responsive rounded img-mapSearch" alt="Responsive image"></a>
+						<a href="" class="img-mapSearch-location ml-5 pl-5"><img src="${pageContext.request.contextPath }/assets/image/default.png" class="img-responsive rounded img-mapSearch" alt="Responsive image"></a>
 					</div>
 					<hr class="mb-4">
 				</div>

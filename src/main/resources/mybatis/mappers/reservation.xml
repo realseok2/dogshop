@@ -6,14 +6,15 @@
 	<insert id="insertres" parameterType="com.javaex.vo.ReservationVo">
 	<![CDATA[
 		insert into reservation values(
-							seq_reservation_no.NEXTVAL,
+							seq_regno_no.NEXTVAL,
 							#{dogno},
 							#{shopno},
 							#{userno},
 							#{username},
 							#{regdate},
 							#{usercontact},
-							#{reserved})
+							#{reserved}
+							)
 	]]>
 	</insert>
 	
@@ -31,13 +32,23 @@
 	<!-- 방문내역리스트 -->
 	<select id="getrList" parameterType="int" resultType="com.javaex.vo.VisitVo">
 	<![CDATA[
-			select d.dogname, s.shoptitle, r.regdate, d.dogweight
+			select d.dogname dogname, s.shoptitle shoptitle, r.regdate regdate, d.dogweight dogweight, r.reserved reserved, r.regno regno , r.shopno shopno 
 			from reservation r, dog d, shop s
 			where d.userno = r.userno
 			and s.shopno = r.shopno
+			and r.dogno = d.dogno
 			and r.userno = #{userNo}
 			order by regdate desc 
 	]]>
 	</select>
+	<update id="reserved" parameterType = "int">
+	<![CDATA[
+		update 		 reservation
+		set			 reserved=0
+		where	regno=#{regno}
+	]]>
+	</update>
+	
+	
 	
 </mapper>

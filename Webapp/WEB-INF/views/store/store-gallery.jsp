@@ -37,28 +37,30 @@
     <!-- 컨텐츠 -->
     <div class="container">
       <header class="py-1 mt-4">
+      	<c:if test="${sMap.shopVo.shopNo == session.shopNo }">
+           	<button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target=".productAdd" style=float:right>사진 추가</button>
+        </c:if>
         <h2 class="display-5">Pet Gallery</h2>
-        	<c:if test="${sMap.shopVo.shopNo == session.shopNo }">
-              	<button type="button" class="btn btn-link" data-toggle="modal" data-target=".productAdd">사진 추가</button>
-        	</c:if>
         <hr class="mb-1">
       </header>
 
       <div class="mt-5">
          <div class="row petSupplies-img2">
         	<c:forEach var ="i" begin="1" end="${fn:length(sMap.boardList)}">
-		          <!-- 사진 들어갈 곳 -->
-		          <div class="col-md-4 pr-0">
-		            <figure class="snip1273 pointer-cursor">
+		          <!-- 열번째 사진 들어갈 곳 -->
+		          <div class="col-md-4 pr-0" id="imgline" data-no="${sMap.boardList[fn:length(sMap.boardList)-i].boardNo}">
+		            <figure class="snip1273 pointer-cursor" >
 		             <img src="${pageContext.request.contextPath}/dogshop/${sMap.boardList[fn:length(sMap.boardList)-i].img}">
 		              <figcaption>
 		                <!-- 상품 삭제 버튼 -->
-		                <div class="pt-0">
-		                  <button type="button" class="close main-modal-icon rounded-circle" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-		                </div>
+		                <c:if test="${sMap.shopVo.shopNo == session.shopNo }">
+			                <div class="pt-0">
+			                  <button type="button" class="close main-modal-icon rounded-circle" data-del="${sMap.boardList[fn:length(sMap.boardList)-i].boardNo}" data-menuNo="${param.menuNo}"  data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			                </div>
+		                </c:if>
 		                <!-- //상품 삭제 버튼 -->
-		                <h5 class="mt-5">${sMap.shopVo.shopTitle }</h5>
-		                <p class="mt-5 pt-4">${sMap.shopVo.shopTitle }</p>                    
+ 						<p class="mt-5"></p>    
+		                <h5 class="mt-5 pt-4">${sMap.shopVo.shopTitle }</h5>                   
 		              </figcaption>
 		           </figure>
 		          </div>
@@ -100,7 +102,29 @@
 <!-- footer -->
 	<c:import url="/WEB-INF/views/include/store-footer.jsp"></c:import>  
 <!-- /footer -->
-
+<script type="text/javascript">
+	$(".close").on("click",function() {
+		var del = $(this).data("del");
+		var menuNo = $(this).data("menuno");
+		
+		
+		$.ajax({
+			url : "${pageContext.request.contextPath }/store/${shopDomain}/boardDel",
+			type : "post",
+			/* contentType : "application/json", */
+			data : {
+				del : del,
+				menuNo : menuNo
+			},
+			dataType : "json",
+			success : function (count){
+				if(count = 1 ){
+					$("#imgline[data-no='" + del + "']").remove();
+				}
+			}
+		});
+	});
+</script>
 
 </body>
 

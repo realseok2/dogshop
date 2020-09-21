@@ -39,7 +39,12 @@ public class StoreDao {
 		int count = sqlSession.insert("board.boardInsert", boardVo);
 		return count;
 	}
-		
+	
+	//글 삭제
+	public int boardDel(int boardNo) {
+		return sqlSession.delete("board.boardDelete", boardNo);
+	}
+	
 	//글 목록 검색
 	public List<BoardVo> boardSelect(int menuNo) {
 		return sqlSession.selectList("board.boardSelect", menuNo);
