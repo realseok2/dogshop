@@ -61,7 +61,7 @@
 	            	
 	          </span>
 	          <!-- /. 별표 점수매기기 -->
-	          <h6 class="reviewTitle">리뷰 51개 | 1개월 | 3개월 | 6개월</h6>
+	          <h6 class="reviewTitle">리뷰 	${scount}개</h6>
           </c:if>
           <!-- 예약설정 버튼 -->
           <p><a class="btn btn-secondary btn-example" href="#layer2" role="button">예약설정 &raquo;</a></p>

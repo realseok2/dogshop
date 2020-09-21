@@ -51,8 +51,10 @@ public class StoreController {
 		Map<String,Object> sMap = storeService.StoreMain(shopDomain);
 		ShopVo shopVo = (ShopVo)sMap.get("shopVo");
 		int spoint = reviewservice.getspoint(shopVo.getShopNo());
+		int scount = reviewservice.scount(shopVo.getShopNo());
 		model.addAttribute("spoint",spoint);
 		model.addAttribute("sMap", sMap);
+		model.addAttribute("scount",scount);
 		
 		return "store/store-reservation";
 	}

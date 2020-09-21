@@ -30,5 +30,13 @@
 			from    review
 			where   shopno=#{shopno,jdbcType = VARCHAR}
 	</select>
+	
+	<select id="scount" parameterType="int"
+	resultType="Integer">
+			select  count(reviewno)
+			from    review
+			where   shopno=#{shopno,jdbcType = VARCHAR}
+	</select>
+	
 
 </mapper>

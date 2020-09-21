@@ -30,4 +30,7 @@ public class ReviewDao {
 		 return sqlSession.selectOne("review.getspoint",shopno);
 		}
 	}
+	public int scount(int shopvo) {
+		return sqlSession.selectOne("review.scount", shopvo);
+	}
 }

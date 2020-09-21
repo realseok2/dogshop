@@ -28,4 +28,7 @@ public class ReviewService {
 	public Integer getspoint(int shopno) {
 		return reviewdao.getspoint(shopno);
 	}
+	public int scount(int shopno) {
+		return reviewdao.scount(shopno);
+	}
 }
