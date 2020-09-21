@@ -71,7 +71,7 @@
 				
 				<div class="text-center">
               		&lt; 1 2 3 4 5 &gt; 
-              		<button type="button" class="btn btn-outline-dark"style=float:right onclick = "location.href = '${pageContext.request.contextPath }/shareWriteForm' ">글 작성</button>
+              		<button type="button" class="btn btn-outline-dark"style=float:right onclick = "location.href = '${pageContext.request.contextPath }/nanumWriteForm' ">글 작성</button>
             	</div>
            		
        

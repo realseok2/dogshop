@@ -58,10 +58,4 @@ public class MainController {
 		return "main/mapsearch";
 	}
 	
-	//무료 나눔
-	@RequestMapping("/share")
-	public String share(Model model) {
-		
-		return "main/share";
-	}
 }

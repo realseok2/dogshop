@@ -26,7 +26,7 @@
             <a class="nav-link" href="#">자랑하기</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="${pageContext.request.contextPath}/share">무료나눔</a>
+            <a class="nav-link" href="${pageContext.request.contextPath}/nanum">무료나눔</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">고객센터</a>
