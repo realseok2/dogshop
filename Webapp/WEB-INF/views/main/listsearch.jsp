@@ -56,12 +56,7 @@
 						class="list-group-item d-flex justify-content-between lh-condensed">
 						<div>
 							<h6 class="my-0">
-<<<<<<< HEAD
-								<a href="${pageContext.request.contextPath }/mapsearch">지도로
-									찾기</a>
-=======
 								<a href="${pageContext.request.contextPath }/listsearch">List</a>
->>>>>>> refs/heads/taeseok
 							</h6>
 						</div>
 					</li>
@@ -69,12 +64,7 @@
 						class="list-group-item d-flex justify-content-between lh-condensed">
 						<div>
 							<h6 class="my-0">
-<<<<<<< HEAD
-								<a href="${pageContext.request.contextPath }/listsearch">리스트로
-									찾기</a>
-=======
 								<a href="${pageContext.request.contextPath }/mapsearch">Map</a>
->>>>>>> refs/heads/taeseok
 							</h6>
 						</div>
 					</li>
@@ -108,17 +98,8 @@
 								<li id="infoaddress"></li>
 							</ul>
 							<ul class="list-unstyled">
-								<li>별점</li>
-								<li><span class="star-input"> <span class="input"> <input
-										type="radio" name="star-input" value="${spoint}"
-										id="p${spoint*2}" checked><label id="test-spoint" for="p${spoint*2}"></label>
-								</span> <output for="star-input">
-										<b id="spoint-t"></b>
-									</output>
-								</span>
-
 								<li>Email</li>
-								<li>aaa@naver.com</li>
+								<li id="infoEmail"></li>
 							</ul>
 							<ul class="list-unstyled">
 								<li>Point</li>
@@ -151,18 +132,9 @@
 						<c:forEach items="${sList}" var="shopVo">
 							<tr class="shopinfo" data-shopDomain="${shopVo.shopDomain}">
 								<td>${shopVo.shopNo}</td>
-<<<<<<< HEAD
-=======
 								<td><a href="${pageContext.request.contextPath }/store/${shopVo.shopDomain}/main">${shopVo.shopTitle}</a></td>
 								<td class="center-block pr-3 ml-5">${shopVo.shopAddress}</td>
->>>>>>> refs/heads/taeseok
-								<td><a
-									href="${pageContext.request.contextPath }/store/${shopVo.shopDomain}/main">${shopVo.shopTitle}</a></td>
-<<<<<<< HEAD
-								<td>${shopVo.shopAddress}</td>
 								<td>${shopVo.shopNumber}</td>
-=======
->>>>>>> refs/heads/taeseok
 							</tr>
 						</c:forEach>
 					</tbody>
@@ -206,6 +178,7 @@
 						$("#infotitle").text(map.shopVo.shopTitle);
 						$("#infonumber").text(map.shopVo.shopNumber);
 						$("#infoaddress").text(map.shopVo.shopAddress);
+						$("#infoEmail").text(map.shopVo.shopEmail);
 						$('#listPage_img').attr("src",
 								"${pageContext.request.contextPath}/dogshop/"+ map.shopVo.shopLogo);
 						$('input[name=star-input]').attr("id", "p"+${'map.spoint'}*2);
