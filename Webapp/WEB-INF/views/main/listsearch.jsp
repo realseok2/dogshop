@@ -56,8 +56,12 @@
 						class="list-group-item d-flex justify-content-between lh-condensed">
 						<div>
 							<h6 class="my-0">
+<<<<<<< HEAD
 								<a href="${pageContext.request.contextPath }/mapsearch">지도로
 									찾기</a>
+=======
+								<a href="${pageContext.request.contextPath }/listsearch">List</a>
+>>>>>>> refs/heads/taeseok
 							</h6>
 						</div>
 					</li>
@@ -65,8 +69,12 @@
 						class="list-group-item d-flex justify-content-between lh-condensed">
 						<div>
 							<h6 class="my-0">
+<<<<<<< HEAD
 								<a href="${pageContext.request.contextPath }/listsearch">리스트로
 									찾기</a>
+=======
+								<a href="${pageContext.request.contextPath }/mapsearch">Map</a>
+>>>>>>> refs/heads/taeseok
 							</h6>
 						</div>
 					</li>
@@ -109,16 +117,24 @@
 									</output>
 								</span>
 
+								<li>Email</li>
+								<li>aaa@naver.com</li>
 							</ul>
-
+							<ul class="list-unstyled">
+								<li>Point</li>
+								<li><span class="star-input">
+										<span class="input">
+											<input type="radio" name="star-input" value="${spoint}" id="p${spoint*2}" checked><label id="test-spoint" for="p${spoint*2}"></label>
+										</span>
+										<output for="star-input">
+											<b id="spoint-t"></b>
+										</output>
+									</span>
+							</ul>
 						</div>
-
-
-						<a href="" class="img-listSearch-location"> <img
-							src="${pageContext.request.contextPath }/assets/image/default.png"
-							class="img-responsive rounded img-listSearch" id="listPage_img"
-							alt="Responsive image">
-						</a>
+							<a href="" class="img-listSearch-location ml-5 pl-5">
+								<img src="${pageContext.request.contextPath }/assets/image/default.png" class="img-responsive rounded img-listSearch" id = "listPage_img" alt="Responsive image">
+							</a>
 					</div>
 				</div>
 
@@ -135,10 +151,18 @@
 						<c:forEach items="${sList}" var="shopVo">
 							<tr class="shopinfo" data-shopDomain="${shopVo.shopDomain}">
 								<td>${shopVo.shopNo}</td>
+<<<<<<< HEAD
+=======
+								<td><a href="${pageContext.request.contextPath }/store/${shopVo.shopDomain}/main">${shopVo.shopTitle}</a></td>
+								<td class="center-block pr-3 ml-5">${shopVo.shopAddress}</td>
+>>>>>>> refs/heads/taeseok
 								<td><a
 									href="${pageContext.request.contextPath }/store/${shopVo.shopDomain}/main">${shopVo.shopTitle}</a></td>
+<<<<<<< HEAD
 								<td>${shopVo.shopAddress}</td>
 								<td>${shopVo.shopNumber}</td>
+=======
+>>>>>>> refs/heads/taeseok
 							</tr>
 						</c:forEach>
 					</tbody>
@@ -159,6 +183,11 @@
 	<script
 		src="${pageContext.request.contextPath }/assets/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
+
+
+
+
+
 <script type="text/javascript">
 	$(".shopinfo").on(
 			"click",
@@ -182,7 +211,7 @@
 						$('input[name=star-input]').attr("id", "p"+${'map.spoint'}*2);
 						$('input[name=star-input]').attr("value", "p"+${'map.spoint'});
 						$('input[name=star-input]').attr("for", "p"+${'map.spoint'}*2);
-						$("#test-spoint").attr("for","p"+${'map.spoint*2'});
+						$("#test-spoint").attr("for","p"+${'map.spoint'});
 						$('#spoint-t').html(${'map.spoint'}+"점");
 					}
 				});
