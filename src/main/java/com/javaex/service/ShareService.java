@@ -4,6 +4,7 @@ import java.io.BufferedOutputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,11 @@ public class ShareService {
 
 	@Autowired
 	private ShareDao shareDao;
+	
+	//리스트 출력
+	public List<ShareVo> getList(int userNo) {
+		return shareDao.getList(userNo);
+	}
 	
 	//자랑하기 추가
 	public int add(ShareVo shareVo, MultipartFile file, int userNo, String id) {

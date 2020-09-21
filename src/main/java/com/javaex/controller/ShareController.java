@@ -1,5 +1,7 @@
 package com.javaex.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,19 +24,30 @@ public class ShareController {
 //	자랑하기 메인------------------------------------------------------------------------------	
 	//메인 폼
 	@RequestMapping("/shareMain")
-	public String shareMain() {
+	public String shareMain(Model model, HttpSession session) {
 		System.out.println("share-main-form");
+		
+		SessionVo sessionVo = (SessionVo)session.getAttribute("session");
+		int userNo = sessionVo.getUserNo();
+		String id = shareService.getid(userNo);
+		
+		List<ShareVo> sList = shareService.getList(userNo);
+		model.addAttribute("sList", sList);
+		
+		
+		
+		System.out.println("controller : @@@@@@@@@" + sList.toString());
+		
+		
+		
+		
+		
+		
 		return "main/share_petagram";	
 	}
 	
-//	자랑하기 자세히 보기--------------------------------------------------------------------------
-	//자세히보기 폼
-	@RequestMapping("/shareDetail")
-	public String shareDetail() {
-		System.out.println("share-detail-form");
-		return "main/share_petagram_detail";
-	}
 	
+
 //	자랑하기 추가------------------------------------------------------------------------------
 	//추가하기 폼
 	@RequestMapping("/shareAdd")
@@ -47,18 +60,26 @@ public class ShareController {
 	@RequestMapping("/add")
 	public String add(@ModelAttribute ShareVo shareVo, MultipartFile file, HttpSession session, Model model) {
 		SessionVo sessionVo = (SessionVo)session.getAttribute("session");
-		System.out.println("share-add");
-		System.out.println(sessionVo);
 		
 		int userNo = sessionVo.getUserNo();
 		String id = shareService.getid(userNo);
-		System.out.println(id);
-		shareService.add(shareVo, file, userNo,id);
 		
-		System.out.println("controller : @@@@@: " + shareVo.toString());
+		shareService.add(shareVo, file, userNo,id);
 		
 		return "redirect:/shareMain";
 	}
+	
+	
+	
+//	자랑하기 자세히 보기--------------------------------------------------------------------------
+	//자세히보기 폼
+	@RequestMapping("/shareDetail")
+	public String shareDetail() {
+		System.out.println("share-detail-form");
+		return "main/share_petagram_detail";
+	}
+	
+
 	
 	
 	

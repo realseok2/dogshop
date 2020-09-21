@@ -19,15 +19,7 @@ public class ShareVo {
 		
 	}
 
-	
-
-//--------------------------------------------------------	일반메소드
-
-
-
-
-
-//--------------------------------------------------------	toString
+//--------------------------------------------------------	getter, setter
 	
 	public int getShareNo() {
 		return shareNo;
@@ -123,8 +115,14 @@ public class ShareVo {
 		this.liked = liked;
 	}
 
+//--------------------------------------------------------	일반메소드
 
 
+
+
+
+//--------------------------------------------------------	toString
+	
 	@Override
 	public String toString() {
 		return "ShareVo [shareNo=" + shareNo + ", userNo=" + userNo + ", id=" + id + ", content=" + content

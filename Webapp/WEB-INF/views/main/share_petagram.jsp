@@ -53,46 +53,43 @@
 
   
 
+
     <div id="demo" class="carousel slide" data-ride="carousel" data-interval="false">
       <div class="carousel-inner rounded">
-
+<c:forEach items="${sList }" var="result" varStatus="status">
         <div class="carousel-item active">
           <div class="row mb-5">
             <div class="share-petagram-img">
 
 
-
-
               
               <!-- share_petagram hearder -->
               <div class="share-basic share-font-weight">
-                <img src="${pageContext.request.contextPath }/assets/image/lolozouai.jpg">아이디
+                <img src="${pageContext.request.contextPath }/assets/image/lolozouai.jpg" onclick = "location.href = '${pageContext.request.contextPath }/shareDetail' "><button type="button" onclick = "location.href = '${pageContext.request.contextPath }/shareDetail' " style="border: 0; outline: 0;">${result.id }</button>
                 <button type="button" class="etc-basic main-header"><img src="${pageContext.request.contextPath }/assets/image/close-icon.png"></button>
               </div>
               <!-- //share_petagram hearder -->
 
 
-
-
               <!-- share_petagram body-img -->
-              <div class="share-body-img"><img src="${pageContext.request.contextPath }/assets/image/closer.PNG"></div>
+              <div class="share-body-img"><img src="${pageContext.request.contextPath }/dogshop/${result.shareImg}"></div>
               <!-- //share_petagram body-img -->
 
               <!-- share_petagram body-content -->
               <div class="share-body-content">
                 <div class="share-basic">
                   <button type="button" class="main-icon"><img src="${pageContext.request.contextPath }/assets/image/heart-icon.png"></button>
-                  <button type="button" class="main-icon"><img src="${pageContext.request.contextPath }/assets/image/reply-icon.png"></button>
+                  <button type="button" class="main-icon"><img src="${pageContext.request.contextPath }/assets/image/reply-icon.png" onclick = "location.href = '${pageContext.request.contextPath }/shareDetail' "></button>
                   <button type="button" class="main-icon"><img src="${pageContext.request.contextPath }/assets/image/direct-icon.png"></button>
                   <button type="button" class="etc-basic main-icon save-icon"><img src="${pageContext.request.contextPath }/assets/image/save-icon.png"></button>
                 </div>
-                <div class="share-basic"><strong>[publishing]님</strong>과 <strong>n명</strong>이 좋아합니다.</div>
-                <div class="share-basic share-font-weight"><strong>[script]</strong> jquery</div>
+                <div class="share-basic"><strong>[publishing]님</strong>과 <strong>${result.hit }명</strong>이 좋아합니다.</div>
+                <div class="share-basic share-font-weight"><strong>[${result.id }]</strong>${result.content }</div>
                 <div><button type="button" class="replyArea" onclick = "location.href = '${pageContext.request.contextPath }/shareDetail' ">[댓글 8개 모두 보기]</button></div>
                 <div class="share-basic share-font-weight"><img src="${pageContext.request.contextPath }/assets/image/eternersunshine.PNG"><strong>web</strong> 웹</div>
                 <div class="share-basic share-font-weight"><img src="${pageContext.request.contextPath }/assets/image/jose.jpg"><strong>responsive</strong> 반응형</div>
                 <div class="share-basic share-font-weight"><img src="${pageContext.request.contextPath }/assets/image/jose.jpg"><strong>responsive</strong> 세번째줄</div>
-                <div class="share-basic" style="color: gray;">[37분 전]</div>
+                <div class="share-basic" style="color: gray;">${result.regDate }</div>
               </div>
               <!-- //share_petagram body-content -->
 
@@ -108,102 +105,11 @@
           
               </div>
               <!-- //share_petagram footer -->
-            </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            <div class="share-petagram-img">              
-              <!-- share_petagram hearder -->
-              <div class="share-basic share-font-weight">
-                <img src="${pageContext.request.contextPath }/assets/image/lolozouai.jpg">아이디
-                <button type="button" class="etc-basic main-header"><img src="${pageContext.request.contextPath }/assets/image/close-icon.png"></button>
-              </div>
-              <!-- //share_petagram hearder -->
-              <!-- share_petagram body-img -->
-              <div class="share-body-img"><img src="${pageContext.request.contextPath }/assets/image/puppy02.PNG"></div>
-              <!-- //share_petagram body-img -->
-              <!-- share_petagram body-content -->
-              <div class="share-body-content">
-                <div class="share-basic">
-                  <button type="button" class="main-icon"><img src="${pageContext.request.contextPath }/assets/image/heart-icon.png"></button>
-                  <button type="button" class="main-icon"><img src="${pageContext.request.contextPath }/assets/image/reply-icon.png"></button>
-                  <button type="button" class="main-icon"><img src="${pageContext.request.contextPath }/assets/image/direct-icon.png"></button>
-                  <button type="button" class="etc-basic main-icon save-icon"><img src="${pageContext.request.contextPath }/assets/image/save-icon.png"></button>
-                </div>
-                <div class="share-basic"><strong>[최근좋아요누른사람]</strong>님과 <strong>여러 명</strong>이 좋아합니다.</div>
-                <div class="share-basic share-font-weight">[작성자아이디] 내용</div>
-                <div><button type="button" class="replyArea">[댓글 n개 모두 보기]</button></div>
-                <div class="share-basic share-font-weight"><img src="${pageContext.request.contextPath }/assets/image/eternersunshine.PNG">아이디 댓글</div>
-                <div class="share-basic share-font-weight"><img src="${pageContext.request.contextPath }/assets/image/jose.jpg">아이디 댓글</div>
-                <div class="share-basic">[업로드 후 경과 시간]</div>
-              </div>
-              <!-- //share_petagram body-content -->
-              <!-- share_petagram footer -->
-              <div class="share-footer">     
               
-                <textarea rows="2" placeholder="  댓글달기.."></textarea>
-                <button type="submit" class="btn-sm btn-primary" style="margin-right: 0.5%; float: right; height: 100%; border: 0; outline: 0; background-color: #f8f9fa; color: gray;">게시</button>
-                 
-              </div>
-              <!-- //share_petagram footer -->
+           
             </div>
 
-            <div class="share-petagram-img">
-              <!-- share_petagram hearder -->
-              <div class="share-basic share-font-weight">
-                <img src="${pageContext.request.contextPath }/assets/image/lolozouai.jpg">아이디
-                <button type="button" class="etc-basic main-header"><img src="${pageContext.request.contextPath }/assets/image/close-icon.png"></button>
-              </div>
-              <!-- //share_petagram hearder -->
-              <!-- share_petagram body-img -->
-              <div class="share-body-img"><img src="${pageContext.request.contextPath }/assets/image/puppy.PNG"></div>
-              <!-- //share_petagram body-img -->
-              <!-- share_petagram body-content -->
-              <div class="share-body-content">
-                <div class="share-basic">
-                  <button type="button" class="main-icon"><img src="${pageContext.request.contextPath }/assets/image/heart-icon.png"></button>
-                  <button type="button" class="main-icon"><img src="${pageContext.request.contextPath }/assets/image/reply-icon.png"></button>
-                  <button type="button" class="main-icon"><img src="${pageContext.request.contextPath }/assets/image/direct-icon.png"></button>
-                  <button type="button" class="etc-basic main-icon save-icon"><img src="${pageContext.request.contextPath }/assets/image/save-icon.png"></button>
-                </div>
-                <div class="share-basic">[최근좋아요누른사람]님과 여러 명이 좋아합니다.</div>
-                <div class="share-basic share-font-weight">[작성자아이디] 내용</div>
-                <div><button type="button" class="replyArea">[댓글 n개 모두 보기]</button></div>
-                <div class="share-basic share-font-weight"><img src="${pageContext.request.contextPath }/assets/image/eternersunshine.PNG">아이디 댓글</div>
-                <div class="share-basic share-font-weight"><img src="${pageContext.request.contextPath }/assets/image/jose.jpg">아이디 댓글</div>
-                <div class="share-basic">[업로드 후 경과 시간]</div>
-              </div>
-              <!-- //share_petagram body-content -->
-              <!-- share_petagram footer -->
-              <div class="share-footer">     
-                
-                <textarea rows="2" placeholder="  댓글달기.."></textarea>
-                <button type="submit" class="btn-sm btn-primary" style="margin-right: 0.5%; float: right; height: 100%; border: 0; outline: 0; background-color: #f8f9fa; color: gray;">게시</button>
-                  
-              </div>
-              <!-- //share_petagram footer -->
-            </div>
-
-
-
-
-
-
-            
+		</div>
 
 
 
@@ -211,8 +117,14 @@
 
 
 
-          </div>
-        </div>
+
+
+
+
+
+
+
+ 
 
 
         <div class="carousel-item">
@@ -280,9 +192,13 @@
       </a>
       <!-- / 화살표 버튼 끝 -->
       </div>
+      </c:forEach>
+      </div>
+        
+    
     </div>
   
-
+ 
 
 
 <!-- ==================================================================================================================================================== -->
