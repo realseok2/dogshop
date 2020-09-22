@@ -15,12 +15,13 @@ public class ShareDao {
 	private SqlSession sqlSession;
 	
 	//리스트 출력
-	public List<ShareVo> getList(int userNo) {
-		System.out.println("dao : @@@@@@@" + userNo);
-		
-		return sqlSession.selectList("share.getList", userNo);
-		
-		
+//	public List<ShareVo> getList(int userNo) {
+//		System.out.println("dao : @@@@@@@" + userNo);		
+//		return sqlSession.selectList("share.getList", userNo);		
+//	}
+	
+	public List<ShareVo> getList() {		
+		return sqlSession.selectList("share.getList");		
 	}
 	
 	

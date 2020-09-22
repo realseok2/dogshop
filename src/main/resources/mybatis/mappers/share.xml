@@ -3,8 +3,8 @@
 
 <mapper namespace="share">
 
-	<!-- 펫 리스트 -->
-	<select id="getList" parameterType="integer" resultType="com.javaex.vo.ShareVo" >
+	<!-- 자랑하기 메인 인기순 리스트 -->
+	<select id="getList" parameterType="String" resultType="com.javaex.vo.ShareVo" >
 		<![CDATA[
 			select		shareNo,
 						userNo,
@@ -15,8 +15,7 @@
 						shareImg,
 						liked
 			from		share_petagram
-			where		userno = #{userno}
-			order by	shareNo asc
+			order by	hit desc
 		]]>
 	</select>
 

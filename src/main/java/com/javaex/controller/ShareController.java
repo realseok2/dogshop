@@ -23,26 +23,30 @@ public class ShareController {
 	
 //	자랑하기 메인------------------------------------------------------------------------------	
 	//메인 폼
+//	@RequestMapping("/shareMain")
+//	public String shareMain(Model model, HttpSession session) {
+//		System.out.println("share-main-form");
+//		
+//		SessionVo sessionVo = (SessionVo)session.getAttribute("session");
+//		int userNo = sessionVo.getUserNo();
+//		String id = shareService.getid(userNo);
+//		
+//		List<ShareVo> sList = shareService.getList(userNo);
+//		model.addAttribute("sList", sList);
+//				
+//		System.out.println("controller : @@@@@@@@@" + sList.toString());
+//				
+//		return "main/share_petagram";	
+//	}
+	
 	@RequestMapping("/shareMain")
 	public String shareMain(Model model, HttpSession session) {
 		System.out.println("share-main-form");
 		
-		SessionVo sessionVo = (SessionVo)session.getAttribute("session");
-		int userNo = sessionVo.getUserNo();
-		String id = shareService.getid(userNo);
-		
-		List<ShareVo> sList = shareService.getList(userNo);
+		List<ShareVo> sList = shareService.getList();
 		model.addAttribute("sList", sList);
-		
-		
-		
-		System.out.println("controller : @@@@@@@@@" + sList.toString());
-		
-		
-		
-		
-		
-		
+		System.out.println(sList.toString());
+				
 		return "main/share_petagram";	
 	}
 	

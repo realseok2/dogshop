@@ -21,8 +21,12 @@ public class ShareService {
 	private ShareDao shareDao;
 	
 	//리스트 출력
-	public List<ShareVo> getList(int userNo) {
-		return shareDao.getList(userNo);
+//	public List<ShareVo> getList(int userNo) {
+//		return shareDao.getList(userNo);
+//	}
+	
+	public List<ShareVo> getList() {
+		return shareDao.getList();
 	}
 	
 	//자랑하기 추가
