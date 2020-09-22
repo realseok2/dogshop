@@ -10,7 +10,8 @@
 				#{userno},
 				#{regno},
 				#{spoint},
-				#{sdesc}
+				#{sdesc},
+				sysdate
 			)
 		]]>
 	</insert>
@@ -38,5 +39,12 @@
 			where   shopno=#{shopno,jdbcType = VARCHAR}
 	</select>
 	
+	<select id="getreviewList" parameterType="int"
+	resultType="com.javaex.vo.ReviewListVo">
+			select  u.id id, r.spoint spoint, r.sdesc sdesc, r.regdate
+			from    users u, review r
+			where   shopno = #{shopno}
+			and		u.userno = r.userno
+	</select>
 
 </mapper>

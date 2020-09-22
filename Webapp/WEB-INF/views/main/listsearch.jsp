@@ -103,7 +103,7 @@
 							</ul>
 							<ul class="list-unstyled">
 								<li>Point</li>
-								<li><span class="star-input">
+								<li id="reviewon"><span class="star-input">
 										<span class="input">
 											<input type="radio" name="star-input" value="${spoint}" id="p${spoint*2}" checked><label id="test-spoint" for="p${spoint*2}"></label>
 										</span>
@@ -130,12 +130,12 @@
 					</thead>
 					<tbody>
 						<c:forEach items="${sList}" var="shopVo">
-							<tr class="shopinfo" data-shopDomain="${shopVo.shopDomain}">
+							<tr class="shopinfo" data-shopDomain="${shopVo.shopDomain}" data-shopno="${shopVo.shopNo}">
 								<td>${shopVo.shopNo}</td>
 								<td><a href="${pageContext.request.contextPath }/store/${shopVo.shopDomain}/main">${shopVo.shopTitle}</a></td>
 								<td class="center-block pr-3 ml-5">${shopVo.shopAddress}</td>
 								<td>${shopVo.shopNumber}</td>
-							</tr>
+								</tr>
 						</c:forEach>
 					</tbody>
 				</table>
@@ -165,7 +165,7 @@
 			"click",
 			function() {
 				var shopDomain = $(this).data("shopdomain");
-
+				var shopno = $(this).data("shopno");
 				$.ajax({
 					url : "${pageContext.request.contextPath }/selectStore",
 					type : "post",
@@ -179,15 +179,37 @@
 						$("#infonumber").text(map.shopVo.shopNumber);
 						$("#infoaddress").text(map.shopVo.shopAddress);
 						$("#infoEmail").text(map.shopVo.shopEmail);
-						$('#listPage_img').attr("src","${pageContext.request.contextPath}/dogshop/"+ map.shopVo.shopLogo);
-						$('input[name=star-input]').attr("id", "p"+${'map.spoint'}*2);
-						$('input[name=star-input]').attr("value", "p"+${'map.spoint'});
-						$('input[name=star-input]').attr("for", "p"+${'map.spoint'}*2);
-						$("#test-spoint").attr("for","p"+${'map.spoint'});
-						$('#spoint-t').html(${'map.spoint'}+"점");
+						$("#listPage_img").attr("src","${pageContext.request.contextPath}/dogshop/"+ map.shopVo.shopLogo);
+						$("input[name=star-input]").attr("id", "p"+${"map.spoint"}*2);
+						$("input[name=star-input]").attr("value", "p"+${"map.spoint"});
+						$("input[name=star-input]").attr("for", "p"+${"map.spoint"}*2);
+						$("#test-spoint").attr("for","p"+${"map.spoint"});
+						$("#spoint-t").html(${"map.spoint"}+"점");
 					}
+					
+					
 				});
-			})
+				$("#reviewon").on("click", function(){
+					
+					console.log(shopno);
+					$.ajax({
+						url : "${pageContext.request.contextPath }/reviewon",
+						type : "post",
+						data : {
+							shopno : shopno
+						},
+						dataType : "json",
+						success : function(shopno) {
+							if(shopno!=null)
+							window.location.href = "${pageContext.request.contextPath}/showreview?shopno="+shopno
+								
+					}
+					
+				});
+			});
+				
+			
+			});
 </script>
 
 </html>

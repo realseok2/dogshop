@@ -61,7 +61,7 @@
 	            	
 	          </span>
 	          <!-- /. 별표 점수매기기 -->
-	          <h6 class="reviewTitle">리뷰 	${scount}개</h6>
+	          <h6 class="reviewTitle" data-shopno="${sMap.shopVo.shopNo}">리뷰 	${scount}개</h6>
           </c:if>
           <!-- 예약설정 버튼 -->
           <p><a class="btn btn-secondary btn-example" href="#layer2" role="button">예약설정 &raquo;</a></p>
@@ -187,7 +187,25 @@
 			},
 			dataType : "json"
 			});
-	})
+	});
+	
+	$(".reviewTitle").on("click",function(){
+		
+		var shopno = $(this).data("shopno");
+		$.ajax({
+			url : "${pageContext.request.contextPath }/reviewon",
+			type : "post",
+			data : {
+				shopno : shopno
+			},
+			dataType : "json",
+			success : function(shopno) {
+				if(shopno!=null)
+				window.location.href = "${pageContext.request.contextPath}/showreview?shopno="+shopno
+					
+										}
+			});
+	});
 </script>
 
 </html>

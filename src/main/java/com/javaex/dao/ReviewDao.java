@@ -1,10 +1,13 @@
 package com.javaex.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.javaex.vo.ReservationVo;
+import com.javaex.vo.ReviewListVo;
 import com.javaex.vo.ReviewVo;
 
 @Repository
@@ -32,5 +35,8 @@ public class ReviewDao {
 	}
 	public int scount(int shopvo) {
 		return sqlSession.selectOne("review.scount", shopvo);
+	}
+	public List<ReviewListVo> getreviewList(int shopno){
+		return sqlSession.selectList("review.getreviewList",shopno);
 	}
 }
