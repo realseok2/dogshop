@@ -81,4 +81,13 @@
 			where		userno=#{userNo}
 		]]>
 	</select>
+	
+	<select id="getid" parameterType="int" 
+		resultType="String">
+		<![CDATA[
+			SELECT		id
+			FROM		users
+			where		userno=#{userNo}
+		]]>
+	</select>
 </mapper>
