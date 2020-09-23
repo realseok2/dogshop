@@ -34,12 +34,14 @@ public class ReviewController {
 		
 		return reviewService.writereview(reviewvo);
 	}
+	
 	@ResponseBody
 	@RequestMapping("/reviewon")
 	public int reviewon(@RequestParam("shopno")int shopno) {
 
 		return shopno;
 	}
+	
 	@RequestMapping("/showreview")
 	public String showreview(@RequestParam("shopno") int shopno,
 							 HttpSession session, Model model) {
@@ -48,7 +50,9 @@ public class ReviewController {
 
 		
 		
+
 		model.addAttribute("reviewList", reviewList);
+		
 		return "main/showreview";
 	}
 }
