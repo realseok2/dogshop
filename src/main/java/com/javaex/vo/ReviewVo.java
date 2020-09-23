@@ -5,7 +5,7 @@ public class ReviewVo {
 	private int shopno;
 	private int userno;
 	private int regno;
-	private int spoint;
+	private double spoint;
 	private String sdesc;
 	private String regdate;
 	private String id;
@@ -47,10 +47,10 @@ public class ReviewVo {
 	public void setRegno(int regno) {
 		this.regno = regno;
 	}
-	public int getSpoint() {
+	public double getSpoint() {
 		return spoint;
 	}
-	public void setSpoint(int spoint) {
+	public void setSpoint(double spoint) {
 		this.spoint = spoint;
 	}
 	public String getSdesc() {

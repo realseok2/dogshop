@@ -108,6 +108,7 @@
 	<c:import url="/WEB-INF/views/include/main-footer.jsp"></c:import>  
 <!-- /footer -->
 
+
 </body>
 
 </html>
