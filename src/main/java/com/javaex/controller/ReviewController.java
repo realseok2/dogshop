@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.javaex.service.ReviewService;
-import com.javaex.vo.ReviewListVo;
 import com.javaex.vo.ReviewVo;
 import com.javaex.vo.SessionVo;
 
@@ -44,7 +43,9 @@ public class ReviewController {
 	@RequestMapping("/showreview")
 	public String showreview(@RequestParam("shopno") int shopno,
 							 HttpSession session, Model model) {
-			List<ReviewListVo> reviewList = reviewService.getreviewList(shopno);
+
+			List<ReviewVo> reviewList = reviewService.getreviewList(shopno);
+
 		
 		
 		model.addAttribute("reviewList", reviewList);
