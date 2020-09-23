@@ -44,8 +44,7 @@ public class ReviewController {
 	@RequestMapping("/showreview")
 	public String showreview(@RequestParam("shopno") int shopno,
 							 HttpSession session, Model model) {
-		SessionVo sessionVo = (SessionVo)session.getAttribute("session");
-		List<ReviewListVo> reviewList = reviewService.getreviewList(shopno);
+			List<ReviewListVo> reviewList = reviewService.getreviewList(shopno);
 		
 		
 		model.addAttribute("reviewList", reviewList);

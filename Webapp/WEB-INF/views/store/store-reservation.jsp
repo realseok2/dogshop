@@ -61,7 +61,7 @@
 	            	
 	          </span>
 	          <!-- /. 별표 점수매기기 -->
-	          <h6 class="reviewTitle" data-shopno="${sMap.shopVo.shopNo}">리뷰 	${scount}개</h6>
+	          <h6 class="reviewTitle" data-shopno="${sMap.shopVo.shopNo}"><a href="">리뷰 	${scount}개</a></h6>
           </c:if>
           <!-- 예약설정 버튼 -->
           <p><a class="btn btn-secondary btn-example" href="#layer2" role="button">예약설정 &raquo;</a></p>
