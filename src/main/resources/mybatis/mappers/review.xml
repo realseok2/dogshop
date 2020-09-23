@@ -40,8 +40,11 @@
 	</select>
 	
 	<select id="getreviewList" parameterType="int"
-	resultType="com.javaex.vo.ReviewListVo">
-			select  u.id id, r.spoint spoint, r.sdesc sdesc, r.regdate
+	resultType="com.javaex.vo.ReviewVo">
+			select   u.id id,
+					 r.spoint spoint,
+					 r.sdesc sdesc,
+					 to_char(r.regdate,'YYYY-MM-DD') regdate
 			from    users u, review r
 			where   shopno = #{shopno}
 			and		u.userno = r.userno

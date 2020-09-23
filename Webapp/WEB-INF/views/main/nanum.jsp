@@ -33,7 +33,7 @@
 	<!-- Page Content -->
 	<div class="container">
 	<!-- 컨텐츠 제목 -->
-      <div class="row mb-20" style=margin-top:200px;>
+      <div class="row mb-20" style=margin-top:117px;>
         <div class="col-md-5"><h2>무료나눔</h2></div>
         <div class="col-md-3"></div>
         <div class="col-md-3 pl-0 pr-0">
