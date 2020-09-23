@@ -17,6 +17,7 @@
 		<mapper resource="mybatis/mappers/dog.xml" />
 		<mapper resource="mybatis/mappers/review.xml" />
 		<mapper resource="mybatis/mappers/share.xml" />
+		<mapper resource="mybatis/mappers/nanum.xml" />
 
 	</mappers>
 </configuration>
