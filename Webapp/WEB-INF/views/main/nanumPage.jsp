@@ -176,7 +176,7 @@
 		str += "</div>";
 		
 		
-		$("#cmt-render").append(str);
+		$("#cmt-render").prepend(str);
 	}
 	
 	$("#commentBtn").on("click",function() {
@@ -192,8 +192,9 @@
 				content : content
 			},
 			dataType : "json",
-			success : function(result) {
-				
+			success : function(cmtVo) {
+				render(cmtVo);
+				window.location.href = "${pageContext.request.contextPath}/nanumPage?nanumNo="+nanumNo
 			}
 		});
 	});

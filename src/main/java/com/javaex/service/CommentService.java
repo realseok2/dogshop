@@ -14,13 +14,17 @@ public class CommentService {
 	@Autowired
 	CommentDao commentDao;
 	
-	public int CommentAdd(int nanumNo,String content,String userName) {
+	public CommentVo CommentAdd(int nanumNo,String content,String userName) {
 		CommentVo cmtVo = new CommentVo();
 		cmtVo.setNanumNo(nanumNo);
 		cmtVo.setContent(content);
 		cmtVo.setUserName(userName);
 		
-		return commentDao.CommentAdd(cmtVo);
+		commentDao.insertSelectKey(cmtVo);
+		int commentNo = cmtVo.getCommentNo();
+
+		CommentVo commentVo = commentDao.cmtSelectOne(commentNo);
+		return commentVo;
 	}
 	
 	public List<CommentVo> CommentList(int nanumNo) {

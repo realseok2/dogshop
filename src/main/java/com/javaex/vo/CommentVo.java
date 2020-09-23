@@ -4,16 +4,16 @@ public class CommentVo {
 
 	//필드
 	private String content,regdate,userName;
-	private int    commnetNo , nanumNo;
+	private int    commentNo , nanumNo;
 	
 	//생성자
 	public CommentVo() {
 	}
-	public CommentVo(String content, String regdate, String userName, int commnetNo, int nanumNo) {
+	public CommentVo(String content, String regdate, String userName, int commentNo, int nanumNo) {
 		this.content = content;
 		this.regdate = regdate;
 		this.userName = userName;
-		this.commnetNo = commnetNo;
+		this.commentNo = commentNo;
 		this.nanumNo = nanumNo;
 	}
 	//g.s
@@ -35,11 +35,11 @@ public class CommentVo {
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-	public int getCommnetNo() {
-		return commnetNo;
+	public int getCommentNo() {
+		return commentNo;
 	}
-	public void setCommnetNo(int commnetNo) {
-		this.commnetNo = commnetNo;
+	public void setCommentNo(int commentNo) {
+		this.commentNo = commentNo;
 	}
 	public int getNanumNo() {
 		return nanumNo;
@@ -49,8 +49,8 @@ public class CommentVo {
 	}
 	@Override
 	public String toString() {
-		return "CommnetVo [content=" + content + ", regdate=" + regdate + ", userName=" + userName + ", commnetNo="
-				+ commnetNo + ", nanumNo=" + nanumNo + "]";
+		return "CommnetVo [content=" + content + ", regdate=" + regdate + ", userName=" + userName + ", commentNo="
+				+ commentNo + ", nanumNo=" + nanumNo + "]";
 	}
 	
 	

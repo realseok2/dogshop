@@ -62,13 +62,12 @@ public class NanumController {
 	}
 	
 	//댓글 작성
+	@ResponseBody
 	@RequestMapping("/nanumCmt")
-	public String nanumCmt(@RequestParam("nanumNo")int nanumNo,@RequestParam("content")String content,HttpSession session) {
+	public CommentVo nanumCmt(@RequestParam("nanumNo")int nanumNo,@RequestParam("content")String content,HttpSession session) {
 		String userName = ((SessionVo)session.getAttribute("session")).getUserName();
 		
-		commentService.CommentAdd(nanumNo,content,userName);
-		
-		return "redirect:/nanumPage?nanumNo="+nanumNo;
+		return commentService.CommentAdd(nanumNo,content,userName);
 	}
 	
 	

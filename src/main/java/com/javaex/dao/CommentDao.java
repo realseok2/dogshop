@@ -15,12 +15,17 @@ public class CommentDao {
 	SqlSession sqlSession;
 	
 	//댓글 작성
-	public int CommentAdd(CommentVo commentVo) {
-		return sqlSession.insert("comment.commentInsert" , commentVo);
+	public void insertSelectKey(CommentVo commentVo) {
+		sqlSession.insert("comment.insertSelectKey" , commentVo);
 	}
 	
 	//댓글 리스트
 	public List<CommentVo> CommentList(int nanumNo){
 		return sqlSession.selectList("comment.commentList",nanumNo);
+	}
+	
+	//최근작성 댓글 조회
+	public CommentVo cmtSelectOne(int commentNo){
+		return sqlSession.selectOne("comment.commentOne",commentNo);
 	}
 }
