@@ -14,6 +14,15 @@
 <!-- Custom styles for this template -->
 <link href="${pageContext.request.contextPath }/assets/css/common.css" rel="stylesheet">
 
+<style>
+	.img_size{
+		width:100px;
+		height:50px;
+	}
+	.text_center{
+		vertical-align: middle !important;
+	}
+</style>
 </head>
 
 <body class="bg-light">
@@ -44,28 +53,33 @@
               <table class="table text-center">
                 <colgroup>
                   <col width="15%">
-                  <col width="40%">
-                  <col width="20%">
+                  <col width="30%">
+                  <col width="15%">
+                  <col width="15%">
                   <col width="15%">
                   <col width="10%">
                 </colgroup>
                 <thead>
                   <tr>
                     <th scope="col">사진</th>
-                    <th scope="col">내용</th>
-                    <th scope="col">나눔분야</th>
+                    <th scope="col">제목</th>
+                    <th scope="col">분야</th>
+                    <th scope="col">지역</th>
                     <th scope="col">작성자</th>
                     <th scope="col">작성일</th>
                   </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                    	<td>img</td>
-                    	<td>무료나눔합니다</td>
-                    	<td>애견옷</td>
-                    	<td>홍길동</td>
-                    	<td>08-12</td>
-                    </tr>
+                	<c:forEach items="${nList }" var="nanumVo">
+	                    <tr>
+	                    	<td><img class="img_size" src="${pageContext.request.contextPath}/dogshop/${nanumVo.img}"></td>
+	                    	<td class="text_center"><a href="${pageContext.request.contextPath}/nanumPage?nanumNo=${nanumVo.nanumNo}">${nanumVo.title }</a></td>
+	                    	<td class="text_center">${nanumVo.groups }</td>
+	                    	<td class="text_center">${nanumVo.area }</td>
+	                    	<td class="text_center">${nanumVo.userName }</td>
+	                    	<td class="text_center">${nanumVo.regdate }</td>
+	                    </tr>
+                    </c:forEach>
                 </tbody>
 				</table>
 				
@@ -89,6 +103,8 @@
 	<!-- Bootstrap core JavaScript -->
 	<script src="${pageContext.request.contextPath }/assets/bootstrap/jquery/jquery.min.js"></script>
 	<script src="${pageContext.request.contextPath }/assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+	
+	
 </body>
 
 </html>
