@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="share">
+
+	<!-- 자랑하기 메인 인기순 리스트 -->
+	<select id="getList" parameterType="String" resultType="com.javaex.vo.ShareVo" >
+		<![CDATA[
+			select		shareNo,
+						userNo,
+						id,
+						content,
+						regDate,
+						hit,
+						shareImg,
+						liked
+			from		share_petagram
+			order by	hit desc
+		]]>
+	</select>
+
+
+	<!-- 자랑하기 추가 -->
+	<insert id="insert" parameterType="com.javaex.vo.ShareVo" >
+		<![CDATA[
+			insert into share_petagram values (
+				seq_share_no.nextval,
+				#{userNo},
+				#{id},
+				#{content},
+				sysdate,
+				seq_heart_no.nextval,
+				#{shareImg},
+				seq_liked_no.nextval
+			)
+		]]>
+	</insert>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</mapper>

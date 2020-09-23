@@ -7,7 +7,14 @@ public class ReviewVo {
 	private int regno;
 	private double spoint;
 	private String sdesc;
+	private String regdate;
 	
+	public String getRegdate() {
+		return regdate;
+	}
+	public void setRegdate(String regdate) {
+		this.regdate = regdate;
+	}
 	public int getReviewno() {
 		return reviewno;
 	}
@@ -47,8 +54,9 @@ public class ReviewVo {
 	@Override
 	public String toString() {
 		return "ReviewVo [reviewno=" + reviewno + ", shopno=" + shopno + ", userno=" + userno + ", regno=" + regno
-				+ ", spoint=" + spoint + ", sdesc=" + sdesc + "]";
+				+ ", spoint=" + spoint + ", sdesc=" + sdesc + ", regdate=" + regdate + "]";
 	}
+
 
 	
 }

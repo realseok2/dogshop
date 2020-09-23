@@ -22,11 +22,13 @@ public class MainController {
 	private MainService mainservice;
 	@Autowired
 	private ReviewService reviewservice;
+	
 	//메인페이지
 	@RequestMapping("/main")
 	public String main() {
 		return "main/main";
 	}
+	
 	//리스트로찾기
 	@RequestMapping("/listsearch")
 	public String listsearch(Model model) {
@@ -56,12 +58,6 @@ public class MainController {
 		model.addAttribute("sList", sList);
 		
 		return "main/mapsearch";
-	}
-	
-	//share-main
-	@RequestMapping("/shareMain")
-	public String shareMain() {
-		return "main/share_petagram";	
 	}
 	
 }
