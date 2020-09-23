@@ -10,9 +10,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.javaex.service.CommentService;
 import com.javaex.service.NanumService;
+import com.javaex.vo.CommentVo;
 import com.javaex.vo.NanumVo;
 import com.javaex.vo.SessionVo;
 
@@ -20,7 +23,8 @@ import com.javaex.vo.SessionVo;
 public class NanumController {
 	@Autowired
 	NanumService nanumService;
-	
+	@Autowired
+	CommentService commentService;
 	
 	//무료 나눔
 	@RequestMapping("/nanum")
@@ -56,5 +60,23 @@ public class NanumController {
 		model.addAttribute("nanumVo", nanumVo);
 		return "main/nanumPage";
 	}
+	
+	//댓글 작성
+	@RequestMapping("/nanumCmt")
+	public String nanumCmt(@RequestParam("nanumNo")int nanumNo,@RequestParam("content")String content,HttpSession session) {
+		String userName = ((SessionVo)session.getAttribute("session")).getUserName();
 		
+		commentService.CommentAdd(nanumNo,content,userName);
+		
+		return "redirect:/nanumPage?nanumNo="+nanumNo;
+	}
+	
+	
+	//댓글 리스트 가져오기
+	@ResponseBody
+	@RequestMapping("/CmtList")
+	public List<CommentVo> CmtList(int nanumNo) {
+		return commentService.CommentList(nanumNo);
+	}
+	
 }

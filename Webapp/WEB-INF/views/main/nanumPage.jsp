@@ -110,24 +110,17 @@
 			</div>
 		</div>
 		
+	
 		<!-- 댓글 -->
+		<div id="cmt-render"></div>
+
 		<div class="row">
 			<div class="col-md-12">
-				<div class="col-md-1"></div>
-				<div class="col-md-4">
-					<h6><b>홍길동</b></h6>
-					<h6>판매 완료 되었나요??</h6>
-					<tt>2020-09-23 14:22</tt>
-				</div>
-				<hr class="my-hr1">
-			</div>
-		</div>
-		
-		<div class="row">
-			<div class="col-md-12">
-					<textarea rows="3" cols="140" name="contents"></textarea>
+				<textarea rows="3" cols="140" name="content" id="cmtContent"></textarea>
+				<input type="hidden" value="${param.nanumNo }" name="nanumNo">
+				
+				<button type="submit" id="commentBtn">글 작성</button>
 					
-					<button type="button" id="commentBtn">글 작성</button>
 			</div>
 		</div>
 		
@@ -141,6 +134,72 @@
 	<!-- Bootstrap core JavaScript -->
 	<script src="${pageContext.request.contextPath }/assets/bootstrap/jquery/jquery.min.js"></script>
 	<script src="${pageContext.request.contextPath }/assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+	
+	<script type="text/javascript">
+	$(document).ready(function(){
+		fetchList();
+	});
+	
+	function fetchList(){
+		var nanumNo = $("input[name=nanumNo]").val();
+		
+		$.ajax({
+			
+			url : "${pageContext.request.contextPath }/CmtList",		
+			type : "post",
+			//contentType : "application/json",
+			data : {
+				nanumNo : nanumNo
+			},
+
+			dataType : "json",
+			success : function(cmtList){
+				for(var i=0; i<cmtList.length; i++){
+					render(cmtList[i]);
+				}
+			},
+		});
+	}
+	
+	function render(cmtList) {
+		var str = "";
+		str += "<div class='row'>";
+		str += "	<div class='col-md-12'>";
+		str += "		<div class='col-md-1'></div>";
+		str += "		<div class='col-md-4'>";
+		str += "		<h6><b>"+cmtList.userName+"</b></h6>";
+		str += "		<h6>"+cmtList.content+"</h6>";
+		str += "		<tt>"+cmtList.regdate+"</tt>";
+		str += "		</div>";
+		str += "		<hr class='my-hr1'>";
+		str += "	</div>";
+		str += "</div>";
+		
+		
+		$("#cmt-render").append(str);
+	}
+	
+	$("#commentBtn").on("click",function() {
+		var nanumNo = $("input[name=nanumNo]").val();
+		var content = $("#cmtContent").val();
+	
+		$.ajax({
+			url : "${pageContext.request.contextPath }/nanumCmt",
+			type : "post",
+			/* contentType : "application/json", */
+			data : {
+				nanumNo : nanumNo,
+				content : content
+			},
+			dataType : "json",
+			success : function(result) {
+				
+			}
+		});
+	});
+	
+	
+	</script>
 </body>
 
 </html>
