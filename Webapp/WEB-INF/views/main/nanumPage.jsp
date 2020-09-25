@@ -36,6 +36,11 @@
   		width:100px;
   		height:80px;
   	}
+  	#commentBtn2{
+  		float : right;
+  		width:100px;
+  		height:80px;
+  	}
 </style>
 
 </head>
@@ -116,14 +121,16 @@
 	
 		<!-- 댓글 -->
 		<div id="cmt-render"></div>
-
 		<div class="row">
 			<div class="col-md-12">
 				<textarea rows="3" cols="140" name="content" id="cmtContent" required></textarea>
 				<input type="hidden" value="${param.nanumNo }" name="nanumNo">
-				
-				<button type="submit" id="commentBtn">글 작성</button>
-					
+				<c:if test="${not empty session.userNo }">
+					<button type="submit" id="commentBtn">글 작성</button>
+				</c:if>
+				<c:if test="${empty session.userNo }">
+					<button type="button" id="commentBtn2" onclick="location.href='${pageContext.request.contextPath }/user/loginForm' ">로그인<br>하기</button>
+				</c:if>
 			</div>
 		</div>
 		
