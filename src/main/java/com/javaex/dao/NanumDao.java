@@ -29,4 +29,13 @@ public class NanumDao {
 		return sqlSession.selectOne("nanum.selectOne",nanumNo);
 	}
 
+	//글에 댓글 갯수
+	public int cmtCount(int nanumNo) {
+		return sqlSession.selectOne("nanum.Count",nanumNo);
+	}
+	
+	//글 삭제
+	public int nanumDel(int nanumNo) {
+		return sqlSession.delete("nanum.Del",nanumNo);
+	}
 }

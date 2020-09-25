@@ -59,7 +59,10 @@
 		</div>
 		
 		<div class="row">
-			<h6 class="text-left">&nbsp;&nbsp;&nbsp;작성일 : ${nanumVo.regdate}</h6>
+			<h6 class="text-left">&nbsp;&nbsp;&nbsp;작성일 : ${nanumVo.regdate} &nbsp;&nbsp;</h6>
+			<c:if test="${session.userNo == nanumVo.userNo }">
+				<button type="button" class="btn btn-outline-dark btn-sm" style=float:right  onclick="location.href='${pageContext.request.contextPath}/nanumDel?nanumNo=${param.nanumNo}'">글 삭제</button>
+			</c:if>
 		</div>
 		
 		<div class="row">
@@ -104,7 +107,7 @@
 			<div class="col-md-12">
 				<div class="col-md-1"></div>
 				<div class="col-md-4">
-					<h6>댓글 0개</h6>
+					<h6>댓글 ${count }개</h6>
 				</div>
 				<hr class="my-hr2">
 			</div>
@@ -116,7 +119,7 @@
 
 		<div class="row">
 			<div class="col-md-12">
-				<textarea rows="3" cols="140" name="content" id="cmtContent"></textarea>
+				<textarea rows="3" cols="140" name="content" id="cmtContent" required></textarea>
 				<input type="hidden" value="${param.nanumNo }" name="nanumNo">
 				
 				<button type="submit" id="commentBtn">글 작성</button>
@@ -136,8 +139,10 @@
 	<script src="${pageContext.request.contextPath }/assets/bootstrap/js/bootstrap.bundle.min.js"></script>
 	
 	<script type="text/javascript">
+	
 	$(document).ready(function(){
 		fetchList();
+			
 	});
 	
 	function fetchList(){
@@ -162,11 +167,19 @@
 	}
 	
 	function render(cmtList) {
+		
+		var myUserNo = "${session.userNo}";
+		var thisUserNo = cmtList.userNo;
+		var thisCmtNo = cmtList.commentNo;
+		
 		var str = "";
 		str += "<div class='row'>";
 		str += "	<div class='col-md-12'>";
 		str += "		<div class='col-md-1'></div>";
-		str += "		<div class='col-md-4'>";
+		str += "		<div class='col-md-12'>";
+		if(myUserNo == thisUserNo ) {
+			str += "		<a href='${pageContext.request.contextPath }/CmtDel?commentNo= "+ thisCmtNo+ "&nanumNo= "+cmtList.nanumNo +"' style=float:right>삭제</a>";
+		}
 		str += "		<h6><b>"+cmtList.userName+"</b></h6>";
 		str += "		<h6>"+cmtList.content+"</h6>";
 		str += "		<tt>"+cmtList.regdate+"</tt>";
@@ -174,7 +187,6 @@
 		str += "		<hr class='my-hr1'>";
 		str += "	</div>";
 		str += "</div>";
-		
 		
 		$("#cmt-render").prepend(str);
 	}
@@ -198,8 +210,7 @@
 			}
 		});
 	});
-	
-	
+
 	</script>
 </body>
 

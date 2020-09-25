@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.javaex.dao.CommentDao;
 import com.javaex.dao.NanumDao;
 import com.javaex.vo.NanumVo;
 
@@ -19,6 +20,8 @@ public class NanumService {
 
 	@Autowired
 	NanumDao nanumDao;
+	@Autowired
+	CommentDao commentDao;
 	//글 조회
 	public List<NanumVo> NanumSelectList() {
 		return nanumDao.NanumSelectList();
@@ -29,7 +32,17 @@ public class NanumService {
 
 		return nanumDao.NanumSelectOne(nanumNo);
 	}
+	//댓글 갯수
+	public int CmtCount(int nanumNo) {
+		return nanumDao.cmtCount(nanumNo);
+	}
 	
+	//글 삭제
+	public int nanumDel(int nanumNo) {
+		commentDao.nanumCmtDel(nanumNo);
+		
+		return nanumDao.nanumDel(nanumNo);
+	}
 	//글등록
 	public int NanumWrite(NanumVo nanumVo,MultipartFile file) {
 		String img = Gallery(file);

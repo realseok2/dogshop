@@ -85,7 +85,9 @@
 				
 				<div class="text-center">
               		&lt; 1 2 3 4 5 &gt; 
-              		<button type="button" class="btn btn-outline-dark"style=float:right onclick = "location.href = '${pageContext.request.contextPath }/nanumWriteForm' ">글 작성</button>
+              		<c:if test="${not empty session.userNo }">
+              			<button type="button" class="btn btn-outline-dark"style=float:right onclick = "location.href = '${pageContext.request.contextPath }/nanumWriteForm' ">글 작성</button>
+            		</c:if>
             	</div>
            		
        

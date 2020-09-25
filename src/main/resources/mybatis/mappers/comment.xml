@@ -12,6 +12,7 @@
 			INSERT INTO cmt VALUES (
 				#{commentNo},
 				#{nanumNo},
+				#{userNo},
 				#{userName},
 				#{content},
 				sysdate
@@ -24,6 +25,7 @@
 		<![CDATA[
 			select		commentNo,
 						nanumNo,
+						userNo,
 						userName,
 						content,
 						to_char(regdate,'YYYY-MM-DD') regdate
@@ -33,11 +35,12 @@
 		]]>
 	</select>
 	
-		<!-- 리스트 -->
+	<!-- 조회 1개-->
 	<select id="commentOne" parameterType="int" resultType="com.javaex.vo.CommentVo" >
 		<![CDATA[
 			select		commentNo,
 						nanumNo,
+						userNo,
 						userName,
 						content,
 						to_char(regdate,'YYYY-MM-DD') regdate
@@ -46,5 +49,21 @@
    
 		]]>
 	</select>
+	
+	<!-- 삭제-->
+	<delete id="commentDel" parameterType="int">
+		<![CDATA[
+			DELETE FROM cmt 
+			WHERE commentNo = #{commentNo}
+		]]>
+	</delete>
+	
+	<!-- 전체 삭제-->
+	<delete id="commentDelAll" parameterType="int">
+		<![CDATA[
+			DELETE FROM cmt 
+			WHERE nanumNo= #{nanumNo}
+		]]>
+	</delete>
 	
 </mapper>

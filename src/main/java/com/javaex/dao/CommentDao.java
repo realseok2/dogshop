@@ -28,4 +28,14 @@ public class CommentDao {
 	public CommentVo cmtSelectOne(int commentNo){
 		return sqlSession.selectOne("comment.commentOne",commentNo);
 	}
+	
+	//댓글 삭제
+	public int CmtDel(int commentNo){
+		return sqlSession.delete("comment.commentDel",commentNo);
+	}
+	
+	//게시글 삭제 전 댓글 전부 삭제
+	public int nanumCmtDel(int nanumNo) {
+		return sqlSession.delete("comment.commentDelAll", nanumNo);
+	}
 }
