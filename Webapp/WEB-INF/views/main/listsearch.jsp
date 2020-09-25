@@ -103,14 +103,16 @@
 							</ul>
 							<ul class="list-unstyled">
 								<li>Point</li>
-								<li id="reviewon"><span class="star-input">
+								<li class="reviewon"><span class="star-input">
 										<span class="input">
 											<input type="radio" name="star-input" value="${spoint}" id="p${spoint*2}" checked><label id="test-spoint" for="p${spoint*2}"></label>
 										</span>
 										<output for="star-input">
 											<b id="spoint-t"></b>
 										</output>
+										<a href="">리뷰보기</a>
 									</span>
+								
 							</ul>
 						</div>
 							<a href="" class="img-listSearch-location ml-5 pl-5">
@@ -189,7 +191,7 @@
 					
 					
 				});
-				$("#reviewon").on("click", function(){
+				$(".reviewon").on("click", function(){
 					
 					console.log(shopno);
 					$.ajax({
