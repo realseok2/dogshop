@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="comment">
+
+	<!-- 메뉴조회하기. -->
+	<insert id="insertSelectKey" parameterType="com.javaex.vo.CommentVo" >
+	<selectKey keyProperty="commentNo" resultType="int" order="BEFORE">	
+		select seq_cmt_no.nextval from dual <!-- 시퀀스값을 no에 저장(BEFORE) -->
+	</selectKey>
+		<![CDATA[			
+			INSERT INTO cmt VALUES (
+				#{commentNo},
+				#{nanumNo},
+				#{userNo},
+				#{userName},
+				#{content},
+				sysdate
+			)
+		]]>
+	</insert>
+	
+	<!-- 리스트 -->
+	<select id="commentList" parameterType="int" resultType="com.javaex.vo.CommentVo" >
+		<![CDATA[
+			select		commentNo,
+						nanumNo,
+						userNo,
+						userName,
+						content,
+						to_char(regdate,'YYYY-MM-DD') regdate
+			from		cmt
+			where		nanumNo = #{nanumNo}
+   
+		]]>
+	</select>
+	
+	<!-- 조회 1개-->
+	<select id="commentOne" parameterType="int" resultType="com.javaex.vo.CommentVo" >
+		<![CDATA[
+			select		commentNo,
+						nanumNo,
+						userNo,
+						userName,
+						content,
+						to_char(regdate,'YYYY-MM-DD') regdate
+			from		cmt
+			where		commentNo = #{commentNo}
+   
+		]]>
+	</select>
+	
+	<!-- 삭제-->
+	<delete id="commentDel" parameterType="int">
+		<![CDATA[
+			DELETE FROM cmt 
+			WHERE commentNo = #{commentNo}
+		]]>
+	</delete>
+	
+	<!-- 전체 삭제-->
+	<delete id="commentDelAll" parameterType="int">
+		<![CDATA[
+			DELETE FROM cmt 
+			WHERE nanumNo= #{nanumNo}
+		]]>
+	</delete>
+	
+</mapper>

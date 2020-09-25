@@ -59,7 +59,10 @@
 		</div>
 		
 		<div class="row">
-			<h6 class="text-left">&nbsp;&nbsp;&nbsp;작성일 : ${nanumVo.regdate}</h6>
+			<h6 class="text-left">&nbsp;&nbsp;&nbsp;작성일 : ${nanumVo.regdate} &nbsp;&nbsp;</h6>
+			<c:if test="${session.userNo == nanumVo.userNo }">
+				<button type="button" class="btn btn-outline-dark btn-sm" style=float:right  onclick="location.href='${pageContext.request.contextPath}/nanumDel?nanumNo=${param.nanumNo}'">글 삭제</button>
+			</c:if>
 		</div>
 		
 		<div class="row">
@@ -104,30 +107,23 @@
 			<div class="col-md-12">
 				<div class="col-md-1"></div>
 				<div class="col-md-4">
-					<h6>댓글 0개</h6>
+					<h6>댓글 ${count }개</h6>
 				</div>
 				<hr class="my-hr2">
 			</div>
 		</div>
 		
+	
 		<!-- 댓글 -->
+		<div id="cmt-render"></div>
+
 		<div class="row">
 			<div class="col-md-12">
-				<div class="col-md-1"></div>
-				<div class="col-md-4">
-					<h6><b>홍길동</b></h6>
-					<h6>판매 완료 되었나요??</h6>
-					<tt>2020-09-23 14:22</tt>
-				</div>
-				<hr class="my-hr1">
-			</div>
-		</div>
-		
-		<div class="row">
-			<div class="col-md-12">
-					<textarea rows="3" cols="140" name="contents"></textarea>
+				<textarea rows="3" cols="140" name="content" id="cmtContent" required></textarea>
+				<input type="hidden" value="${param.nanumNo }" name="nanumNo">
+				
+				<button type="submit" id="commentBtn">글 작성</button>
 					
-					<button type="button" id="commentBtn">글 작성</button>
 			</div>
 		</div>
 		
@@ -141,6 +137,81 @@
 	<!-- Bootstrap core JavaScript -->
 	<script src="${pageContext.request.contextPath }/assets/bootstrap/jquery/jquery.min.js"></script>
 	<script src="${pageContext.request.contextPath }/assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+	
+	<script type="text/javascript">
+	
+	$(document).ready(function(){
+		fetchList();
+			
+	});
+	
+	function fetchList(){
+		var nanumNo = $("input[name=nanumNo]").val();
+		
+		$.ajax({
+			
+			url : "${pageContext.request.contextPath }/CmtList",		
+			type : "post",
+			//contentType : "application/json",
+			data : {
+				nanumNo : nanumNo
+			},
+
+			dataType : "json",
+			success : function(cmtList){
+				for(var i=0; i<cmtList.length; i++){
+					render(cmtList[i]);
+				}
+			},
+		});
+	}
+	
+	function render(cmtList) {
+		
+		var myUserNo = "${session.userNo}";
+		var thisUserNo = cmtList.userNo;
+		var thisCmtNo = cmtList.commentNo;
+		
+		var str = "";
+		str += "<div class='row'>";
+		str += "	<div class='col-md-12'>";
+		str += "		<div class='col-md-1'></div>";
+		str += "		<div class='col-md-12'>";
+		if(myUserNo == thisUserNo ) {
+			str += "		<a href='${pageContext.request.contextPath }/CmtDel?commentNo= "+ thisCmtNo+ "&nanumNo= "+cmtList.nanumNo +"' style=float:right>삭제</a>";
+		}
+		str += "		<h6><b>"+cmtList.userName+"</b></h6>";
+		str += "		<h6>"+cmtList.content+"</h6>";
+		str += "		<tt>"+cmtList.regdate+"</tt>";
+		str += "		</div>";
+		str += "		<hr class='my-hr1'>";
+		str += "	</div>";
+		str += "</div>";
+		
+		$("#cmt-render").prepend(str);
+	}
+	
+	$("#commentBtn").on("click",function() {
+		var nanumNo = $("input[name=nanumNo]").val();
+		var content = $("#cmtContent").val();
+	
+		$.ajax({
+			url : "${pageContext.request.contextPath }/nanumCmt",
+			type : "post",
+			/* contentType : "application/json", */
+			data : {
+				nanumNo : nanumNo,
+				content : content
+			},
+			dataType : "json",
+			success : function(cmtVo) {
+				render(cmtVo);
+				window.location.href = "${pageContext.request.contextPath}/nanumPage?nanumNo="+nanumNo
+			}
+		});
+	});
+
+	</script>
 </body>
 
 </html>

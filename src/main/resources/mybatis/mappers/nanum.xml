@@ -26,6 +26,7 @@
 		resultType="com.javaex.vo.NanumVo" >
 		<![CDATA[
 			select  nanumNo,
+					n.userNo userNo,
 					area,
 					groups,
 			        title,
@@ -56,4 +57,21 @@
 		]]>
 	</insert>
 
+
+	<!-- 댓글 갯수 조회하기. -->
+	<select id="Count" parameterType="int" resultType="int" >
+		<![CDATA[
+			select count(commentNo) 
+			from cmt 
+			where nanumNo= #{nanumNo}
+		]]>
+	</select>
+	
+	<!-- 댓글 갯수 조회하기. -->
+	<delete id="Del" parameterType="int" >
+		<![CDATA[
+			delete from nanum 
+			where nanumNo=#{nanumNo}
+		]]>
+	</delete>
 </mapper>

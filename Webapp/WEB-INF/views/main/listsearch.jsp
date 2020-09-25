@@ -181,12 +181,12 @@
 						$("#infonumber").text(map.shopVo.shopNumber);
 						$("#infoaddress").text(map.shopVo.shopAddress);
 						$("#infoEmail").text(map.shopVo.shopEmail);
-						$("#listPage_img").attr("src","${pageContext.request.contextPath}/dogshop/"+ map.shopVo.shopLogo);
-						$("input[name=star-input]").attr("id", "p"+map.spoint*2);
-						$("input[name=star-input]").attr("value", "p"+map.spoint);
-						$("input[name=star-input]").attr("for", "p"+map.spoint*2);
+						$('#listPage_img').attr("src","${pageContext.request.contextPath}/dogshop/"+ map.shopVo.shopLogo);
+						$('input[name=star-input]').attr("id", "p"+map.spoint*2);
+						$('input[name=star-input]').attr("value", "p"+map.spoint);
+						$('input[name=star-input]').attr("for", "p"+map.spoint*2);
 						$("#test-spoint").attr("for","p"+map.spoint);
-						$("#spoint-t").html(map.spoint+"점");
+						$('#spoint-t').html(map.spoint+"점");
 					}
 					
 					
