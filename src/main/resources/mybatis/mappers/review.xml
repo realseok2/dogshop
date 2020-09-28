@@ -10,7 +10,8 @@
 				#{userno},
 				#{regno},
 				#{spoint},
-				#{sdesc}
+				#{sdesc},
+				sysdate
 			)
 		]]>
 	</insert>
@@ -25,10 +26,28 @@
 	</select>
 	
 	<select id="getspoint" parameterType="int"
-	resultType="Integer">
+	resultType="double">
 			select  avg(spoint)
 			from    review
 			where   shopno=#{shopno,jdbcType = VARCHAR}
+	</select>
+	
+	<select id="scount" parameterType="int"
+	resultType="Integer">
+			select  count(reviewno)
+			from    review
+			where   shopno=#{shopno,jdbcType = VARCHAR}
+	</select>
+	
+	<select id="getreviewList" parameterType="int"
+	resultType="com.javaex.vo.ReviewVo">
+			select   u.id id,
+					 r.spoint spoint,
+					 r.sdesc sdesc,
+					 to_char(r.regdate,'YYYY-MM-DD') regdate
+			from    users u, review r
+			where   shopno = #{shopno}
+			and		u.userno = r.userno
 	</select>
 
 </mapper>

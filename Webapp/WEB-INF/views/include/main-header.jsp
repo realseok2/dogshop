@@ -20,50 +20,50 @@
 
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" href="${pageContext.request.contextPath}/listsearch">매장찾기</a>
+            <a class="nav-link" href="${pageContext.request.contextPath}/listsearch">Store_Search</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">자랑하기</a>
+            <a class="nav-link" href="${pageContext.request.contextPath}/shareMain">Share_Petagram</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="${pageContext.request.contextPath}/share">무료나눔</a>
+            <a class="nav-link" href="${pageContext.request.contextPath}/nanum">Bargaining</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">고객센터</a>
+            <a class="nav-link" href="#">Service_Center</a>
           </li>
         </ul>
-
+ 
 		<c:choose>
 			<c:when test="${empty session }">
 		        <ul class="navbar-nav ml-auto">
 		          <li class="nav-item">
-		            <a class="nav-link" href="${pageContext.request.contextPath}/user/loginForm">로그인</a>
+		            <a class="nav-link" href="${pageContext.request.contextPath}/user/loginForm">Join</a>
 		          </li>
 		          <li class="nav-item">
-		            <a class="nav-link" href="${pageContext.request.contextPath}/user/joinForm">회원가입</a>
+		            <a class="nav-link" href="${pageContext.request.contextPath}/user/joinForm">Join_Us</a>
 		          </li>
 		        </ul>
         	</c:when>
         	<c:otherwise>
  				<ul class="navbar-nav ml-auto">
 	 				<li class="nav-item">
-	        			<a class="nav-link active">${session.userName }님</a>
+	        			<a class="nav-link active">Welcome, ${session.userName }</a>
 	        		</li>
 					<c:if test="${session.shopNo ne null}">
 						<c:if test="${session.shopNo != 0}">
 							<li class="nav-item">
-		            			<a class="nav-link" href="${pageContext.request.contextPath}/store/${session.shopDomain }/main">내 매장</a>
+		            			<a class="nav-link" href="${pageContext.request.contextPath}/store/${session.shopDomain }/main">My_Store</a>
 		          			</li>
 	         			</c:if>
 					</c:if>
 		          	<li class="nav-item">
-		            	<a class="nav-link" href="${pageContext.request.contextPath}/pet/petBasic">마이펫</a>
+		            	<a class="nav-link" href="${pageContext.request.contextPath}/pet/petBasic">Companion</a>
 		          	</li>
 		          	<li class="nav-item">
-		            	<a class="nav-link" href="${pageContext.request.contextPath}/user/storeAddForm">회원정보</a>
+		            	<a class="nav-link" href="${pageContext.request.contextPath}/user/storeAddForm">Profile</a>
 		          	</li>
 		          	<li class="nav-item">
-		            	<a class="nav-link" href="${pageContext.request.contextPath}/user/logout">로그아웃</a>
+		            	<a class="nav-link" href="${pageContext.request.contextPath}/user/logout">Leave</a>
 		          	</li>
 			    </ul>
         	</c:otherwise>

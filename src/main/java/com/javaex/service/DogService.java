@@ -23,6 +23,7 @@ public class DogService {
 
 	//펫 리스트
 	public List<DogVo> getList(int userNo) {
+		
 		return dogDao.getList(userNo);
 	}
 
@@ -44,12 +45,13 @@ public class DogService {
 		String filePath = saveDir + "\\" + dogImg;
 
 		// 파일사이즈
-		long fileSize = file.getSize();
-
-		System.out.println("원본파일이름: " + orgName);
-		System.out.println("확장자: " + exName);
-		System.out.println("파일경로: " + filePath);
-		System.out.println("파일사이즈: " + fileSize);
+		/*
+		 * long fileSize = file.getSize();
+		 * 
+		 * System.out.println("원본파일이름: " + orgName); System.out.println("확장자: " +
+		 * exName); System.out.println("파일경로: " + filePath);
+		 * System.out.println("파일사이즈: " + fileSize);
+		 */
 
 		// 파일 복사==========================================================
 		try {

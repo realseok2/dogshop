@@ -1,5 +1,7 @@
 package com.javaex.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,7 +27,13 @@ public class ReviewService {
 		}
 		return result;
 	}
-	public Integer getspoint(int shopno) {
+	public double getspoint(int shopno) {
 		return reviewdao.getspoint(shopno);
+	}
+	public int scount(int shopno) {
+		return reviewdao.scount(shopno);
+	}
+	public List<ReviewVo> getreviewList(int shopno){
+		return reviewdao.getreviewList(shopno);
 	}
 }

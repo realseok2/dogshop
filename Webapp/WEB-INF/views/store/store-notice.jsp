@@ -115,7 +115,7 @@
 		              <h6><b>제 목</b></h6>
 		            </div>
 		            <div class="col-md-11">
-		              <input type="text" id="" name="title" class="form-control" placeholder="제목을 입력해주세요.">
+		              <input type="text" id="" name="title" class="form-control" placeholder="제목을 입력해주세요." required>
 		            </div>
 		          </div>
 		          <!-- 공지사항 내용 입력 -->
@@ -124,7 +124,7 @@
 		              <h6><b>내 용</b></h6>
 		            </div>
 		            <div class="col-md-11">
-		              <textarea class="form-control border" name="content" rows="10" placeholder="내용을 입력해주세요."></textarea>
+		              <textarea class="form-control border" name="content" rows="10" placeholder="내용을 입력해주세요." required></textarea>
 		            </div>
 		          </div>
 		

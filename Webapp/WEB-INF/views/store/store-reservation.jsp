@@ -54,14 +54,14 @@
           <c:if test="${not empty spoint }">
 	          <span class="star-input">
 	            <span class="input">
-	              <input type="radio" name="star-input" value="${spoint}" id="p${spoint*2}" checked><label for="p${spoint*2}">${spoint}</label>
+	              <input type="radio" name="star-input" value="${spoint}" id="p${spoint*2}" checked><label for="p${spoint}">${spoint}</label>
 	            </span>
 	            
 	                <output for="star-input"><b>${spoint}</b>점</output>
 	            	
 	          </span>
 	          <!-- /. 별표 점수매기기 -->
-	          <h6 class="reviewTitle">리뷰 51개 | 1개월 | 3개월 | 6개월</h6>
+	          <h6 class="reviewTitle" data-shopno="${sMap.shopVo.shopNo}"><a href="">리뷰 	${scount}개</a></h6>
           </c:if>
           <!-- 예약설정 버튼 -->
           <p><a class="btn btn-secondary btn-example" href="#layer2" role="button">예약설정 &raquo;</a></p>
@@ -187,7 +187,25 @@
 			},
 			dataType : "json"
 			});
-	})
+	});
+	
+	$(".reviewTitle").on("click",function(){
+		
+		var shopno = $(this).data("shopno");
+		$.ajax({
+			url : "${pageContext.request.contextPath }/reviewon",
+			type : "post",
+			data : {
+				shopno : shopno
+			},
+			dataType : "json",
+			success : function(shopno) {
+				if(shopno!=null)
+				window.location.href = "${pageContext.request.contextPath}/showreview?shopno="+shopno
+					
+										}
+			});
+	});
 </script>
 
 </html>

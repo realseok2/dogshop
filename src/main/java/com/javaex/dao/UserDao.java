@@ -26,6 +26,14 @@ public class UserDao {
 	public SessionVo login(UserVo userVo) {
 		return sqlsession.selectOne("user.selectOne",userVo);
 	}
+	
+	public UserVo getuser(int userNo) {
+		return sqlsession.selectOne("user.getuser", userNo);
+	}
+	
+	public void usermodify(UserVo uservo) {
+		sqlsession.update("user.modify", uservo);
+	}
 	//매장등록
 	public int storeAdd(ShopVo shopVo) {
 		return 	sqlsession.insert("user.storeInsert",shopVo);

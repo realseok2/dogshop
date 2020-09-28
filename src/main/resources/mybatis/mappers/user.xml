@@ -27,6 +27,16 @@
 			and  		password= #{password}
 		]]>
 	</select>
+
+	<update id = "modify" parameterType="com.javaex.vo.UserVo">
+		<![CDATA[
+			update	users
+			set		userName = #{userName}
+					password = #{password}
+					phoneNo = #{phoneNo}
+			where	userNo =#{userNo}
+		]]>		
+	</update>
 	
 	<!-- 매장등록하기. -->
 	<insert id="storeInsert" parameterType="com.javaex.vo.ShopVo">
@@ -76,7 +86,16 @@
 	<select id="getuser" parameterType="int" 
 		resultType="com.javaex.vo.UserVo">
 		<![CDATA[
-			SELECT		userno,username,phoneno
+			SELECT		userno,username,phoneno,password
+			FROM		users
+			where		userno=#{userNo}
+		]]>
+	</select>
+	
+	<select id="getid" parameterType="int" 
+		resultType="String">
+		<![CDATA[
+			SELECT		id
 			FROM		users
 			where		userno=#{userNo}
 		]]>

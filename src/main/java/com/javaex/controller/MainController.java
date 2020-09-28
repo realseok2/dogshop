@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.javaex.service.MainService;
+import com.javaex.service.ReviewService;
 import com.javaex.vo.ShopVo;
 
 @Controller
@@ -19,11 +20,15 @@ public class MainController {
 	
 	@Autowired
 	private MainService mainservice;
+	@Autowired
+	private ReviewService reviewservice;
+	
 	//메인페이지
 	@RequestMapping("/main")
 	public String main() {
 		return "main/main";
 	}
+	
 	//리스트로찾기
 	@RequestMapping("/listsearch")
 	public String listsearch(Model model) {
@@ -41,6 +46,10 @@ public class MainController {
 		Map<String,Object> map = new HashMap<String,Object>();
 		ShopVo shopVo = mainservice.selectStore(shopDomain);
 		map.put("shopVo", shopVo);
+		double spoint = reviewservice.getspoint(shopVo.getShopNo());
+		map.put("spoint", spoint);
+		
+		
 		return map;
 	}
 	
@@ -53,10 +62,4 @@ public class MainController {
 		return "main/mapsearch";
 	}
 	
-	//무료 나눔
-	@RequestMapping("/share")
-	public String share(Model model) {
-		
-		return "main/share";
-	}
 }

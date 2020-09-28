@@ -426,8 +426,6 @@
 			var regno = $("#getregno").val();
 			var shopno = $("#getshopno").val();
 			
-			
-			
 			$.ajax({
 				url : "${pageContext.request.contextPath }/review",
 				type : "post",
