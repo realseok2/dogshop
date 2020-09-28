@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.javaex.service.MainService;
-import com.javaex.service.ReviewService;
 import com.javaex.vo.ShopVo;
 
 @Controller
@@ -20,8 +19,6 @@ public class MainController {
 	
 	@Autowired
 	private MainService mainservice;
-	@Autowired
-	private ReviewService reviewservice;
 	//메인페이지
 	@RequestMapping("/main")
 	public String main() {
@@ -44,8 +41,6 @@ public class MainController {
 		Map<String,Object> map = new HashMap<String,Object>();
 		ShopVo shopVo = mainservice.selectStore(shopDomain);
 		map.put("shopVo", shopVo);
-		int spoint = reviewservice.getspoint(shopVo.getShopNo());
-		map.put("spoint", spoint);
 		return map;
 	}
 	
