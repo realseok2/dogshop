@@ -44,11 +44,11 @@ public class UserController {
 	@RequestMapping("/login")
 	public String login(@ModelAttribute UserVo userVo, HttpSession session) {
 		SessionVo authVo = userService.login(userVo);
-		if (authVo != null) {
+		if (authVo == null) {
+			return "redirect:/user/loginForm?result=fail";
+		} else {
 			session.setAttribute("session", authVo);
 			return "redirect:/main";
-		} else {
-			return "redirect:/user/loginForm?result=fail";
 		}
 	}
 
@@ -83,4 +83,19 @@ public class UserController {
 		
 		return "user/storeOk";
 	}
+	@RequestMapping("/usermodifyform")
+	public String usermodifyform(HttpSession session, Model model) {
+		SessionVo sessionVo = (SessionVo)session.getAttribute("session");
+		int userNo = sessionVo.getUserNo();
+		System.out.println(userNo);
+		UserVo uservo = userService.getuser(userNo);
+		model.addAttribute("uservo",uservo);
+		return "user/usermodifyform";
+	}
+	@RequestMapping("/usermodify")
+	public String usermodify(@ModelAttribute UserVo uservo) {
+		userService.usermodify(uservo);
+		return "redirect:/user/usermodifyform";
+	}
+
 }

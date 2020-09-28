@@ -168,11 +168,9 @@
     <p class="mt-4 mb-4">[아이디]님의 게시물 더 보기</p>
 
     <div class="row another-img mb-5">
-
           <div class="col-md-4">
             <figure class="snip1273 pointer-cursor">
              <img src="${pageContext.request.contextPath }/assets/image/aboutTime.PNG">
-
               <figcaption>
                 <div class="detail-main-img mt-5">
                   <div>                
@@ -279,7 +277,6 @@
               </figcaption>
            </figure>
           </div>
-
     </div>
 
 

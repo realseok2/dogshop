@@ -2,14 +2,14 @@ package com.javaex.vo;
 
 public class DogVo {
 	//필드
-	private int dogNo,userNo,dogAge;
-	private String dogName,dogWeight,dogEtc,dogType,dogImg;
+	private int dogNo,userNo,dogAge,dogWeight;
+	private String dogName,dogEtc,dogType,dogImg;
 	
 	//생성자
 	public DogVo() {
 
 	}
-	public DogVo(int dogNo, int userNo, int dogAge, String dogName, String dogWeight, String dogEtc, String dogType,
+	public DogVo(int dogNo, int userNo, int dogAge, String dogName, int dogWeight, String dogEtc, String dogType,
 			String dogImg) {
 
 		this.dogNo = dogNo;
@@ -60,25 +60,24 @@ public class DogVo {
 	public void setDogType(String dogType) {
 		this.dogType = dogType;
 	}
-	
-	public String getDogWeight() {
-		return dogWeight;
-	}
 	public String getDogImg() {
 		return dogImg;
 	}
 	public void setDogImg(String dogImg) {
 		this.dogImg = dogImg;
 	}
-	public void setDogWeight(String dogWeight) {
+	public int getDogWeight() {
+		return dogWeight;
+	}
+	public void setDogWeight(int dogWeight) {
 		this.dogWeight = dogWeight;
 	}
-	
 	@Override
 	public String toString() {
-		return "DogVo [dogNo=" + dogNo + ", userNo=" + userNo + ", dogAge=" + dogAge + ", dogName=" + dogName
-				+ ", dogWeight=" + dogWeight + ", dogEtc=" + dogEtc + ", dogType=" + dogType + ", dogImg=" + dogImg
-				+ "]";
+		return "DogVo [dogNo=" + dogNo + ", userNo=" + userNo + ", dogAge=" + dogAge + ", dogWeight=" + dogWeight
+				+ ", dogName=" + dogName + ", dogEtc=" + dogEtc + ", dogType=" + dogType + ", dogImg=" + dogImg + "]";
 	}
+	
+
 	
 }

@@ -32,24 +32,36 @@ public class UserService {
 	//로그인
 	public SessionVo login(UserVo userVo) {
 		SessionVo sessionVo = UserDao.login(userVo);
-		int userNo = sessionVo.getUserNo();
-		
-		//로그인 정보로 매장정보 유뮤 체크
-		SessionVo storeSession = UserDao.storeSelect(userNo);
-		//매장정보가 없으면 로그인 유저만 리턴
-		if(storeSession==null) {
+		if(sessionVo == null)
+		{
 			return sessionVo;
 		}
-		//매장정보가 있으면 매장정보를 추가해서 리턴
-		else {
-			String Domain = storeSession.getShopDomain();
-			int shopNo = storeSession.getShopNo();
+		else{
+			int userNo = sessionVo.getUserNo();
 			
-			sessionVo.setShopDomain(Domain);
-			sessionVo.setShopNo(shopNo);
-			
-			return sessionVo;
+			//로그인 정보로 매장정보 유뮤 체크
+			SessionVo storeSession = UserDao.storeSelect(userNo);
+			//매장정보가 없으면 로그인 유저만 리턴
+			if(storeSession==null) {
+				return sessionVo;
+			}
+			//매장정보가 있으면 매장정보를 추가해서 리턴
+			else {
+				String Domain = storeSession.getShopDomain();
+				int shopNo = storeSession.getShopNo();
+				
+				sessionVo.setShopDomain(Domain);
+				sessionVo.setShopNo(shopNo);
+				
+				return sessionVo;
+			}
 		}
+	}
+	public UserVo getuser(int userNo) {
+		return UserDao.getuser(userNo);
+	}
+	public void usermodify(UserVo uservo) {
+		UserDao.usermodify(uservo);
 	}
 	
 	//매장등록
