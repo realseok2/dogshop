@@ -51,11 +51,37 @@
       
 		<!-- 캐러셀 메인 페이지----------------------------------------------------------------------------------------------------- -->
 
+   		<c:choose>
+   			<c:when test="${fn:length(cList) < 4}">
+   				<c:forEach items="${cList }" var="result" varStatus="status" begin="0" end="2">
+   					<c:if test="${empty cList}">
+   						<div>등록된 게시물이 없습니다.</div>
+   					
+   					</c:if>
+   					
+   					<c:if test="${not empty cList}">
+   						<div>첫번째 캐러셀 출력</div>
+   					</c:if>   				
+   				</c:forEach>
+   			</c:when>
+   		
+   			<c:otherwise>
+   				<div>두번째 캐러셀 출력</div>
+   			</c:otherwise>
+   		</c:choose>
+   		
+   		
+   		
+   		
+   		
+   		
+   		
+   		
    		
         <div class="carousel-item active">
           <div class="row mb-5">
-             		<c:forEach items="${cList }" var="result" varStatus="status">
           
+       		<c:forEach items="${cList }" var="result" varStatus="status" begin="0" end="2">
 	            <div class="share-petagram-img">
 	              <!-- share_petagram hearder -->
 	              <div class="share-basic share-font-weight">
@@ -73,22 +99,17 @@
 	                <div class="share-basic">
 	                
 	                
-	                  <%-- <button type="button" class="main-icon"><img src="${pageContext.request.contextPath }/assets/image/heart-icon.png"></button> --%>
+	                  <c:choose>
+	                  	<c:when test="${result.liked}%2 == 0">
+	                  		<img src="${pageContext.request.contextPath }/assets/image/heart-icon.png">
+	                  	</c:when>
 	                  
-                  <c:choose>
-                  	<c:when test="${result.liked}%2 == 0">
-                  		<img src="${pageContext.request.contextPath }/assets/image/heart-icon.png">
-                  	</c:when>
-                  
-                  	<c:otherwise>
-                  		<img src="${pageContext.request.contextPath }/assets/image/full-heart-icon.png">
-                  	</c:otherwise>
-                  </c:choose>
+	                  	<c:otherwise>
+	                  		<img src="${pageContext.request.contextPath }/assets/image/full-heart-icon.png">
+	                  	</c:otherwise>
+	                  </c:choose>
 	                  
-	                  
-	                  
-	                  
-	                  
+	                  	                  
 	                  <button type="button" class="main-icon"><img src="${pageContext.request.contextPath }/assets/image/reply-icon.png" onclick = "location.href = '${pageContext.request.contextPath }/shareDetail' "></button>
 	                  <button type="button" class="main-icon"><img src="${pageContext.request.contextPath }/assets/image/direct-icon.png"></button>
 	                  <button type="button" class="etc-basic main-icon save-icon"><img src="${pageContext.request.contextPath }/assets/image/save-icon.png"></button>
@@ -104,10 +125,8 @@
 	              <!-- //share_petagram body-content -->
 	                  
 	            </div>
-           
-              </c:forEach>
-		  </div>
-		
+            </c:forEach>
+		  </div>		
 		</div>
 		
 
@@ -120,8 +139,8 @@
          <div class="carousel-item">
 
           <div class="row mb-5">
-          <c:forEach items="${cList }" var="result" varStatus="status">
-					<div class="share-petagram-img">
+          	<c:forEach items="${cList }" var="result" varStatus="status" begin="3" end="5">
+			<div class="share-petagram-img">
               
               <!-- share_petagram hearder -->
               <div class="share-basic share-font-weight">
@@ -194,7 +213,7 @@
    		
         <div class="carousel-item active">
           <div class="row mb-5">
-       		<c:forEach items="${sList }" var="result" varStatus="status">
+       		<c:forEach items="${sList }" var="result" varStatus="status" begin="0" end="2">
           
 	            <div class="share-petagram-img">
 	              <!-- share_petagram hearder -->
@@ -258,7 +277,7 @@
          <div class="carousel-item">
 
           <div class="row mb-5">
-          <c:forEach items="${sList }" var="result" varStatus="status">
+          <c:forEach items="${sList }" var="result" varStatus="status" begin="3" end="5">
 					<div class="share-petagram-img">
               
               <!-- share_petagram hearder -->

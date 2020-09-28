@@ -27,10 +27,7 @@ public class ShareDao {
 		return sqlSession.selectList("share.getCList");		
 	}
 	
-	//리스트 전체 출력
-//	public List<ShareVo> getHList() {				
-//		return sqlSession.selectList("share.getHList");		
-//	}
+	//페이징 리스트 전체 출력
 	
 	public List<ShareVo> getHList(int startRnum, int endRnum) {
 		Map<String, Integer> hMap = new HashMap<String, Integer>();
@@ -38,7 +35,6 @@ public class ShareDao {
 		hMap.put("endRnum", endRnum);
 		
 		List<ShareVo> hList = sqlSession.selectList("share.getHList", hMap);
-		System.out.println("dao@@@@@@@@@@@@@@@@@@@@" + hList.toString());
 		
 		return hList;
 	}

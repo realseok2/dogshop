@@ -103,28 +103,30 @@
 		</div>
 	</div>
 	
-	<div style="margin-left: 48%">
-	  <ul class="pagination pagination-lg text-center">
+	<div style="margin-left: 50%;">
+	  <ul class="pagination pagination-lg">
   			<c:if test="${hMap.prev == true}">
 				<li><a href="${pageContext.request.contextPath }/shareAll?crtPage=${hMap.startPageBtnNo-1}">◀</a></li>
 			</c:if>
-	    
+
 	    	<c:forEach begin="${hMap.startPageBtnNo }" end="${hMap.endPageBtnNo }" step="1" var="page">
 				<c:choose>
 					<c:when test="${param.crtPage == page }">
-						<li class="active">
+						<li class="active ml-3 mr-3">
 							<a href="${pageContext.request.contextPath }/shareAll?crtPage=${page}">${page}</a>
 						</li>									
 					</c:when>
 					<c:otherwise>
-						<li class="">
-							<a href="${pageContext.request.contextPath }/shareAll?crtPage=${page}">${page}</a>
+						<li>
+							<div class="ml-3 mr-3">
+								<a href="${pageContext.request.contextPath }/shareAll?crtPage=${page}">${page}</a>
+							</div>
 						</li>
 					</c:otherwise>
 				</c:choose>
 				
 			</c:forEach>
-				
+
 			<c:if test="${hMap.next == true}">
 				<li><a href="${pageContext.request.contextPath }/shareAll?crtPage=${hMap.endPageBtnNo+1}">▶</a></li>
 			</c:if>

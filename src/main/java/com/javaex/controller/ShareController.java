@@ -28,17 +28,14 @@ public class ShareController {
 	// 메인 폼
 	@RequestMapping("/shareMain")
 	public String shareMain(Model model, HttpSession session) {
-		System.out.println("share-main-form");
 
 		//업로드 순서 6개
 		List<ShareVo> sList = shareService.getSList();
 		model.addAttribute("sList", sList);
-		System.out.println("sList : @@@@@" + sList.toString());
 		
 		//좋아요 순서 6개
 		List<ShareVo> cList = shareService.getCList();
 		model.addAttribute("cList", cList);
-		System.out.println("cList : @@@@@@" + cList.toString());
 
 	return "main/share_petagram";
 	}
@@ -47,16 +44,12 @@ public class ShareController {
 	// 추가하기 폼
 	@RequestMapping("/shareAdd")
 	public String shareAdd(HttpSession session, Model model) {
-		System.out.println("share-add-form");
 		
 		SessionVo sessionVo = (SessionVo)session.getAttribute("session");
 		int userNo = sessionVo.getUserNo();
-		System.out.println(userNo);
 		
 		List<DogVo> aList = shareService.getdList(userNo);
 		model.addAttribute("aList",aList);
-		
-		System.out.println("aList : @@@@@" + aList.toString());
 				
 		return "main/share_add";
 	}
@@ -102,13 +95,10 @@ public class ShareController {
 	// 전체보기 페이징
 	@RequestMapping("/shareAll")
 	public String shareAll(@RequestParam(value = "crtPage", required = false, defaultValue = "1") int crtPage, Model model, HttpSession session) {
-		System.out.println("share_All");
-		System.out.println("crtPage : @@@@@@@@@@@@@@" + crtPage);
 		
 		//리스트 전체
 		Map<String, Object> hMap = shareService.getHList(crtPage);
 		model.addAttribute("hMap", hMap);
-		System.out.println(hMap.toString());
 		
 		return "main/share_petagram_All";
 	}
