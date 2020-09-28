@@ -73,7 +73,7 @@
                 	<c:forEach items="${nList }" var="nanumVo">
 	                    <tr>
 	                    	<td><img class="img_size" src="${pageContext.request.contextPath}/dogshop/${nanumVo.img}"></td>
-	                    	<td class="text_center"><a href="${pageContext.request.contextPath}/nanumPage?nanumNo=${nanumVo.nanumNo}">${nanumVo.title }</a></td>
+	                    	<td class="text_center"><a href="${pageContext.request.contextPath}/nanumPage?nanumNo=${nanumVo.nanumNo}" style=color:blue>${nanumVo.title }</a></td>
 	                    	<td class="text_center">${nanumVo.groups }</td>
 	                    	<td class="text_center">${nanumVo.area }</td>
 	                    	<td class="text_center">${nanumVo.userName }</td>
@@ -85,7 +85,9 @@
 				
 				<div class="text-center">
               		&lt; 1 2 3 4 5 &gt; 
-              		<button type="button" class="btn btn-outline-dark"style=float:right onclick = "location.href = '${pageContext.request.contextPath }/nanumWriteForm' ">글 작성</button>
+              		<c:if test="${not empty session.userNo }">
+              			<button type="button" class="btn btn-outline-dark"style=float:right onclick = "location.href = '${pageContext.request.contextPath }/nanumWriteForm' ">글 작성</button>
+            		</c:if>
             	</div>
            		
        

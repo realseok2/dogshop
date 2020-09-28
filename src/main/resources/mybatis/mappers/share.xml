@@ -3,22 +3,181 @@
 
 <mapper namespace="share">
 
-	<!-- 자랑하기 메인 인기순 리스트 -->
-	<select id="getList" parameterType="String" resultType="com.javaex.vo.ShareVo" >
+	<!--=======================================================================================-->
+	<!-- 자랑하기 메인 인기순 6개 리스트 -->
+	<select id="getCList" parameterType="String" resultType="com.javaex.vo.ShareVo" >
 		<![CDATA[
-			select		shareNo,
-						userNo,
-						id,
-						content,
-						regDate,
-						hit,
-						shareImg,
-						liked
+			select      r.rn,
+			            r.shareNo,
+			            r.userNo,
+			            r.id,
+			            r.content,
+			            to_char(r.regDate,'YYYY"년" MM"월" DD"일" HH24"시" MI"분"') regDate,
+			            r.hit,
+			            r.shareImg,
+			            r.liked,
+			            r.dogNo,
+			            r.dogName,
+			            r.dogType,
+			            r.dogWeight,
+			            r.dogAge,
+			            r.dogEtc
+			from        (select     rownum rn,
+			                        i.shareNo,
+			                        i.userNo,
+			                        i.id,
+			                        i.content,
+			                        i.regDate,
+			                        i.hit,
+			                        i.shareImg,
+			                        i.liked,
+			                        i.dogNo,
+			                        i.dogName,
+			                        i.dogType,
+			                        i.dogWeight,
+			                        i.dogAge,
+			                        i.dogEtc    
+			            from        (select     shareNo,
+			                                    userNo,
+			                                    id,
+			                                    content,
+			                                    regDate,
+			                                    hit,
+			                                    shareImg,
+			                                    liked,
+			                                    dogNo,
+			                                    dogName,
+			                                    dogType,
+			                                    dogWeight,
+			                                    dogAge,
+			                                    dogEtc
+			                        from        share_petagram
+			                        order by hit desc)i
+			                        )r
+			        where   r.rn > 0
+			        and     r.rn < 7
+		]]>
+	</select>
+	
+	
+	<!-- 자랑하기 메인 최근 업로드 6개 리스트 -->
+	<select id="getSList" parameterType="String" resultType="com.javaex.vo.ShareVo" >
+		<![CDATA[
+			select      r.rn,
+			            r.shareNo,
+			            r.userNo,
+			            r.id,
+			            r.content,
+			            to_char(r.regDate,'YYYY"년" MM"월" DD"일" HH24"시" MI"분"') regDate,
+			            r.hit,
+			            r.shareImg,
+			            r.liked,
+			            r.dogNo,
+			            r.dogName,
+			            r.dogType,
+			            r.dogWeight,
+			            r.dogAge,
+			            r.dogEtc
+			from        (select     rownum rn,
+			                        i.shareNo,
+			                        i.userNo,
+			                        i.id,
+			                        i.content,
+			                        i.regDate,
+			                        i.hit,
+			                        i.shareImg,
+			                        i.liked,
+			                        i.dogNo,
+			                        i.dogName,
+			                        i.dogType,
+			                        i.dogWeight,
+			                        i.dogAge,
+			                        i.dogEtc
+			            from        (select     shareNo,
+			                                    userNo,
+			                                    id,
+			                                    content,
+			                                    regDate,
+			                                    hit,
+			                                    shareImg,
+			                                    liked,
+			                                    dogNo,
+			                                    dogName,
+			                                    dogType,
+			                                    dogWeight,
+			                                    dogAge,
+			                                    dogEtc
+			                        from        share_petagram
+			                        order by    regDate desc)i
+			                        )r
+			            where       r.rn > 0
+			            and         r.rn < 7
+		]]>
+	</select>
+	
+	<!-- 자랑하기 메인 전체 리스트 -->
+	<select id="getHList" parameterType="Map" resultType="com.javaex.vo.ShareVo" >
+		<![CDATA[
+			select      r.rn,
+			            r.shareNo,
+			            r.userNo,
+			            r.id,
+			            r.content,
+			            to_char(r.regDate,'YYYY"년" MM"월" DD"일" HH24"시" MI"분"') regDate,
+			            r.hit,
+			            r.shareImg,
+			            r.liked,
+			            r.dogNo,
+			            r.dogName,
+			            r.dogType,
+			            r.dogWeight,
+			            r.dogAge,
+			            r.dogEtc
+			from        (select     rownum rn,
+			                        i.shareNo,
+			                        i.userNo,
+			                        i.id,
+			                        i.content,
+			                        i.regDate,
+			                        i.hit,
+			                        i.shareImg,
+			                        i.liked,
+			                        i.dogNo,
+			                        i.dogName,
+			                        i.dogType,
+			                        i.dogWeight,
+			                        i.dogAge,
+			                        i.dogEtc
+			            from        (select     shareNo,
+			                                    userNo,
+			                                    id,
+			                                    content,
+			                                    regDate,
+			                                    hit,
+			                                    shareImg,
+			                                    liked,
+			                                    dogNo,
+			                                    dogName,
+			                                    dogType,
+			                                    dogWeight,
+			                                    dogAge,
+			                                    dogEtc
+			                        from        share_petagram
+			                        order by    regDate desc)i
+			                        )r
+			where		r.rn >	#{startRnum}
+			and			r.rn <=	#{endRnum}		           
+		]]>
+	</select>
+	
+	<select id="totalCount" resultType="int">
+		<![CDATA[
+			select		count(*)
 			from		share_petagram
-			order by	hit desc
 		]]>
 	</select>
 
+	<!--=======================================================================================-->
 
 	<!-- 자랑하기 추가 -->
 	<insert id="insert" parameterType="com.javaex.vo.ShareVo" >
@@ -29,13 +188,22 @@
 				#{id},
 				#{content},
 				sysdate,
-				seq_heart_no.nextval,
+				#{hit},
 				#{shareImg},
-				seq_liked_no.nextval
-			)
+				#{liked},
+				#{dogNo},
+				#{dogName},
+				#{dogType},
+				#{dogWeight},
+				#{dogAge},
+				#{dogEtc}
+				)
 		]]>
 	</insert>
 
+	<!--=======================================================================================-->
+	
+	
 
 
 

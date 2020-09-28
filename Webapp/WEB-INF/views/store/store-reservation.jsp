@@ -54,7 +54,7 @@
           <c:if test="${not empty spoint }">
 	          <span class="star-input">
 	            <span class="input">
-	              <input type="radio" name="star-input" value="${spoint}" id="p${spoint*2}" checked><label for="p${spoint*2}">${spoint}</label>
+	              <input type="radio" name="star-input" value="${spoint}" id="p${spoint*2}" checked><label for="p${spoint}">${spoint}</label>
 	            </span>
 	            
 	                <output for="star-input"><b>${spoint}</b>점</output>
