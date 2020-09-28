@@ -1,6 +1,8 @@
 package com.javaex.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,8 +28,25 @@ public class ShareDao {
 	}
 	
 	//리스트 전체 출력
-	public List<ShareVo> getHList() {				
-		return sqlSession.selectList("share.getHList");		
+//	public List<ShareVo> getHList() {				
+//		return sqlSession.selectList("share.getHList");		
+//	}
+	
+	public List<ShareVo> getHList(int startRnum, int endRnum) {
+		Map<String, Integer> hMap = new HashMap<String, Integer>();
+		hMap.put("startRnum", startRnum);
+		hMap.put("endRnum", endRnum);
+		
+		List<ShareVo> hList = sqlSession.selectList("share.getHList", hMap);
+		System.out.println("dao@@@@@@@@@@@@@@@@@@@@" + hList.toString());
+		
+		return hList;
+	}
+	
+	// totalCount----------------------------------------------------------------
+	
+	public int totalCount() {
+		return sqlSession.selectOne("share.totalCount");
 	}
 	
 	//---------------------------------------------------------------------	

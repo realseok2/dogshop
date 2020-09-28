@@ -1,6 +1,7 @@
 package com.javaex.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.javaex.service.ShareService;
@@ -69,7 +71,7 @@ public class ShareController {
 		  
 		shareService.add(shareVo, file, userNo,id);
 	  
-		return "redirect:/shareMain";
+		return "redirect:/shareAll";
 	}
 
 
@@ -83,14 +85,30 @@ public class ShareController {
 
 //	자랑하기 전체 리스트 보기-----------------------------------------------------------------------
 	// 전체보기 폼
+//	@RequestMapping("/shareAll")
+//	public String shareAll(Model model, HttpSession session) {
+//		System.out.println("share_All");
+//		
+//		//리스트 전체
+//		List<ShareVo> hList = shareService.getHList();
+//		model.addAttribute("hList", hList);
+//		System.out.println("hList : @@@@@@" + hList.toString());		
+//		
+//		return "main/share_petagram_All";
+//	}
+	
+//	----------------------------------------------------------------------------
+//	---------------------------------------------------------------------------- 연습용
+	// 전체보기 페이징
 	@RequestMapping("/shareAll")
-	public String shareAll(Model model, HttpSession session) {
+	public String shareAll(@RequestParam(value = "crtPage", required = false, defaultValue = "1") int crtPage, Model model, HttpSession session) {
 		System.out.println("share_All");
+		System.out.println("crtPage : @@@@@@@@@@@@@@" + crtPage);
 		
 		//리스트 전체
-		List<ShareVo> hList = shareService.getHList();
-		model.addAttribute("hList", hList);
-		System.out.println("hList : @@@@@@" + hList.toString());		
+		Map<String, Object> hMap = shareService.getHList(crtPage);
+		model.addAttribute("hMap", hMap);
+		System.out.println(hMap.toString());
 		
 		return "main/share_petagram_All";
 	}

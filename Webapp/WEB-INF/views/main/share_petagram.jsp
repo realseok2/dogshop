@@ -194,7 +194,7 @@
    		
         <div class="carousel-item active">
           <div class="row mb-5">
-             		<c:forEach items="${sList }" var="result" varStatus="status">
+       		<c:forEach items="${sList }" var="result" varStatus="status">
           
 	            <div class="share-petagram-img">
 	              <!-- share_petagram hearder -->
@@ -213,8 +213,6 @@
 	                <div class="share-basic">
 	                
 	                
-	                  <%-- <button type="button" class="main-icon"><img src="${pageContext.request.contextPath }/assets/image/heart-icon.png"></button> --%>
-	                  
                   <c:choose>
                   	<c:when test="${result.liked}%2 == 0">
                   		<img src="${pageContext.request.contextPath }/assets/image/heart-icon.png">

@@ -46,63 +46,94 @@
     </h5>
     <hr class="mb-1">
 
-          <div class="row mb-5 mt-5">
+          <div class="row mb-4">
           
           
-      		<c:forEach items="${hList }" var="result" varStatus="status">
-	            <div class="share-petagram-img mt-3 pb-5 mb-5" style="margin-left=0;">
-	              
-	
+      		<c:forEach items="${hMap.hList }" var="result" varStatus="status">
+          
+	            <div class="share-petagram-img mb-4 mt-4">
 	              <!-- share_petagram hearder -->
 	              <div class="share-basic share-font-weight">
-	                <img src="${pageContext.request.contextPath }/assets/image/lolozouai.jpg">${result.id }
-	                <button type="button" class="etc-basic main-header"><img src="${pageContext.request.contextPath }/assets/image/etc-icon.png"></button>
+	                <img src="${pageContext.request.contextPath }/assets/image/lolozouai.jpg" onclick = "location.href = '${pageContext.request.contextPath }/shareDetail' "><button type="button" onclick = "location.href = '${pageContext.request.contextPath }/shareDetail' " style="border: 0; outline: 0; background-color:#f8f9fa">${result.id }</button>
+	                <button type="button" class="etc-basic main-header"><img src="${pageContext.request.contextPath }/assets/image/close-icon.png"></button>
 	              </div>
 	              <!-- //share_petagram hearder -->
-	
-	
+		
 	              <!-- share_petagram body-img -->
-	              <div class="share-body-img"><img src="${pageContext.request.contextPath }/dogshop/${result.shareImg}"></div>
+	              <div class="share-body-img"><img src="${pageContext.request.contextPath }/dogshop/${result.shareImg}" class="hover-cursor" onclick = "location.href = '${pageContext.request.contextPath }/shareDetail' "></div>
 	              <!-- //share_petagram body-img -->
 	
-	              
 	              <!-- share_petagram body-content -->
 	              <div class="share-body-content">
 	                <div class="share-basic">
-	                  <button type="button" class="main-icon"><img src="${pageContext.request.contextPath }/assets/image/heart-icon.png"></button>
-	                  <button type="button" class="main-icon"><img src="${pageContext.request.contextPath }/assets/image/reply-icon.png"></button>
+	                
+	                
+                  <c:choose>
+                  	<c:when test="${result.liked}%2 == 0">
+                  		<img src="${pageContext.request.contextPath }/assets/image/heart-icon.png">
+                  	</c:when>
+                  
+                  	<c:otherwise>
+                  		<img src="${pageContext.request.contextPath }/assets/image/full-heart-icon.png">
+                  	</c:otherwise>
+                  </c:choose>
+	                  
+	                  
+	                  
+	                  
+	                  
+	                  <button type="button" class="main-icon"><img src="${pageContext.request.contextPath }/assets/image/reply-icon.png" onclick = "location.href = '${pageContext.request.contextPath }/shareDetail' "></button>
 	                  <button type="button" class="main-icon"><img src="${pageContext.request.contextPath }/assets/image/direct-icon.png"></button>
 	                  <button type="button" class="etc-basic main-icon save-icon"><img src="${pageContext.request.contextPath }/assets/image/save-icon.png"></button>
 	                </div>
 	                <div class="share-basic"><strong>[publishing]님</strong>과 <strong>${result.hit }명</strong>이 좋아합니다.</div>
-	                <div class="share-basic share-font-weight"><strong>[${result.id }]</strong> ${result.content }</div>
-	                <div><button type="button" class="replyArea">[댓글 8개 모두 보기]</button></div>
+	                <div class="share-basic share-font-weight"><strong>[${result.id }]</strong>${result.content }</div>
+	                <div><button type="button" class="replyArea" onclick = "location.href = '${pageContext.request.contextPath }/shareDetail' ">[댓글 8개 모두 보기]</button></div>
 	                <div class="share-basic share-font-weight"><img src="${pageContext.request.contextPath }/assets/image/eternersunshine.PNG"><strong>web</strong> 웹</div>
 	                <div class="share-basic share-font-weight"><img src="${pageContext.request.contextPath }/assets/image/jose.jpg"><strong>responsive</strong> 반응형</div>
 	                <div class="share-basic share-font-weight"><img src="${pageContext.request.contextPath }/assets/image/jose.jpg"><strong>responsive</strong> 세번째줄</div>
-	                <div class="share-basic" style="color: gray;">[${result.regDate }]</div>
+	                <div class="share-basic" style="color: gray;">${result.regDate }</div>
 	              </div>
 	              <!-- //share_petagram body-content -->
-	
+	                  
 	            </div>
-			</c:forEach>
+           
+              </c:forEach>
       
 		</div>
 	</div>
 	
-	<nav>
 	<div style="margin-left: 48%">
 	  <ul class="pagination pagination-lg text-center">
-	    <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
-	    <li class="active ml-2 mr-2"><a href="#">1 <span class="sr-only"></span></a></li>
-   	    <li class="ml-2 mr-2"><a href="#">2 <span class="sr-only"></span></a></li>
-   	    <li class="ml-2 mr-2"><a href="#">3 <span class="sr-only"></span></a></li>
-   	    <li class="ml-2 mr-2"><a href="#">4 <span class="sr-only"></span></a></li>
-   	    <li class="ml-2 mr-2"><a href="#">5 <span class="sr-only"></span></a></li>
-   	    <li class="disabled ml-2 mr-2"><a href="#" aria-label="Previous"><span aria-hidden="true">&raquo;</span></a></li>
-	  </ul>
+  			<c:if test="${hMap.prev == true}">
+				<li><a href="${pageContext.request.contextPath }/shareAll?crtPage=${hMap.startPageBtnNo-1}">◀</a></li>
+			</c:if>
+	    
+	    	<c:forEach begin="${hMap.startPageBtnNo }" end="${hMap.endPageBtnNo }" step="1" var="page">
+				<c:choose>
+					<c:when test="${param.crtPage == page }">
+						<li class="active">
+							<a href="${pageContext.request.contextPath }/shareAll?crtPage=${page}">${page}</a>
+						</li>									
+					</c:when>
+					<c:otherwise>
+						<li class="">
+							<a href="${pageContext.request.contextPath }/shareAll?crtPage=${page}">${page}</a>
+						</li>
+					</c:otherwise>
+				</c:choose>
+				]
+			</c:forEach>
+				
+			<c:if test="${hMap.next == true}">
+				<li><a href="${pageContext.request.contextPath }/shareAll?crtPage=${hMap.endPageBtnNo+1}">▶</a></li>
+			</c:if>
+	    
+	    </ul>
+	    
 	  </div>
-	</nav>
+	
+	
 	
 	
   
