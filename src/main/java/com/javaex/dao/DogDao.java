@@ -17,6 +17,7 @@ public class DogDao {
 
 	//펫 리스트
 	public List<DogVo> getList(int userNo) {
+		System.out.println(userNo);
 		return sqlSession.selectList("dog.getList", userNo);
 	}
 	

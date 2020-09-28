@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.javaex.dao.ShareDao;
+import com.javaex.vo.DogVo;
 import com.javaex.vo.ShareVo;
 
 @Service
@@ -20,15 +21,30 @@ public class ShareService {
 	@Autowired
 	private ShareDao shareDao;
 	
-	//리스트 출력
-//	public List<ShareVo> getList(int userNo) {
-//		return shareDao.getList(userNo);
-//	}
-	
-	public List<ShareVo> getList() {
-		return shareDao.getList();
+	//---------------------------------------------------------------------
+	//리스트 업로드 순서 6개 출력
+	public List<ShareVo> getSList() {
+		return shareDao.getSList();
 	}
 	
+	//리스트 좋아요 순서 6개 출력
+	public List<ShareVo> getCList() {
+		return shareDao.getCList();
+	}
+	
+	//리스트 전체 출력
+	public List<ShareVo> getHList() {
+		return shareDao.getHList();
+	}
+	
+	//자랑하기 추가부분에서 반려견 정보 받아오기 리스트
+	public List<DogVo> getdList(int userNo){
+		return shareDao.getList(userNo);
+	}
+	
+
+	
+	//---------------------------------------------------------------------
 	//자랑하기 추가
 	public int add(ShareVo shareVo, MultipartFile file, int userNo, String id) {
 		

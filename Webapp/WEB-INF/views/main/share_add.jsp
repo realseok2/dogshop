@@ -16,7 +16,8 @@
 	<link href="${pageContext.request.contextPath }/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	
 	<!-- Custom styles for this template -->
-	<link href="${pageContext.request.contextPath}/assets/css/common.css?after" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/assets/css/common.css" rel="stylesheet">
+	
 
 </head>
 
@@ -58,7 +59,30 @@
 	          <!-- content input area -->
 	          <div class="row mt-4">
 	            <div class="col-md-10 mb-5 center-block">
-	              <label for="petInfo" class="mb-3">Contents</label>
+	              <div>
+                  <label for="petInfo" class="mb-3">Contents</label>
+
+
+
+                 <div class="col-md-2 btn-group mr-5" style="float: right;">
+                    <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle btn-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">반려견을 선택해 주세요.</button>
+                    <div class="dropdown-menu dropdown-menu-left">
+                      <!-- 아이템추가: .dropdown-mypet-item.html() 변경 -->
+                      
+                      <c:forEach items="${aList}" var="dogVo">
+						<button class="dropdown-item dropdown-mypet-item" type="button" value="" >${dogVo.dogName}</button>
+						<input type="hidden" value="${dogVo.dogNo}" name="dogNo">
+						<input type="hidden" value="${dogVo.dogName}" name="dogName">
+						<input type="hidden" value="${dogVo.dogType}" name="dogType">
+						<input type="hidden" value="${dogVo.dogWeight}" name="dogWeigtht">
+						<input type="hidden" value="${dogVo.dogAge}" name="dogAge">
+						<input type="hidden" value="${dogVo.dogEtc}" name="dogEtc">											
+					  </c:forEach>
+                   
+                    </div>
+                  </div>
+
+                </div>
 	              <textarea class="form-control" rows="12" name= "content" placeholder="Please enter your details."></textarea>
 	            </div>
 	          </div>
@@ -120,6 +144,8 @@
 		src="${pageContext.request.contextPath }/assets/bootstrap/jquery/jquery.min.js"></script>
 	<script
 		src="${pageContext.request.contextPath }/assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script
+			src="${pageContext.request.contextPath}/assets/bootstrap/js/common.js"></script>
 </body>
 
 

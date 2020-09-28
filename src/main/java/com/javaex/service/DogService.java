@@ -23,6 +23,7 @@ public class DogService {
 
 	//펫 리스트
 	public List<DogVo> getList(int userNo) {
+		
 		return dogDao.getList(userNo);
 	}
 
