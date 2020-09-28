@@ -24,12 +24,14 @@ public class ReviewDao {
 	public void reserved(int regno) {
 		sqlSession.update("reservation.reserved", regno);
 	}
-	public Integer getspoint(int shopno) {
+	public double getspoint(int shopno) {
 		if(sqlSession.selectOne("review.getspoint",shopno) == null) {
-			return 0;
+			return 0.0;
 		}
 		else {
-		 return sqlSession.selectOne("review.getspoint",shopno);
+			double a = sqlSession.selectOne("review.getspoint",shopno);
+			double spoint =  Double.parseDouble(String.format("%.1f", a));
+			return spoint;
 		}
 	}
 	public int scount(int shopvo) {

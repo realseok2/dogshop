@@ -122,7 +122,7 @@
 						</li>
 					</c:otherwise>
 				</c:choose>
-				]
+				
 			</c:forEach>
 				
 			<c:if test="${hMap.next == true}">

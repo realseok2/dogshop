@@ -27,7 +27,7 @@ public class ReviewService {
 		}
 		return result;
 	}
-	public Integer getspoint(int shopno) {
+	public double getspoint(int shopno) {
 		return reviewdao.getspoint(shopno);
 	}
 	public int scount(int shopno) {

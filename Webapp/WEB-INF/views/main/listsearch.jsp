@@ -110,7 +110,7 @@
 										<output for="star-input">
 											<b id="spoint-t"></b>
 										</output>
-										<a href="">리뷰보기</a>
+										<a href="">&nbsp;&nbsp;리뷰보기</a>
 									</span>
 								
 							</ul>
@@ -135,7 +135,7 @@
 							<tr class="shopinfo" data-shopDomain="${shopVo.shopDomain}" data-shopno="${shopVo.shopNo}">
 								<td>${shopVo.shopNo}</td>
 								<td><a href="${pageContext.request.contextPath }/store/${shopVo.shopDomain}/main">${shopVo.shopTitle}</a></td>
-								<td class="center-block pr-3 ml-5">${shopVo.shopAddress}</td>
+								<td class="center-block" style=text-align:center>${shopVo.shopAddress}</td>
 								<td>${shopVo.shopNumber}</td>
 								</tr>
 						</c:forEach>

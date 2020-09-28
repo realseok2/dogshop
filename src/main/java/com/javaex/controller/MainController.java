@@ -46,8 +46,10 @@ public class MainController {
 		Map<String,Object> map = new HashMap<String,Object>();
 		ShopVo shopVo = mainservice.selectStore(shopDomain);
 		map.put("shopVo", shopVo);
-		int spoint = reviewservice.getspoint(shopVo.getShopNo());
+		double spoint = reviewservice.getspoint(shopVo.getShopNo());
 		map.put("spoint", spoint);
+		
+		
 		return map;
 	}
 	

@@ -52,12 +52,12 @@
         <div class="card h-100">
           <div class="card-img-top">
           <span class="star-input">
-			            			<span class="input">
-							              <input type="checkbox" name="star-input" value="${reviewListvo.spoint}" id="p${reviewListvo.spoint*2}" checked>
-							              <label for="p${reviewListvo.spoint*2}">${reviewListvo.spoint}</label>
-							              </span>
-							           	  <output for="star-input"><b>${reviewListvo.spoint}</b>점</output>
-		            				</span>
+           			<span class="input">
+			              <input type="checkbox" name="star-input" value="${reviewListvo.spoint}" id="p${reviewListvo.spoint*2}" checked>
+			              <label for="p${reviewListvo.spoint}">${reviewListvo.spoint}</label>
+			              </span>
+			           	  <output for="star-input"><b>${reviewListvo.spoint}</b>점</output>
+          				</span>
           </div>
           <div class="card-body">
             <h4 class="card-title">${reviewListvo.id}</h4>
