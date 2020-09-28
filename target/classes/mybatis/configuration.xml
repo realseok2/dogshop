@@ -15,11 +15,6 @@
 		<mapper resource="mybatis/mappers/menu.xml" />
 		<mapper resource="mybatis/mappers/board.xml" />
 		<mapper resource="mybatis/mappers/dog.xml" />
-<<<<<<< HEAD
 		<mapper resource="mybatis/mappers/review.xml" />
-=======
-<!-- 		<mapper resource="mybatis/mappers/share_petagram.xml" /> -->
->>>>>>> refs/heads/taeseok
-
 	</mappers>
 </configuration>
