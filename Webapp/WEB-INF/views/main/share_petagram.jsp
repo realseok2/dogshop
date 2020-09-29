@@ -55,7 +55,7 @@
    			<c:when test="${fn:length(cList) < 4}">
    				<c:forEach items="${cList }" var="result" varStatus="status" begin="0" end="2">
    					<c:if test="${empty cList}">
-   						<div>등록된 게시물이 없습니다.</div>
+   						<div>등록된 게시물이 없습니다..</div>
    					
    					</c:if>
    					
