@@ -66,7 +66,9 @@
    			</c:when>
    		
    			<c:otherwise>
-   				<div>두번째 캐러셀 출력</div>
+   				<c:forEach items="${cList }" var="result" varStatus="status" begin="0" end="2">
+	   				<div>두번째 캐러셀 출력</div>
+   				</c:forEach>
    			</c:otherwise>
    		</c:choose>
    		
