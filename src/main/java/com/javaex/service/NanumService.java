@@ -23,8 +23,11 @@ public class NanumService {
 	@Autowired
 	CommentDao commentDao;
 	//글 조회
-	public List<NanumVo> NanumSelectList() {
-		return nanumDao.NanumSelectList();
+	public List<NanumVo> NanumSelectList(String keyword) {
+		NanumVo nanumVo = new NanumVo();
+		
+		nanumVo.setKeyword(keyword);
+		return nanumDao.NanumSelectList(nanumVo);
 	}
 	
 	//글 1개 조회

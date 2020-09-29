@@ -5,6 +5,7 @@ public class NanumVo {
 	private int nanumNo,userNo;
 	private String area,groups,title,content,img,regdate,userName;
 	
+	private String keyword;
 	
 	//생성자
 	public NanumVo() {
@@ -24,12 +25,23 @@ public class NanumVo {
 	}
 
 	//g.s
-	public int getnanumNo() {
+
+	public String getKeyword() {
+		return keyword;
+	}
+
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
+	
+	public int getNanumNo() {
 		return nanumNo;
 	}
-	public void setnanumNo(int nanumNo) {
+
+	public void setNanumNo(int nanumNo) {
 		this.nanumNo = nanumNo;
 	}
+	
 	public int getUserNo() {
 		return userNo;
 	}

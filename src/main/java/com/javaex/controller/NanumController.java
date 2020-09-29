@@ -28,8 +28,9 @@ public class NanumController {
 	
 	//무료 나눔
 	@RequestMapping("/nanum")
-	public String nanum(Model model) {
-		List<NanumVo> nList = nanumService.NanumSelectList();
+	public String nanum(Model model,@RequestParam(value = "keyword", required = false) String keyword) {
+		System.out.println(keyword);
+		List<NanumVo> nList = nanumService.NanumSelectList(keyword);
 		model.addAttribute("nList", nList);
 		
 		return "main/nanum";
