@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
@@ -28,18 +29,17 @@ public class ShareController {
 	// 메인 폼
 	@RequestMapping("/shareMain")
 	public String shareMain(Model model, HttpSession session) {
-		System.out.println("share-main-form");
 
 		//업로드 순서 6개
 		List<ShareVo> sList = shareService.getSList();
+		System.out.println("sList" + sList);
 		model.addAttribute("sList", sList);
-		System.out.println("sList : @@@@@" + sList.toString());
 		
 		//좋아요 순서 6개
 		List<ShareVo> cList = shareService.getCList();
+		System.out.println("cList" + cList);
 		model.addAttribute("cList", cList);
-		System.out.println("cList : @@@@@@" + cList.toString());
-
+		
 	return "main/share_petagram";
 	}
 
@@ -47,16 +47,12 @@ public class ShareController {
 	// 추가하기 폼
 	@RequestMapping("/shareAdd")
 	public String shareAdd(HttpSession session, Model model) {
-		System.out.println("share-add-form");
 		
 		SessionVo sessionVo = (SessionVo)session.getAttribute("session");
 		int userNo = sessionVo.getUserNo();
-		System.out.println(userNo);
 		
 		List<DogVo> aList = shareService.getdList(userNo);
 		model.addAttribute("aList",aList);
-		
-		System.out.println("aList : @@@@@" + aList.toString());
 				
 		return "main/share_add";
 	}
@@ -67,59 +63,53 @@ public class ShareController {
 	public String add(@ModelAttribute ShareVo shareVo, MultipartFile file, HttpSession session, Model model) {
 		SessionVo sessionVo = (SessionVo)session.getAttribute("session");
 	  
-		int userNo = sessionVo.getUserNo(); String id = shareService.getid(userNo);
+		int userNo = sessionVo.getUserNo();
+		String id = shareService.getid(userNo);
 		  
-		shareService.add(shareVo, file, userNo,id);
+		shareService.add(shareVo, file, userNo, id);
 	  
 		return "redirect:/shareAll";
 	}
 
-
 //	자랑하기 자세히 보기--------------------------------------------------------------------------
 	// 자세히보기 폼
-	@RequestMapping("/shareDetail")
-	public String shareDetail() {
-		System.out.println("share-detail-form");
+	@RequestMapping("/shareDetail/{shareNo}/{userNo}")
+	public String shareDetail(Model model, @PathVariable("shareNo") int shareNo, @PathVariable("userNo") int userNo) {
+		
+		List<ShareVo> selectDetail = shareService.read(shareNo);
+		model.addAttribute("selectDetail", selectDetail);
+		System.out.println("selectDetail@@@@@@@@@@@@@" + selectDetail);
+		
+		//유저넘버 별 게시물
+		List<ShareVo> usList = shareService.getUsList(userNo);
+		System.out.println("usList" + usList);
+		model.addAttribute("usList", usList);
+				
 		return "main/share_petagram_detail";
 	}
 
 //	자랑하기 전체 리스트 보기-----------------------------------------------------------------------
-	// 전체보기 폼
-//	@RequestMapping("/shareAll")
-//	public String shareAll(Model model, HttpSession session) {
-//		System.out.println("share_All");
-//		
-//		//리스트 전체
-//		List<ShareVo> hList = shareService.getHList();
-//		model.addAttribute("hList", hList);
-//		System.out.println("hList : @@@@@@" + hList.toString());		
-//		
-//		return "main/share_petagram_All";
-//	}
-	
-//	----------------------------------------------------------------------------
-//	---------------------------------------------------------------------------- 연습용
 	// 전체보기 페이징
 	@RequestMapping("/shareAll")
 	public String shareAll(@RequestParam(value = "crtPage", required = false, defaultValue = "1") int crtPage, Model model, HttpSession session) {
-		System.out.println("share_All");
-		System.out.println("crtPage : @@@@@@@@@@@@@@" + crtPage);
 		
 		//리스트 전체
 		Map<String, Object> hMap = shareService.getHList(crtPage);
 		model.addAttribute("hMap", hMap);
-		System.out.println(hMap.toString());
 		
 		return "main/share_petagram_All";
 	}
 	
+//	게시물 삭제--------------------------------------------------------------------------------
 	
+	@RequestMapping("/shareDelete/{shareNo}")
+	public String shareDelete(@PathVariable("shareNo") int shareNo) {
+		int count = shareService.shareDelete(shareNo);
+		return "redirect:/shareAll";
+	}
 	
-	
-	
-	
-	
-	
+//	게시물 하나 가져오기-----------------------------------------------------------------------	---
+
 	
 	
 }

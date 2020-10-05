@@ -33,7 +33,11 @@ public class ShareService {
 	public List<ShareVo> getCList() {
 		return shareDao.getCList();
 	}
-
+	
+	//유저넘버 별 게시물
+	public List<ShareVo> getUsList(int userNo) {
+		return shareDao.getUsList(userNo);
+	}
 	
 	//자랑하기 추가부분에서 반려견 정보 받아오기 리스트
 	public List<DogVo> getdList(int userNo){
@@ -41,13 +45,9 @@ public class ShareService {
 	}	
 	
 	//리스트 전체 출력
-//	public List<ShareVo> getHList() {
-//		return shareDao.getHList();
-//	}
-	
 	public Map<String, Object>  getHList(int crtPage) {
 		
-		//리스트 가져오기-------------------------------------------------------------
+		//페이징 리스트 가져오기-------------------------------------------------------------
 		
 		//페이지당 글 갯수
 		int listCnt	= 9;
@@ -67,9 +67,9 @@ public class ShareService {
 		//끝 글 번호 endRnum
 		int endRnum = startRnum + listCnt;		//	1Page --> 10	db에서 그대로 사용
 		
-		System.out.println("crtPage : " + crtPage);
-		System.out.println("startRnum : " + startRnum);
-		System.out.println("endRnum : " + endRnum);
+//		System.out.println("crtPage : " + crtPage);
+//		System.out.println("startRnum : " + startRnum);
+//		System.out.println("endRnum : " + endRnum);
 		
 		
 		List<ShareVo> list = shareDao.getHList(startRnum, endRnum);
@@ -118,10 +118,7 @@ public class ShareService {
 		hMap.put("hList", list);
 					
 		return hMap;
-
-	}
-	
-
+	}	
 	
 	//---------------------------------------------------------------------
 	//자랑하기 추가
@@ -145,10 +142,10 @@ public class ShareService {
 				// 파일사이즈
 				long fileSize = file.getSize();
 
-				System.out.println("원본파일이름: " + orgName);
-				System.out.println("확장자: " + exName);
-				System.out.println("파일경로: " + filePath);
-				System.out.println("파일사이즈: " + fileSize);
+//				System.out.println("원본파일이름: " + orgName);
+//				System.out.println("확장자: " + exName);
+//				System.out.println("파일경로: " + filePath);
+//				System.out.println("파일사이즈: " + fileSize);
 
 				// 파일 복사==========================================================
 				try {
@@ -170,9 +167,28 @@ public class ShareService {
 				return result;
 		
 	}
+	
+	//아이디 가져오기
 	public String getid(int userNo) {
 		return shareDao.getid(userNo);
 	}
+	
+	//게시물 삭제
+	public int shareDelete(int shareNo) {
+		return shareDao.shareDelete(shareNo);
+	}
+	
+	//게시물 읽기
+	public List<ShareVo> read(int shareNo) {		
+		return shareDao.getPost(shareNo);
+	}
+	
+	
+	
+	
+	
+	
+
 	
 	
 }

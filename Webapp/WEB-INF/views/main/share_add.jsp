@@ -42,7 +42,7 @@
   <!-- ================================여기 부분부터 내용이 달라집니다.================================ -->
   <div class="container mt-5 pt-4">
     <header class="py-1 mt-4">
-      <h2 class="display-5">Share_Petagram</h2>
+      <h2 class="display-5"><a href="${pageContext.request.contextPath }/shareMain">Share_Petagram</a></h2>
       <hr class="mb-1">
     </header>
 
@@ -69,14 +69,14 @@
                     <div class="dropdown-menu dropdown-menu-left">
                       <!-- 아이템추가: .dropdown-mypet-item.html() 변경 -->
                       
-                      <c:forEach items="${aList}" var="dogVo">
-						<button class="dropdown-item dropdown-mypet-item" type="button" value="" >${dogVo.dogName}</button>
-						<input type="hidden" value="${dogVo.dogNo}" name="dogNo">
-						<input type="hidden" value="${dogVo.dogName}" name="dogName">
-						<input type="hidden" value="${dogVo.dogType}" name="dogType">
-						<input type="hidden" value="${dogVo.dogWeight}" name="dogWeigtht">
-						<input type="hidden" value="${dogVo.dogAge}" name="dogAge">
-						<input type="hidden" value="${dogVo.dogEtc}" name="dogEtc">											
+                      <c:forEach items="${aList}" var="result">
+						<button class="dropdown-item dropdown-mypet-item" type="button" value="" >${result.dogName}</button>
+						<input type="hidden" value="${result.dogNo}" name="dogNo">
+						<input type="hidden" value="${result.dogName}" name="dogName">
+						<input type="hidden" value="${result.dogType}" name="dogType">
+						<input type="hidden" value="${result.dogWeight}" name="dogWeigtht">
+						<input type="hidden" value="${result.dogAge}" name="dogAge">
+						<input type="hidden" value="${result.dogEtc}" name="dogEtc">											
 					  </c:forEach>
                    
                     </div>

@@ -19,7 +19,11 @@
 		<mapper resource="mybatis/mappers/share.xml" />
 		<mapper resource="mybatis/mappers/nanum.xml" />
 		<mapper resource="mybatis/mappers/comment.xml" />
+<<<<<<< HEAD
 		<mapper resource="mybatis/mappers/main.xml" />
+=======
+		<mapper resource="mybatis/mappers/shareReply.xml" />
+>>>>>>> refs/heads/taeseok
 
 	</mappers>
 </configuration>

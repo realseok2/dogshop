@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="shareReply">
+
+	<!--=======================================================================================-->
+
+	<!-- 방명록 리스트 -->
+	<select id="getList" parameterType="int" resultType="com.javaex.vo.ShareReplyVo">
+		<![CDATA[
+			select      h.rn,
+			            h.replyNo,
+			            h.userNo,
+			            h.replyId,
+			            h.replyContent,
+			            h.shareNo,
+			            h.id,
+			            to_char(h.regDate,'YYYY"년" MM"월" DD"일" HH24"시" MI"분"') regDate,
+			            h.hit,
+			            h.liked
+			from        (select     s.rn,
+			                        s.replyNo,
+			                        s.userNo,
+			                        s.replyId,
+			                        s.replyContent,
+			                        p.shareNo,
+			                        p.id,
+			                        p.regDate,
+			                        p.hit,
+			                        p.liked
+			            from        (select     rownum rn,
+			                                    r.replyNo,
+			                                    r.userNo,
+			                                    r.replyId,
+			                                    r.replyContent
+			                        from        (select		replyNo,
+			                                                userNo,
+			                                                replyId,
+			                                                replyContent
+			                                    from		reply_petagram
+			                                    order by	replyNo		asc)r
+			                        )s, share_petagram p
+			            where p.shareNo = #{shareNo})h
+			where       h.rn > 0
+			and         h.rn < 8
+			order by    h.rn desc
+		]]>
+	</select>
+
+	<!-- 방명록 글 저장(ajax) -->
+	<insert id="insertSelectKey" parameterType="com.javaex.vo.ShareReplyVo">
+		<selectKey keyProperty="replyNo" resultType="int" order="BEFORE">	
+			select seq_reply_no.nextval from dual
+		</selectKey>
+		<![CDATA[
+			insert into	reply_petagram values (
+					#{shareNo},
+					seq_reply_no.nextval,
+					#{userNo },
+					#{replyId },
+					#{replyContent }
+			)
+		]]>
+	</insert>
+
+	<!-- 자신이 등록한 글 가져오기(ajax) -->
+	<select id="selectByNo" parameterType="int" resultType="com.javaex.vo.ShareReplyVo">
+
+		<![CDATA[
+			select		p.shareNo,
+			            r.replyNo,
+			            r.userNo,
+			            r.replyId,
+			            r.replyContent
+			from		reply_petagram r, share_petagram p
+			where		p.shareNo = #{shareNo}
+		]]>
+	</select>
+	
+	<!-- 댓글갯수 가져오기 -->
+	<select id="replyCount" resultType="int">
+		<![CDATA[
+			select		count(*)
+			from		reply_petagram
+			where		shareNo = #{shareNo}
+		]]>
+	</select>
+
+</mapper>

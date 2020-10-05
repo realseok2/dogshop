@@ -30,7 +30,7 @@
       
       <!-- 컨텐츠 제목 : 지도 -->
       <div class="row mb-4">
-        <div class="col-md-12"><h2>Directions</h2><hr></div>
+        <div class="col-md-12"><h2>Direction</h2><hr></div>
       </div>
       <!-- /. 컨텐츠 제목 : 지도 -->
 
