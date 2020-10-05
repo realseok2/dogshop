@@ -33,15 +33,15 @@
 	<!-- Page Content -->
 	<div class="container">
 	<!-- 컨텐츠 제목 -->
-      <div class="row mb-20" style=margin-top:117px;>
+      <div class="row mb-12" style=margin-top:117px;>
         <div class="col-md-5"><h2>무료나눔</h2></div>
-        <div class="col-md-3"></div>
-        <div class="col-md-3 pl-0 pr-0">
-          	<input class="form-control mr-sm-4" type="text" placeholder="Search" aria-label="Search">
-        </div>
-        <div class="col-md-1 pl-1 pr-3">
-          	<button class="btn btn-primary my-2 my-sm-0 btn-block" type="submit">검 색</button>
-        </div>
+        <div class="col-md-4"></div>
+        <form action="${pageContext.request.contextPath}/nanum" method="get">
+        	<div class="form-group text-right">
+				<input type="text" name="keyword" value="">
+				<button  class="btn btn-primary " type="submit" id=btn_search>검색</button>
+			</div>
+        </form>
       </div>
 	<!-- /. 컨텐츠 제목 -->
 	

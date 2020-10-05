@@ -105,7 +105,7 @@
 								<li>Point</li>
 								<li class="reviewon"><span class="star-input">
 										<span class="input">
-											<input type="radio" name="star-input" value="${spoint}" id="p${spoint*2}" checked><label id="test-spoint" for="p${spoint*2}"></label>
+											<input type="radio" name="star-input" value="${spoint}" id="p${spoint*2}" checked><label id="test-spoint" for="p${spoint}"></label>
 										</span>
 										<output for="star-input">
 											<b id="spoint-t"></b>
@@ -184,7 +184,7 @@
 						$('#listPage_img').attr("src","${pageContext.request.contextPath}/dogshop/"+ map.shopVo.shopLogo);
 						$('input[name=star-input]').attr("id", "p"+map.spoint*2);
 						$('input[name=star-input]').attr("value", "p"+map.spoint);
-						$('input[name=star-input]').attr("for", "p"+map.spoint*2);
+						$('input[name=star-input]').attr("for", "p"+map.spoint);
 						$("#test-spoint").attr("for","p"+map.spoint);
 						$('#spoint-t').html(map.spoint+"점");
 					}

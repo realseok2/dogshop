@@ -4,7 +4,7 @@
 <mapper namespace="nanum">
 
 	<!-- 글  조회하기. -->
-	<select id="selectList" resultType="com.javaex.vo.NanumVo" >
+	<select id="selectList" resultType="com.javaex.vo.NanumVo" parameterType="com.javaex.vo.NanumVo">
 		<![CDATA[
 			select  nanumNo,
 					area,
@@ -17,6 +17,11 @@
 			from 	nanum n,
                     users u
             where   n.userNo = u.userNo
+         ]]>
+		<if test='keyword != null'>
+			and n.title LIKE '%'||#{keyword}||'%'
+		</if>	
+		<![CDATA[
             order by nanumNo desc
 		]]>
 	</select>

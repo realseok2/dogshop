@@ -17,6 +17,10 @@ public class MainService {
 	@Autowired
 	private StoreDao storeDao;
 	
+	public List<ShopVo> getStoreList(){
+		return maindao.getStoreList();
+	}
+	
 	//리스트로 찾기
 	public List<ShopVo> list(){
 		return maindao.list();

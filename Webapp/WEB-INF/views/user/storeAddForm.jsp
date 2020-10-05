@@ -80,7 +80,7 @@
           <div class="row">
             <div id="div-center" class="col-md-5 mb-3">
               <label for="shopTel">매장 번호</label>
-              <input type="number" class="form-control" id="shopTel" placeholder="매장의 번호를 입력해 주세요." required name="shopNumber">
+              <input type="text" class="form-control" id="shopTel" placeholder="매장의 번호를 입력해 주세요." required name="shopNumber">
               <div class="invalid-feedback">매장 번호를 입력해 주세요.</div>
             </div>
           </div>

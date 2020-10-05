@@ -15,8 +15,8 @@ public class NanumDao {
 	SqlSession sqlSession;
 	
 	//글 조회
-	public List<NanumVo> NanumSelectList() {
-		return sqlSession.selectList("nanum.selectList");
+	public List<NanumVo> NanumSelectList(NanumVo nanumVo) {
+		return sqlSession.selectList("nanum.selectList",nanumVo);
 	}
 	
 	//글 등록
