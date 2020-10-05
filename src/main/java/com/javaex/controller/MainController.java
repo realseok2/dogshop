@@ -25,7 +25,9 @@ public class MainController {
 	
 	//메인페이지
 	@RequestMapping("/main")
-	public String main() {
+	public String main(Model model) {
+		List<ShopVo> shopList = mainservice.getStoreList();
+		model.addAttribute("shopList", shopList);
 		return "main/main";
 	}
 	
@@ -48,6 +50,7 @@ public class MainController {
 		map.put("shopVo", shopVo);
 		double spoint = reviewservice.getspoint(shopVo.getShopNo());
 		map.put("spoint", spoint);
+		System.out.println(spoint);
 		
 		
 		return map;

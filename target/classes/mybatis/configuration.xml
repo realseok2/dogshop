@@ -19,6 +19,7 @@
 		<mapper resource="mybatis/mappers/share.xml" />
 		<mapper resource="mybatis/mappers/nanum.xml" />
 		<mapper resource="mybatis/mappers/comment.xml" />
+		<mapper resource="mybatis/mappers/main.xml" />
 
 	</mappers>
 </configuration>

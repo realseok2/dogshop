@@ -14,6 +14,10 @@ public class MainDao {
 	@Autowired
 	private SqlSession sqlsession;
 	
+	public List<ShopVo> getStoreList(){
+		return sqlsession.selectList("main.getStoreList");
+	}
+	
 	//리스트로 찾기
 	public List<ShopVo> list(){
 		return sqlsession.selectList("store.list");
