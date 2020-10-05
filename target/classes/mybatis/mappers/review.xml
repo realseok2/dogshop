@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="review">
+	<insert id="writeview" parameterType="com.javaex.vo.ReviewVo" >
+		<![CDATA[
+			INSERT INTO review VALUES (
+				seq_reviewno_no.NEXTVAL,
+				#{shopno},
+				#{userno},
+				#{regno},
+				#{spoint},
+				#{sdesc},
+				sysdate
+			)
+		]]>
+	</insert>
+
+	<select id="test" parameterType="com.javaex.vo.ReservationVo"
+	resultType="com.javaex.vo.ReservationVo">
+		select  shopno,
+			    regno
+		from    reservation
+		where   userno = #{userno}
+		and		regno	= #{regno}
+	</select>
+	
+	<select id="getspoint" parameterType="int"
+	resultType="double">
+			select  avg(spoint)
+			from    review
+			where   shopno=#{shopno,jdbcType = VARCHAR}
+	</select>
+	
+	<select id="scount" parameterType="int"
+	resultType="Integer">
+			select  count(reviewno)
+			from    review
+			where   shopno=#{shopno,jdbcType = VARCHAR}
+	</select>
+	
+	<select id="getreviewList" parameterType="int"
+	resultType="com.javaex.vo.ReviewVo">
+			select   u.id id,
+					 r.spoint spoint,
+					 r.sdesc sdesc,
+					 to_char(r.regdate,'YYYY-MM-DD') regdate
+			from    users u, review r
+			where   shopno = #{shopno}
+			and		u.userno = r.userno
+	</select>
+
+</mapper>
