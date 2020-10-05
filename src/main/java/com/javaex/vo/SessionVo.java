@@ -4,16 +4,17 @@ public class SessionVo {
 
 	//필드
 	int userNo,shopNo;
-	String userName,shopDomain;
+	String userName,userId,shopDomain;
 
 	//생성자
 	public SessionVo() {
 	}
 	
-	public SessionVo(int userNo, int shopNo, String userName, String shopDomain) {
+	public SessionVo(int userNo, int shopNo, String userName, String userId, String shopDomain) {
 		this.userNo = userNo;
 		this.shopNo = shopNo;
 		this.userName = userName;
+		this.userId = userId;
 		this.shopDomain = shopDomain;
 	}
 
@@ -37,6 +38,12 @@ public class SessionVo {
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
+	public String getUserId() {
+		return userId;
+	}
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
 	public String getShopDomain() {
 		return shopDomain;
 	}
@@ -47,7 +54,7 @@ public class SessionVo {
 	//일반메소드
 	@Override
 	public String toString() {
-		return "SessionVo [userNo=" + userNo + ", shopNo=" + shopNo + ", userName=" + userName + ", shopDomain="
+		return "SessionVo [userNo=" + userNo + ", shopNo=" + shopNo + ", userName=" + userName +  ", userId=" + userId + ", shopDomain="
 				+ shopDomain + "]";
 	}
 

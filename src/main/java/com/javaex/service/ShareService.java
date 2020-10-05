@@ -33,7 +33,11 @@ public class ShareService {
 	public List<ShareVo> getCList() {
 		return shareDao.getCList();
 	}
-
+	
+	//유저넘버 별 게시물
+	public List<ShareVo> getUsList(int userNo) {
+		return shareDao.getUsList(userNo);
+	}
 	
 	//자랑하기 추가부분에서 반려견 정보 받아오기 리스트
 	public List<DogVo> getdList(int userNo){
@@ -168,6 +172,23 @@ public class ShareService {
 	public String getid(int userNo) {
 		return shareDao.getid(userNo);
 	}
+	
+	//게시물 삭제
+	public int shareDelete(int shareNo) {
+		return shareDao.shareDelete(shareNo);
+	}
+	
+	//게시물 읽기
+	public List<ShareVo> read(int shareNo) {		
+		return shareDao.getPost(shareNo);
+	}
+	
+	
+	
+	
+	
+	
+
 	
 	
 }

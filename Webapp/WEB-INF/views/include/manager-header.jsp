@@ -27,8 +27,8 @@
 	      <div class="collapse navbar-collapse" id="navbarResponsive">
 	        <!-- 메인 네비 -->
 	        <ul class="navbar-nav">
-	          <li class="nav-item active"><a class="nav-link" href="${pageContext.request.contextPath}/store/${sMap.shopVo.shopDomain}/main">Home</a></li>
-	          <li class="nav-item active"><a class="nav-link" href="${pageContext.request.contextPath}/store/${sMap.shopVo.shopDomain}/reservationForm">Reservation</a></li>
+	          <li class="nav-item active"><a class="nav-link" href="${pageContext.request.contextPath}/store/${sMap.shopVo.shopDomain}/main">홈</a></li>
+	          <li class="nav-item active"><a class="nav-link" href="${pageContext.request.contextPath}/store/${sMap.shopVo.shopDomain}/reservationForm">예약하기</a></li>
 	          <c:forEach var="i" begin="0" end="${fn:length(sMap.mList)}" >
 	          	<c:if test="${sMap.mList[i].display eq 1 }">
 	          	 	<li class="nav-item">
@@ -43,10 +43,10 @@
 				<c:when test="${empty session }">
 			        <ul class="navbar-nav ml-auto">
 			          <li class="nav-item">
-			            <a class="nav-link active" href="${pageContext.request.contextPath}/user/loginForm">Join</a>
+			            <a class="nav-link active" href="${pageContext.request.contextPath}/user/loginForm">로그인</a>
 			          </li>
 			          <li class="nav-item">
-			            <a class="nav-link active" href="${pageContext.request.contextPath}/user/joinForm">Join_Us</a>
+			            <a class="nav-link active" href="${pageContext.request.contextPath}/user/joinForm">회원가입</a>
 			          </li>
 			        </ul>
 	        	</c:when>
@@ -54,10 +54,10 @@
 			        <ul class="navbar-nav ml-auto">
 			          <li class="nav-item  active" ><a class="nav-link"	>${session.userName }님</a></li>
 			          <c:if test="${sMap.shopVo.shopNo eq session.shopNo }">
-			          	<li class="nav-item active"><a class="nav-link" href="${pageContext.request.contextPath}/store/${session.shopDomain}/store-reservation">Store_Management</a></li>
+			          	<li class="nav-item active"><a class="nav-link" href="${pageContext.request.contextPath}/store/${session.shopDomain}/store-reservation">매장 관리</a></li>
 			          </c:if>
-			          <li class="nav-item active"><a class="nav-link" href="#">Profile</a></li>
-			          <li class="nav-item active"><a class="nav-link" href="${pageContext.request.contextPath}/user/logout">Leave</a></li>
+			          <li class="nav-item active"><a class="nav-link" href="#">회원정보</a></li>
+			          <li class="nav-item active"><a class="nav-link" href="${pageContext.request.contextPath}/user/logout">로그아웃</a></li>
 			        </ul>
 				</c:otherwise>
 			</c:choose>

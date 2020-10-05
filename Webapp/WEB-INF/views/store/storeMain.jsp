@@ -73,7 +73,7 @@
     		
 		<c:if test="${sMap.mList[1].display eq 1}">
 			<div>
-				<h3>Pet Gallery</h3>	
+				<h3>사진첩</h3>	
 				<h6>
 					<a href ="${pageContext.request.contextPath}/store/${sMap.shopVo.shopDomain}/${sMap.cateList[1] }Form?menuNo=${sMap.mList[1].menuNo}">More ></a>
 				</h6>	
@@ -105,7 +105,7 @@
  			
 		<c:if test="${sMap.mList[3].display eq 1}">
 	 		<div>
-				<h3>Pet Supplies</h3>	
+				<h3>반려동물 용품</h3>	
 				<h6>
 					<a href ="${pageContext.request.contextPath}/store/${sMap.shopVo.shopDomain}/${sMap.cateList[3] }Form?menuNo=${sMap.mList[3].menuNo}">More ></a>
 				</h6>	
@@ -137,7 +137,7 @@
 	     
 	     <c:if test="${sMap.mList[4].display eq 1}">
 	        <div>
-				<h3>Directions</h3>
+				<h3>오시는 길</h3>
 				<h6>
 					<a href ="${pageContext.request.contextPath}/store/${sMap.shopVo.shopDomain}/${sMap.cateList[4] }Form?menuNo=${sMap.mList[4].menuNo}">More ></a>
 				</h6>

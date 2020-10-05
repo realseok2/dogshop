@@ -52,14 +52,13 @@
 			                                    dogAge,
 			                                    dogEtc
 			                        from        share_petagram
-			                        order by hit desc)i
+			                        order by hit desc, regDate desc)i
 			                        )r
 			        where   r.rn > 0
 			        and     r.rn < 7
 		]]>
 	</select>
-	
-	
+		
 	<!-- 자랑하기 메인 최근 업로드 6개 리스트 -->
 	<select id="getSList" parameterType="String" resultType="com.javaex.vo.ShareVo" >
 		<![CDATA[
@@ -114,6 +113,35 @@
 			            and         r.rn < 7
 		]]>
 	</select>
+	
+	<!-- 유저넘버 별 리스트 -->
+	<select id="getUsList" parameterType="int" resultType="com.javaex.vo.ShareVo" >
+		<![CDATA[
+			select      shareNo,
+			            userNo,
+			            id,
+			            content,
+			            regDate,
+			            hit,
+			            shareImg,
+			            liked,
+			            dogNo,
+			            dogName,
+			            dogType,
+			            dogWeight,
+			            dogAge,
+			            dogEtc
+			from        share_petagram
+			where       userNo = #{userNo}
+			order by    regDate desc           
+		]]>
+	</select>
+	
+	
+	
+	
+	
+	
 	
 	<!-- 자랑하기 메인 전체 리스트 -->
 	<select id="getHList" parameterType="Map" resultType="com.javaex.vo.ShareVo" >
@@ -200,24 +228,40 @@
 				)
 		]]>
 	</insert>
+	
+	
 
 	<!--=======================================================================================-->
+	<!-- 자랑하기 삭제 -->
+	<delete id="delete" parameterType="int" >
+		<![CDATA[
+			delete	share_petagram
+			where	shareNo = #{shareNo}
+		]]>
+	</delete>
 	
-	
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	<!--=======================================================================================-->	
+	<!-- 자랑하기 읽기 -->
+	<select id="getPost" parameterType="int" resultType="com.javaex.vo.ShareVo">
+		<![CDATA[
+			select	shareNo,
+					userNo,
+					id,
+					content,
+					to_char(regDate, 'YYYY"년" MM"월" DD"일" HH24"시" MI"분"') regDate,
+					hit,
+					shareImg,
+					liked,
+					dogNo,
+					dogName,
+					dogType,
+					dogWeight,
+					dogAge,
+					dogEtc
+			from	share_petagram
+			where	shareNo	=	#{shareNo}
+		]]>
+	</select>
 
 
 

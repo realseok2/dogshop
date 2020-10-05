@@ -27,6 +27,11 @@ public class ShareDao {
 		return sqlSession.selectList("share.getCList");		
 	}
 	
+	//유저넘버 별 리스트
+	public List<ShareVo> getUsList(int userNo) {
+		return sqlSession.selectList("share.getUsList", userNo);
+	}
+	
 	//페이징 리스트 전체 출력
 	
 	public List<ShareVo> getHList(int startRnum, int endRnum) {
@@ -51,11 +56,24 @@ public class ShareDao {
 		return sqlSession.insert("share.insert", shareVo);
 	}
 	
+	//아이디 가져오기
 	public String getid(int userNo) {
 		return sqlSession.selectOne("user.getid",userNo);
 	}
+	
+	//userNo 별 강아지 정보 가져오기
 	public List<DogVo> getList(int userNo){
 		return sqlSession.selectList("dog.getList",userNo);
+	}
+	
+	//자랑하기 삭제
+	public int shareDelete(int shareNo) {
+		return sqlSession.delete("share.delete", shareNo);
+	}
+	
+	//게시물 읽기
+	public List<ShareVo> getPost(int shareNo) {
+		return  sqlSession.selectList("share.getPost", shareNo);
 	}
 	
 	

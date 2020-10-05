@@ -12,7 +12,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>매장 애견용품</title>
+  <title>매장 반려동물 용품</title>
 
   <!-- Bootstrap core CSS -->
   <link href="${pageContext.request.contextPath}/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">

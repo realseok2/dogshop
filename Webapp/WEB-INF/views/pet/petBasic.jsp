@@ -53,10 +53,10 @@
             <a class="nav-link" href="${pageContext.request.contextPath}/listsearch">매장찾기</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">자랑하기</a>
+            <a class="nav-link" href="#">반려동물 자랑하기</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">커뮤니티</a>
+            <a class="nav-link" href="#">중고마켓</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">고객센터</a>
@@ -77,7 +77,7 @@
         	<c:otherwise>
  				<ul class="navbar-nav ml-auto">
 	 				<li class="nav-item">
-	        			<a class="nav-link active">${session.userName }님</a>
+	        			<a class="nav-link active">안녕하세요, ${session.userName }님</a>
 	        		</li>
 					<c:if test="${session.shopNo ne null}">
 						<c:if test="${session.shopNo != 0}">
@@ -87,7 +87,7 @@
 	         			</c:if>
 					</c:if>
 		          	<li class="nav-item">
-		            	<a class="nav-link" href="${pageContext.request.contextPath}/pet/petBasic">마이펫</a>
+		            	<a class="nav-link" href="${pageContext.request.contextPath}/pet/petBasic">나의 반려동물</a>
 		          	</li>
 		          	<li class="nav-item">
 		            	<a class="nav-link" href="${pageContext.request.contextPath}/user/storeAddForm">회원정보</a>
@@ -109,10 +109,10 @@
 	<!-- ================================여기 부분부터 내용이 달라집니다.================================ -->
 	<div class="container">
 		<div id="content-head" class="py-5 text-left">
-			<h2>마이펫</h2>
+			<h2>나의 반려동물</h2>
 			<div id="location">
 				<ul class="list-inline">
-					<li>마이펫 관리</li>
+					<li>반려동물 관리</li>
 					<li class="last">예약내역</li>
 				</ul>
 			</div>
@@ -124,18 +124,17 @@
 				<h4 class="d-flex justify-content-between align-items-center mb-3">
 				</h4>
 				<ul class="list-group mb-3">
-					<li
-						class="list-group-item d-flex justify-content-between lh-condensed">
+					<li class="list-group-item d-flex justify-content-between lh-condensed">
 						<div>
-							<h6 class="my-0">
-								<a href="#">마이펫 관리</a>
+							<h6 class="my-1">
+								<a href="#">관리</a>
 							</h6>
 						</div>
 					</li>
 					<li
 						class="list-group-item d-flex justify-content-between lh-condensed">
 						<div>
-							<h6 class="my-0">
+							<h6 class="my-1">
 								<a href="#">자랑하기</a>
 							</h6>
 						</div>
