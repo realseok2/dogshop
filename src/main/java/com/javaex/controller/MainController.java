@@ -31,7 +31,6 @@ public class MainController {
 		
 		List<ShopVo> shopList2 = mainservice.getStoreList2();
 		model.addAttribute("shopList2", shopList2);
-		System.out.println(shopList2);
 		return "main/main";
 	}
 	
