@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -45,13 +44,20 @@ public class ShareReplyController {
 	
 //------------------------------------------------------------------------------------- 댓글 추가
 	
+	//댓글 작성
 	@ResponseBody
-	@RequestMapping("/write")
-	public ShareReplyVo write(@RequestBody ShareReplyVo shareReplyVo) {
+	@RequestMapping("/write/{shareNo}")
+	public List<ShareReplyVo> write(ShareReplyVo shareReplyVo, @PathVariable("shareNo") int shareNo) {
 		System.out.println("shareReplyController전-----@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
 		System.out.println(shareReplyVo.toString());
 		
-		ShareReplyVo reply = shareReplyService.addReply(shareReplyVo);
+		List<ShareReplyVo> reply = shareReplyService.addReply(shareReplyVo, shareNo);
+		
+		
+//		int count = 0;
+//		count++;		
+//		replyNo = count;		
+//		insert (shareReplyVo);
 		
 		return reply;
 	}
