@@ -33,38 +33,7 @@
 <!-- head -->
 <c:import url="/WEB-INF/views/include/main-header.jsp"></c:import>  
 <!-- /head -->
-
-  <!-- Page Content # 1 -->
-  <div class="container">
-    <!-- Jumbotron Header -->
-    <header class="jumbotron my-4">
-      <h2 class="display-5">신규 사이트</h2>
-    </header>
-
-    <!-- Page Features -->
-    <div class="row text-center">
-    	<c:forEach var="i" begin="0" end="3">
-    		<div class="col-lg-3 col-md-6 mb-4">
-	        <div class="card h-100">
-	          <img class="card-img-top" src="${pageContext.request.contextPath}/dogshop/${shopList[i].shopLogo}" alt="">
-	          <div class="card-body">
-	            <h4 class="card-title" style=color:#20366b;>${shopList[i].shopTitle }</h4>
-	            <p class="card-text" style=height:100px;>${shopList[i].shopDesc }</p>
-	          </div>
-	          <div class="card-footer">
-	            <a href="${pageContext.request.contextPath}/store/${shopList[i].shopDomain }/main" class="btn btn-primary">매장으로 이동!</a>
-	          </div>
-	        </div>
-	      	</div>
-    	</c:forEach>
-
-    </div>
-    <!-- /.row -->
-    
-  </div>
-  <!-- /. Page Content # 1 -->
-
-  <!-- Page Content # 2 -->
+<!-- Page Content # 2 -->
   <div class="container">
     <!-- Jumbotron Header -->
     <header class="jumbotron my-4">
@@ -103,6 +72,37 @@
 
   </div>
   <!-- /.Page Content # 2 -->
+  
+  
+  <!-- Page Content # 1 -->
+  <div class="container">
+    <!-- Jumbotron Header -->
+    <header class="jumbotron my-4">
+      <h2 class="display-5">신규 사이트</h2>
+    </header>
+
+    <!-- Page Features -->
+    <div class="row text-center">
+    	<c:forEach var="i" begin="0" end="3">
+    		<div class="col-lg-3 col-md-6 mb-4">
+	        <div class="card h-100">
+	          <img class="card-img-top" src="${pageContext.request.contextPath}/dogshop/${shopList[i].shopLogo}" alt="">
+	          <div class="card-body">
+	            <h4 class="card-title" style=color:#20366b;>${shopList[i].shopTitle }</h4>
+	            <p class="card-text" style=height:100px;>${shopList[i].shopDesc }</p>
+	          </div>
+	          <div class="card-footer">
+	            <a href="${pageContext.request.contextPath}/store/${shopList[i].shopDomain }/main" class="btn btn-primary">매장으로 이동!</a>
+	          </div>
+	        </div>
+	      	</div>
+    	</c:forEach>
+
+    </div>
+    <!-- /.row -->
+    
+  </div>
+  <!-- /. Page Content # 1 -->
 
   
  <!-- /.Footer -->
