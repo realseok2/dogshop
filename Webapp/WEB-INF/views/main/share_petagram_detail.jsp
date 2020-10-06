@@ -17,9 +17,12 @@
 	<link href="${pageContext.request.contextPath }/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	
 	<!-- Custom styles for this template -->
-	<link href="${pageContext.request.contextPath }/assets/css/common.css" rel="stylesheet">
-	
+	<link href="${pageContext.request.contextPath }/assets/css/common.css" rel="stylesheet">	
 	<link href="${pageContext.request.contextPath}/assets/bootstrap/jquery/jquery.modal.css" rel="stylesheet">
+	
+	<!-- Bootstrap core JavaScript -->
+	<script src="${pageContext.request.contextPath }/assets/bootstrap/jquery/jquery.min.js"></script>
+	<script src="${pageContext.request.contextPath }/assets/bootstrap/js/bootstrap.bundle.min.js"></script>
 	
 </head>
 
@@ -168,14 +171,14 @@ ass="mt-4 mb-4">
 	    		
     		<c:otherwise>
 	    		<c:forEach items="${usList }" var="result">
-		          <div class="col-md-4">
+		          <div class="col-md-4" onclick = "location.href = '${pageContext.request.contextPath }/shareDetail/${result.shareNo }/${result.userNo }' ">
 		            <figure class="snip1273 pointer-cursor">
-		             <img src="${pageContext.request.contextPath }/dogshop/${result.shareImg}">
+		             <img src="${pageContext.request.contextPath }/dogshop/${result.shareImg}" >
 		              <figcaption>
-		                <div class="detail-main-img mt-5">
+		                <div class="detail-main-img mt-5" >
 		                  <div>                
 		                    -Name
-		                    <div style="width: 70%; float: right;">${result.dogName }</div>           
+		                    <div style="width: 70%; float: right;" >${result.dogName }</div>           
 		                  </div>
 		    
 		                  <div>
@@ -246,10 +249,6 @@ ass="mt-4 mb-4">
 	 <!-- /.Footer -->
 	<c:import url="/WEB-INF/views/include/main-footer.jsp"></c:import>  
 	 <!-- /.Footer -->
-
-	<!-- Bootstrap core JavaScript -->
-	<script src="${pageContext.request.contextPath }/assets/bootstrap/jquery/jquery.min.js"></script>
-	<script src="${pageContext.request.contextPath }/assets/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 
 
@@ -321,7 +320,7 @@ ass="mt-4 mb-4">
 	//전체리스트 불러오기
 	function fetchList() {
 		$.ajax({
-			url : "${pageContext.request.contextPath }/detailList{shareNo}", //위치 확인하세요	
+			url : "${pageContext.request.contextPath }/detailList/{shareNo}", //위치 확인하세요	
 			type : "Post", //항상post방식을 사용하세요.
 			//contentType : "application/json",
 			//data : {name: ”홍길동"},

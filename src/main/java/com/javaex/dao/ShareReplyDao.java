@@ -31,7 +31,7 @@ public class ShareReplyDao {
 	}
 //------------------------------------------------------------------------------------- 댓글 추가
 
-	public void insertSelectKey(ShareReplyVo shareReplyVo, int shareNo) {
+	public void insertSelectKey(ShareReplyVo shareReplyVo) {
 		System.out.println("shareReplyDao:insertSelectKey@@@@@@@@@@@");
 		
 		System.out.println("전~~~~~~~~~~~"+shareReplyVo.toString());			//no값 없음
@@ -40,8 +40,8 @@ public class ShareReplyDao {
 	}
 	
 	//댓글 가져오기
-	public List<ShareReplyVo> selectByNo(int replyNo) {
-		return sqlSession.selectList("shareReply.selectByNo", replyNo);
+	public ShareReplyVo selectByNo(int replyNo) {
+		return sqlSession.selectOne("shareReply.selectByNo");
 	}
 	
 	

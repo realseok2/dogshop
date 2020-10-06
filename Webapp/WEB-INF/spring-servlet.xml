@@ -64,4 +64,10 @@
 		</mvc:message-converters>
 	</mvc:annotation-driven>
 	
+	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache">
+
+		<constructor-arg ref="sqlSessionFactory" />
+
+	</bean>
+	
 </beans>

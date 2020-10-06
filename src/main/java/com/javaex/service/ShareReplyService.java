@@ -32,11 +32,11 @@ public class ShareReplyService {
 
 //------------------------------------------------------------------------------------- 댓글 추가
 	
-	public List<ShareReplyVo> addReply(ShareReplyVo shareReplyVo, int shareNo) {
+	public ShareReplyVo addReply(ShareReplyVo shareReplyVo) {
 		System.out.println("addReplyService@@@@@@@@@@@");
 		
 		//저장
-		shareReplyDao.insertSelectKey(shareReplyVo, shareNo);
+		shareReplyDao.insertSelectKey(shareReplyVo);
 		
 		int replyNo = shareReplyVo.getReplyNo();
 		System.out.println("selectKey로 받은 replyNo값 [ " + replyNo + " ]");

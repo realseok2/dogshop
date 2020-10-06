@@ -43,9 +43,9 @@
 		]]>
 	</select>
 
-	<!-- 방명록 글 저장(ajax) -->
+	<!-- 댓글 작성(ajax) -->
 	<insert id="insertSelectKey" parameterType="com.javaex.vo.ShareReplyVo">
-		<selectKey keyProperty="replyNo" resultType="int" order="BEFORE">	
+		<selectKey keyProperty="replyNo" resultType="integer" order="BEFORE">	
 			select seq_reply_no.nextval from dual
 		</selectKey>
 		<![CDATA[
@@ -72,7 +72,7 @@
 	</select>
 	
 	<!-- 댓글갯수 가져오기 -->
-	<select id="replyCount" resultType="int">
+	<select id="replyCount" resultType="integer">
 		<![CDATA[
 			select		count(*)
 			from		reply_petagram
