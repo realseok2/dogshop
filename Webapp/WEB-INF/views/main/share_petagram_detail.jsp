@@ -341,7 +341,7 @@ ass="mt-4 mb-4">
 			}
 		});
 	};
-
+ 
 	//리스트 그리기(1개씩)
 	function render(shareReplyVo, direction) {
 		var str = "";
