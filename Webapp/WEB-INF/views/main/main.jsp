@@ -43,16 +43,16 @@
 
     <!-- Page Features -->
     <div class="row text-center">
-    	<c:forEach var="shopList" items="${shopList }">
+    	<c:forEach var="i" begin="0" end="3">
     		<div class="col-lg-3 col-md-6 mb-4">
 	        <div class="card h-100">
-	          <img class="card-img-top" src="${pageContext.request.contextPath}/dogshop/${shopList.shopLogo}" alt="">
+	          <img class="card-img-top" src="${pageContext.request.contextPath}/dogshop/${shopList[i].shopLogo}" alt="">
 	          <div class="card-body">
-	            <h4 class="card-title" style=color:#20366b;>${shopList.shopTitle }</h4>
-	            <p class="card-text" style=height:100px;>${shopList.shopDesc }</p>
+	            <h4 class="card-title" style=color:#20366b;>${shopList[i].shopTitle }</h4>
+	            <p class="card-text" style=height:100px;>${shopList[i].shopDesc }</p>
 	          </div>
 	          <div class="card-footer">
-	            <a href="${pageContext.request.contextPath}/store/${shopList.shopDomain }/main" class="btn btn-primary">매장으로 이동!</a>
+	            <a href="${pageContext.request.contextPath}/store/${shopList[i].shopDomain }/main" class="btn btn-primary">매장으로 이동!</a>
 	          </div>
 	        </div>
 	      	</div>
@@ -73,57 +73,31 @@
 
     <!-- Page Features -->
     <div class="row text-center">
-      <div class="col-lg-3 col-md-6 mb-4">
-        <div class="card h-100">
-          <img class="card-img-top" src="http://placehold.it/500x325" alt="">
-          <div class="card-body">
-            <h4 class="card-title">Card title</h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
-          </div>
-          <div class="card-footer">
-            <a href="#" class="btn btn-primary">Find Out More!</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-3 col-md-6 mb-4">
-        <div class="card h-100">
-          <img class="card-img-top" src="http://placehold.it/500x325" alt="">
-          <div class="card-body">
-            <h4 class="card-title">Card title</h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo magni sapiente, tempore debitis beatae culpa natus architecto.</p>
-          </div>
-          <div class="card-footer">
-            <a href="#" class="btn btn-primary">Find Out More!</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-3 col-md-6 mb-4">
-        <div class="card h-100">
-          <img class="card-img-top" src="http://placehold.it/500x325" alt="">
-          <div class="card-body">
-            <h4 class="card-title">Card title</h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
-          </div>
-          <div class="card-footer">
-            <a href="#" class="btn btn-primary">Find Out More!</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-3 col-md-6 mb-4">
-        <div class="card h-100">
-          <img class="card-img-top" src="http://placehold.it/500x325" alt="">
-          <div class="card-body">
-            <h4 class="card-title">Card title</h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo magni sapiente, tempore debitis beatae culpa natus architecto.</p>
-          </div>
-          <div class="card-footer">
-            <a href="#" class="btn btn-primary">Find Out More!</a>
-          </div>
-        </div>
-      </div>
+      <c:forEach var="i" begin="0" end="3">
+    		<div class="col-lg-3 col-md-6 mb-4">
+	        <div class="card h-100">
+	          <img class="card-img-top" src="${pageContext.request.contextPath}/dogshop/${shopList2[i].shopLogo}" alt="">
+	          <div class="card-body">
+	            <h4 class="card-title" style=color:#20366b;>${shopList2[i].shopTitle }</h4>
+	            <ul class="list-unstyled">
+					<li class="reviewon"><span class="star-input">
+							<span class="input">
+								<input type="checkbox" name="star-input" value="${shopList2[i].spoint}" id="p${shopList2[i].spoint*2}" checked><label id="test-spoint" for="p${shopList2[i].spoint}"></label>
+							</span>
+							<output for="star-input">
+								<b id="spoint-t">${shopList2[i].spoint }점</b>
+							</output>
+						</span>
+					
+				</ul>
+	            <p class="card-text" style=height:100px;>${shopList2[i].shopDesc }</p>
+	          </div>
+	          <div class="card-footer">
+	            <a href="${pageContext.request.contextPath}/store/${shopList2[i].shopDomain }/main" class="btn btn-primary">매장으로 이동!</a>
+	          </div>
+	        </div>
+	      	</div>
+    	</c:forEach>
     </div>
     <!-- /.row -->
 

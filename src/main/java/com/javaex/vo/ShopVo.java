@@ -6,6 +6,7 @@ public class ShopVo {
 	private int shopNo , userNo;
 	private String shopDomain,shopNumber,shopAddress,shopTitle;
 	private String shopAuth,shopHeader,shopEmail,shopLogo,shopDesc;
+	private double spoint;
 
 	//생성자
 	public ShopVo() {
@@ -115,13 +116,20 @@ public class ShopVo {
 		this.shopDesc = shopDesc;
 	}
 
-	//일반메소드
+	public double getSpoint() {
+		return spoint;
+	}
+
+	public void setSpoint(double spoint) {
+		this.spoint = spoint;
+	}
+
 	@Override
 	public String toString() {
 		return "ShopVo [shopNo=" + shopNo + ", userNo=" + userNo + ", shopDomain=" + shopDomain + ", shopNumber="
 				+ shopNumber + ", shopAddress=" + shopAddress + ", shopTitle=" + shopTitle + ", shopAuth=" + shopAuth
 				+ ", shopHeader=" + shopHeader + ", shopEmail=" + shopEmail + ", shopLogo=" + shopLogo + ", shopDesc="
-				+ shopDesc + "]";
+				+ shopDesc + ", spoint=" + spoint + "]";
 	}
 	
 	
