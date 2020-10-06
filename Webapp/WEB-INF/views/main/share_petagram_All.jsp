@@ -82,7 +82,7 @@
 	            <div class="share-petagram-img mb-4 mt-4">
 	              <!-- share_petagram hearder -->
 	              <div class="share-basic share-font-weight">
-	                <button type="button" onclick = "location.href = '${pageContext.request.contextPath }/shareDetail/${result.shareNo }' " style="border: 0; outline: 0; background-color:#f8f9fa"><strong># [${result.id }]</strong></button>
+	                <button type="button" onclick = "location.href = '${pageContext.request.contextPath }/shareDetail/${result.shareNo }/${result.userNo }' " style="border: 0; outline: 0; background-color:#f8f9fa"><strong># [${result.id }]</strong></button>
 	                
 	                <c:if test="${session ne null }">
 	                	<c:if test="${session.userNo eq result.userNo }">
@@ -97,7 +97,7 @@
 	              <!-- //share_petagram hearder -->
 		
 	              <!-- share_petagram body-img -->
-	              <div class="share-body-img"><img src="${pageContext.request.contextPath }/dogshop/${result.shareImg}" class="hover-cursor" onclick = "location.href = '${pageContext.request.contextPath }/shareDetail/${result.shareNo }' "></div>
+	              <div class="share-body-img"><img src="${pageContext.request.contextPath }/dogshop/${result.shareImg}" class="hover-cursor" onclick = "location.href = '${pageContext.request.contextPath }/shareDetail/${result.shareNo }/${result.userNo }' "></div>
 	              <!-- //share_petagram body-img -->
 	
 	              <!-- share_petagram body-content -->
@@ -119,13 +119,13 @@
 	                  
 	                  
 	                  
-	                  <button type="button" class="main-icon"><img src="${pageContext.request.contextPath }/assets/image/reply-icon.png" onclick = "location.href = '${pageContext.request.contextPath }/shareDetail/${result.shareNo }' "></button>
+	                  <button type="button" class="main-icon"><img src="${pageContext.request.contextPath }/assets/image/reply-icon.png" onclick = "location.href = '${pageContext.request.contextPath }/shareDetail/${result.shareNo }/${result.userNo }' "></button>
 	                  <button type="button" class="main-icon"><img src="${pageContext.request.contextPath }/assets/image/direct-icon.png"></button>
 	                  <button type="button" class="etc-basic main-icon save-icon"><img src="${pageContext.request.contextPath }/assets/image/save-icon.png"></button>
 	                </div>
 	                <div class="share-basic"><strong>[publishing]님</strong>과 <strong>${result.hit }명</strong>이 좋아합니다.</div>
 	                <div class="share-basic share-font-weight"><strong>[${result.id }]</strong>: ${result.content }</div>
-	                <div><button type="button" class="replyArea" onclick = "location.href = '${pageContext.request.contextPath }/shareDetail/${result.shareNo }' ">[댓글 8개 모두 보기]</button></div>
+	                <div><button type="button" class="replyArea" onclick = "location.href = '${pageContext.request.contextPath }/shareDetail/${result.shareNo }/${result.userNo }' ">[댓글 8개 모두 보기]</button></div>
 	                <div class="share-basic share-font-weight"><strong>- [web]</strong>: 웹</div>
 	                <div class="share-basic share-font-weight"><strong>- [responsive]</strong>: 반응형</div>
 	                <div class="share-basic share-font-weight"><strong>- [responsive]</strong>: 세번째줄</div>
@@ -205,10 +205,8 @@
 	<!-- /.Footer -->
 
 	<!-- Bootstrap core JavaScript -->
-	<script
-		src="${pageContext.request.contextPath }/assets/bootstrap/jquery/jquery.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath }/assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="${pageContext.request.contextPath }/assets/bootstrap/jquery/jquery.min.js"></script>
+	<script src="${pageContext.request.contextPath }/assets/bootstrap/js/bootstrap.bundle.min.js"></script>
 		
 		
 		

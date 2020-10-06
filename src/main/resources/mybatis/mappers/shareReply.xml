@@ -5,13 +5,12 @@
 
 	<!--=======================================================================================-->
 
-	<!-- 방명록 리스트 -->
-	<select id="getList" parameterType="int" resultType="com.javaex.vo.ShareReplyVo">
+	<!-- 댓글 리스트 -->
+	<select id="getList" parameterType="integer" resultType="com.javaex.vo.ShareReplyVo">
 		<![CDATA[
 			select      h.rn,
 			            h.replyNo,
 			            h.userNo,
-			            h.replyId,
 			            h.replyContent,
 			            h.shareNo,
 			            h.id,
@@ -21,7 +20,6 @@
 			from        (select     s.rn,
 			                        s.replyNo,
 			                        s.userNo,
-			                        s.replyId,
 			                        s.replyContent,
 			                        p.shareNo,
 			                        p.id,
@@ -31,11 +29,9 @@
 			            from        (select     rownum rn,
 			                                    r.replyNo,
 			                                    r.userNo,
-			                                    r.replyId,
 			                                    r.replyContent
 			                        from        (select		replyNo,
 			                                                userNo,
-			                                                replyId,
 			                                                replyContent
 			                                    from		reply_petagram
 			                                    order by	replyNo		asc)r
@@ -55,22 +51,20 @@
 		<![CDATA[
 			insert into	reply_petagram values (
 					#{shareNo},
-					seq_reply_no.nextval,
+					#{replyNo},
 					#{userNo },
-					#{replyId },
 					#{replyContent }
 			)
 		]]>
 	</insert>
 
-	<!-- 자신이 등록한 글 가져오기(ajax) -->
-	<select id="selectByNo" parameterType="int" resultType="com.javaex.vo.ShareReplyVo">
+	<!-- 게시물 별 디테일 페이지(ajax) -->
+	<select id="selectByNo" parameterType="integer" resultType="com.javaex.vo.ShareReplyVo">
 
 		<![CDATA[
 			select		p.shareNo,
 			            r.replyNo,
 			            r.userNo,
-			            r.replyId,
 			            r.replyContent
 			from		reply_petagram r, share_petagram p
 			where		p.shareNo = #{shareNo}

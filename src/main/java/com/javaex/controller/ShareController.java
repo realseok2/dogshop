@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.javaex.service.ShareService;
@@ -32,12 +33,10 @@ public class ShareController {
 
 		//업로드 순서 6개
 		List<ShareVo> sList = shareService.getSList();
-		System.out.println("sList" + sList);
 		model.addAttribute("sList", sList);
 		
 		//좋아요 순서 6개
 		List<ShareVo> cList = shareService.getCList();
-		System.out.println("cList" + cList);
 		model.addAttribute("cList", cList);
 		
 	return "main/share_petagram";
@@ -70,6 +69,16 @@ public class ShareController {
 	  
 		return "redirect:/shareAll";
 	}
+	
+	//자랑하기 추가할때 반려동물 조회	  
+	@ResponseBody
+	@RequestMapping("/addPageSelect")
+	public ShareVo getShare(@ModelAttribute ShareVo shareVo, MultipartFile file, HttpSession session, Model model) {
+
+		shareVo.setUserNo(((SessionVo)session.getAttribute("session")).getUserNo());
+		shareVo = shareService.getShare(shareVo);
+		return shareVo;
+	}
 
 //	자랑하기 자세히 보기--------------------------------------------------------------------------
 	// 자세히보기 폼
@@ -78,6 +87,7 @@ public class ShareController {
 		
 		List<ShareVo> selectDetail = shareService.read(shareNo);
 		model.addAttribute("selectDetail", selectDetail);
+		
 		System.out.println("selectDetail@@@@@@@@@@@@@" + selectDetail);
 		
 		//유저넘버 별 게시물
