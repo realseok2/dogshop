@@ -17,17 +17,20 @@ import com.javaex.vo.ShopVo;
 
 @Controller
 public class MainController {
-	
-	@Autowired
-	private MainService mainservice;
 	@Autowired
 	private ReviewService reviewservice;
+		
+	@Autowired
+	private MainService mainservice;
 	
 	//메인페이지
 	@RequestMapping("/main")
 	public String main(Model model) {
 		List<ShopVo> shopList = mainservice.getStoreList();
 		model.addAttribute("shopList", shopList);
+		
+		List<ShopVo> shopList2 = mainservice.getStoreList2();
+		model.addAttribute("shopList2", shopList2);
 		return "main/main";
 	}
 	
