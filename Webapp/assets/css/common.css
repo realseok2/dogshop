@@ -393,6 +393,7 @@ a:hover {text-decoration: none; color: blueviolet;}
     .star-input>.input>label[for="p0.7"]{width: 14px;}
     .star-input>.input>label[for="p0.8"]{width: 16px;}
     .star-input>.input>label[for="p0.9"]{width: 18px;}
+    .star-input>.input>label[for="p1"]{width: 20px;}
     
     
     .star-input>.input>label[for="p1.0"]{width: 20px;}
@@ -405,6 +406,7 @@ a:hover {text-decoration: none; color: blueviolet;}
     .star-input>.input>label[for="p1.7"]{width: 34px;}
     .star-input>.input>label[for="p1.8"]{width: 36px;}
     .star-input>.input>label[for="p1.9"]{width: 38px;}
+    .star-input>.input>label[for="p2"]{width: 40px;}
     
     .star-input>.input>label[for="p2.0"]{width: 40px;}
     .star-input>.input>label[for="p2.1"]{width: 42px;}
@@ -416,6 +418,7 @@ a:hover {text-decoration: none; color: blueviolet;}
     .star-input>.input>label[for="p2.7"]{width: 54px;}
     .star-input>.input>label[for="p2.8"]{width: 56px;}
     .star-input>.input>label[for="p2.9"]{width: 58px;}
+    .star-input>.input>label[for="p3"]{width: 60px;}
     
 	    
     .star-input>.input>label[for="p3.0"]{width: 60px;}
@@ -428,6 +431,7 @@ a:hover {text-decoration: none; color: blueviolet;}
     .star-input>.input>label[for="p3.7"]{width: 74px;}
     .star-input>.input>label[for="p3.8"]{width: 76px;}
     .star-input>.input>label[for="p3.9"]{width: 78px;}
+    .star-input>.input>label[for="p4"]{width: 80px;}
     
     	    
     .star-input>.input>label[for="p4.0"]{width: 80px;}
@@ -441,6 +445,7 @@ a:hover {text-decoration: none; color: blueviolet;}
     .star-input>.input>label[for="p4.8"]{width: 96px;}
     .star-input>.input>label[for="p4.9"]{width: 98px;}
     .star-input>.input>label[for="p5.0"]{width: 100px;}
+    .star-input>.input>label[for="p5"]{width: 100px;}
 
     
     .star-input>output{display: inline-block; width: 36px; text-align: right;}

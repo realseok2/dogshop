@@ -44,6 +44,11 @@ public class ShareService {
 		return shareDao.getList(userNo);
 	}	
 	
+	//등록할 때 선택한 강아지 정보 가져오기
+	public ShareVo getShare(ShareVo shareVo) {
+		return shareDao.getShare(shareVo);
+	}
+	
 	//리스트 전체 출력
 	public Map<String, Object>  getHList(int crtPage) {
 		

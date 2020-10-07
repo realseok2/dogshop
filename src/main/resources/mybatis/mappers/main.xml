@@ -16,4 +16,23 @@
 		]]>
 	</select>
 	
+	
+	<!-- 매장리스트.  -->
+	<select id="getStoreList2" resultType="com.javaex.vo.ShopVo">
+		<![CDATA[			
+			SELECT  	s.shopTitle,
+			        	s.shopDomain,
+			        	s.shopDesc,
+			        	s.shopLogo,
+			        	Round(avg(r.spoint),1) as spoint
+			from 		review r,
+						shop s
+			where   	r.shopNo = s.shopNo
+			group by 	s.shopTitle,
+						s.shopDomain,
+						s.shopDesc,
+						s.shopLogo
+			order by 	avg(r.spoint) desc
+		]]>
+	</select>
 </mapper>
