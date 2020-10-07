@@ -19,30 +19,34 @@ public class ShareReplyService {
 	//댓글 리스트
 	public List<ShareReplyVo> getList(int shareNo) {
 		System.out.println("service getList");
-		
-		//댓글 갯수
-		int replyCount = shareReplyDao.replyCount();
-		System.out.println("replyCount~!~~(~*@~(@*~(@*~("+replyCount);
-		
+				
 		return shareReplyDao.getList(shareNo);
 	}
 	
+	public int replyCount(int shareNo) {
+		System.out.println("replyCountService2$#");
+		return shareReplyDao.replyCount(shareNo);
+	}
 	
+	/*
+	 * //아이디 가져오기 public String getId(int userNo) { return
+	 * shareReplyDao.getId(userNo); }
+	 */
 	
 
 //------------------------------------------------------------------------------------- 댓글 추가
 	
-	public ShareReplyVo addReply(ShareReplyVo shareReplyVo) {
+	public ShareReplyVo addReply(ShareReplyVo shareReplyVo, int shareNo) {
 		System.out.println("addReplyService@@@@@@@@@@@");
 		
 		//저장
 		shareReplyDao.insertSelectKey(shareReplyVo);
 		
-		int replyNo = shareReplyVo.getReplyNo();
-		System.out.println("selectKey로 받은 replyNo값 [ " + replyNo + " ]");
+		shareNo = shareReplyVo.getShareNo();
+		System.out.println("selectKey로 받은 replyNo값 [ " + shareNo + " ]");
 		
 		//저장한 데이터 가져오기
-		return shareReplyDao.selectByNo(replyNo);
+		return shareReplyDao.selectByNo(shareNo);
 	}
 
 //------------------------------------------------------------------------------------- 댓글 삭제

@@ -76,7 +76,10 @@ public class ShareDao {
 		return  sqlSession.selectList("share.getPost", shareNo);
 	}
 	
-	
+	//예약할때 강아지 정보 가져오기
+	public ShareVo getShare(ShareVo shareVo) {
+		return sqlSession.selectOne("share.getdog", shareVo);
+	}
 	
 	
 	

@@ -37,18 +37,21 @@
 <!-- Page Content # 2 -->
   <div class="container">
     <!-- Jumbotron Header -->
-    <header class="jumbotron my-4">
-      <h2 class="display-5">인기 사이트</h2>
+    <header class="py-1 mt-4">
+      <h4 class="display-5" style="margin-top: 5%;">인기순</h4>
+      <hr class="mb-3">
     </header>
 
     <!-- Page Features -->
-    <div class="row text-center">
+    <div class="row text-center mb-5">
       <c:forEach var="i" begin="0" end="3">
     		<div class="col-lg-3 col-md-6 mb-4">
 	        <div class="card h-100">
-	          <img class="card-img-top" src="${pageContext.request.contextPath}/dogshop/${shopList2[i].shopLogo}" alt="">
+	          <img class="card-img-top" src="${pageContext.request.contextPath}/dogshop/${shopList2[i].shopLogo}" alt="" style="height:240px; width:auto;">
 	          <div class="card-body">
-	            <h4 class="card-title" style=color:#20366b;>${shopList2[i].shopTitle }</h4>
+	          	
+            	<h4 class="card-title" style=color:#20366b;>${shopList2[i].shopTitle }</h4>
+	           
 	            <ul class="list-unstyled">
 					<li class="reviewon"><span class="star-input">
 							<span class="input">
@@ -57,13 +60,13 @@
 							<output for="star-input">
 								<b id="spoint-t">${shopList2[i].spoint }점</b>
 							</output>
-						</span>
-					
+						</span>					
 				</ul>
+				<hr>
 	            <p class="card-text" style=height:100px;>${shopList2[i].shopDesc }</p>
 	          </div>
 	          <div class="card-footer">
-	            <a href="${pageContext.request.contextPath}/store/${shopList2[i].shopDomain }/main" class="btn btn-primary">매장으로 이동!</a>
+	            <a href="${pageContext.request.contextPath}/store/${shopList2[i].shopDomain }/main" class="btn btn-sm btn-outline-dark" style="border:0;">매장 둘러보기</a>
 	          </div>
 	        </div>
 	      	</div>
@@ -78,22 +81,24 @@
   <!-- Page Content # 1 -->
   <div class="container">
     <!-- Jumbotron Header -->
-    <header class="jumbotron my-4">
-      <h2 class="display-5">신규 사이트</h2>
+        <header class="py-1 mt-4">
+      <h4 class="display-5">최신순</h4>
+      <hr class="mb-3">
     </header>
 
     <!-- Page Features -->
-    <div class="row text-center">
+    <div class="row text-center mb-5">
     	<c:forEach var="i" begin="0" end="3">
     		<div class="col-lg-3 col-md-6 mb-4">
 	        <div class="card h-100">
-	          <img class="card-img-top" src="${pageContext.request.contextPath}/dogshop/${shopList[i].shopLogo}" alt="">
+	          <img class="card-img-top" src="${pageContext.request.contextPath}/dogshop/${shopList[i].shopLogo}" alt=""style="height:240px; width:auto;">
 	          <div class="card-body">
 	            <h4 class="card-title" style=color:#20366b;>${shopList[i].shopTitle }</h4>
+	            <hr>
 	            <p class="card-text" style=height:100px;>${shopList[i].shopDesc }</p>
 	          </div>
 	          <div class="card-footer">
-	            <a href="${pageContext.request.contextPath}/store/${shopList[i].shopDomain }/main" class="btn btn-primary">매장으로 이동!</a>
+	            <a href="${pageContext.request.contextPath}/store/${shopList[i].shopDomain }/main" class="btn btn-sm btn-outline-dark" style="border:0;">매장 둘러보기</a>
 	          </div>
 	        </div>
 	      	</div>

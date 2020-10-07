@@ -88,19 +88,7 @@
 			              					<!-- share_petagram body-content -->
 			              					<div class="share-body-content">
 			                					<div class="share-basic">
-			                
-			                
-								                 	<c:choose>
-								                  		<c:when test="${result.liked}%2 == 0">
-								                  			<img src="${pageContext.request.contextPath }/assets/image/heart-icon.png">
-								                  		</c:when>
-								                  
-								                  		<c:otherwise>
-								                  			<img src="${pageContext.request.contextPath }/assets/image/full-heart-icon.png">
-								                  		</c:otherwise>
-								                  	</c:choose>
-			                  
-			                  	                  
+									                <button type="button" class="main-icon"><img src="${pageContext.request.contextPath }/assets/image/full-heart-icon.png"></button>
 								                  	<button type="button" class="main-icon"><img src="${pageContext.request.contextPath }/assets/image/reply-icon.png" onclick = "location.href = '${pageContext.request.contextPath }/shareDetail/${result.shareNo }/${result.userNo }' "></button>
 								                  	<button type="button" class="main-icon"><img src="${pageContext.request.contextPath }/assets/image/direct-icon.png"></button>
 								                  	<button type="button" class="etc-basic main-icon save-icon"><img src="${pageContext.request.contextPath }/assets/image/save-icon.png"></button>
@@ -145,7 +133,7 @@
 				
 <!-- 캐러셀 메인 페이지--------------------------------------------------------------------------------------------------- -->				
 				<c:if test="${fn:length(cList) > 3 }">
-					<div id="demo" class="carousel slide" data-ride="carousel" data-interval="false">
+					<div id="demo" class="carousel slide" data-ride="carousel">
 						<div class="carousel-inner rounded">
 							<div class="carousel-item active">
          							<div class="row mb-5">
@@ -173,19 +161,7 @@
 							              	<!-- share_petagram body-content -->
 							              	<div class="share-body-content">
 							                	<div class="share-basic">
-                
-                
-							                  		<c:choose>
-							                  			<c:when test="${result.liked}%2 == 0">
-							                  				<img src="${pageContext.request.contextPath }/assets/image/heart-icon.png">
-							                  			</c:when>
-							                  
-							                  			<c:otherwise>
-							                  				<img src="${pageContext.request.contextPath }/assets/image/full-heart-icon.png">
-							                  			</c:otherwise>
-							                  		</c:choose>
-                  
-                  	                  
+									                <button type="button" class="main-icon"><img src="${pageContext.request.contextPath }/assets/image/full-heart-icon.png"></button>
 								                  	<button type="button" class="main-icon"><img src="${pageContext.request.contextPath }/assets/image/reply-icon.png" onclick = "location.href = '${pageContext.request.contextPath }/shareDetail/${result.shareNo }/${result.userNo }' "></button>
 								                  	<button type="button" class="main-icon"><img src="${pageContext.request.contextPath }/assets/image/direct-icon.png"></button>
 								                  	<button type="button" class="etc-basic main-icon save-icon"><img src="${pageContext.request.contextPath }/assets/image/save-icon.png"></button>
@@ -238,7 +214,7 @@
 								              	<!-- share_petagram body-content -->
 								              	<div class="share-body-content">
 								                	<div class="share-basic">
-								                  		<button type="button" class="main-icon"><img src="${pageContext.request.contextPath }/assets/image/heart-icon.png"></button>
+								                  		<button type="button" class="main-icon"><img src="${pageContext.request.contextPath }/assets/image/full-heart-icon.png"></button>
 								                  		<button type="button" class="main-icon"><img src="${pageContext.request.contextPath }/assets/image/reply-icon.png" onclick = "location.href = '${pageContext.request.contextPath }/shareDetail/${result.shareNo }/${result.userNo }' "></button>
 								                  		<button type="button" class="main-icon"><img src="${pageContext.request.contextPath }/assets/image/direct-icon.png"></button>
 								                  		<button type="button" class="etc-basic main-icon save-icon"><img src="${pageContext.request.contextPath }/assets/image/save-icon.png"></button>
@@ -329,19 +305,7 @@
 			              					<!-- share_petagram body-content -->
 			              					<div class="share-body-content">
 			                					<div class="share-basic">
-			                
-			                
-								                 	<c:choose>
-								                  		<c:when test="${result.liked}%2 == 0">
-								                  			<img src="${pageContext.request.contextPath }/assets/image/heart-icon.png">
-								                  		</c:when>
-								                  
-								                  		<c:otherwise>
-								                  			<img src="${pageContext.request.contextPath }/assets/image/full-heart-icon.png">
-								                  		</c:otherwise>
-								                  	</c:choose>
-			                  
-			                  	                  
+									                <button type="button" class="main-icon"><img src="${pageContext.request.contextPath }/assets/image/heart-icon.png"></button>
 								                  	<button type="button" class="main-icon"><img src="${pageContext.request.contextPath }/assets/image/reply-icon.png" onclick = "location.href = '${pageContext.request.contextPath }/shareDetail/${result.shareNo }/${result.userNo }' "></button>
 								                  	<button type="button" class="main-icon"><img src="${pageContext.request.contextPath }/assets/image/direct-icon.png"></button>
 								                  	<button type="button" class="etc-basic main-icon save-icon"><img src="${pageContext.request.contextPath }/assets/image/save-icon.png"></button>
@@ -386,7 +350,7 @@
 				
 <!-- 캐러셀 메인 페이지--------------------------------------------------------------------------------------------------- -->				
 				<c:if test="${fn:length(sList) > 3 }">
-					<div id="demo1" class="carousel slide" data-ride="carousel" data-interval="false">
+					<div id="demo1" class="carousel slide" data-ride="carousel">
 						<div class="carousel-inner rounded">
 							<div class="carousel-item active">
          							<div class="row mb-5">
@@ -417,19 +381,7 @@
 							              	<!-- share_petagram body-content -->
 							              	<div class="share-body-content">
 							                	<div class="share-basic">
-                
-                
-							                  		<c:choose>
-							                  			<c:when test="${result.liked}%2 == 0">
-							                  				<img src="${pageContext.request.contextPath }/assets/image/heart-icon.png">
-							                  			</c:when>
-							                  
-							                  			<c:otherwise>
-							                  				<img src="${pageContext.request.contextPath }/assets/image/full-heart-icon.png">
-							                  			</c:otherwise>
-							                  		</c:choose>
-                  
-                  	                  
+							                  		<button type="button" class="main-icon"><img src="${pageContext.request.contextPath }/assets/image/heart-icon.png"></button>
 								                  	<button type="button" class="main-icon"><img src="${pageContext.request.contextPath }/assets/image/reply-icon.png" onclick = "location.href = '${pageContext.request.contextPath }/shareDetail/${result.shareNo }/${result.userNo }' "></button>
 								                  	<button type="button" class="main-icon"><img src="${pageContext.request.contextPath }/assets/image/direct-icon.png"></button>
 								                  	<button type="button" class="etc-basic main-icon save-icon"><img src="${pageContext.request.contextPath }/assets/image/save-icon.png"></button>

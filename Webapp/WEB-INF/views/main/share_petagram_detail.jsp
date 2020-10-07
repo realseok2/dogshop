@@ -17,8 +17,13 @@
 	<link href="${pageContext.request.contextPath }/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	
 	<!-- Custom styles for this template -->
-	<link href="${pageContext.request.contextPath }/assets/css/common.css" rel="stylesheet">
-
+	<link href="${pageContext.request.contextPath }/assets/css/common.css" rel="stylesheet">	
+	<link href="${pageContext.request.contextPath}/assets/bootstrap/jquery/jquery.modal.css" rel="stylesheet">
+	
+	<!-- Bootstrap core JavaScript -->
+	<script src="${pageContext.request.contextPath }/assets/bootstrap/jquery/jquery.min.js"></script>
+	<script src="${pageContext.request.contextPath }/assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+	
 </head>
 
 <body class="bg-light">
@@ -26,17 +31,6 @@
 	<!-- header -->
 		<c:import url="/WEB-INF/views/include/main-header.jsp"></c:import>
 	<!-- header -->
-
-
-
-
-
-
-
-
-
-
-
 
   <!-- Page Content -->
   <!-- ================================여기 부분부터 내용이 달라집니다.================================ -->
@@ -48,9 +42,7 @@
 
     <div class="share-petagram-detail-wrap circle-rounded">
 
-
 		<c:forEach items="${selectDetail }" var="result" varStatus="status">
-		
 		
 	      <div class="img-area">      
 	        <figure class="snip1273 pointer-cursor">
@@ -90,17 +82,6 @@
 	      </div>
 		</c:forEach>
 
-
-
-
-
-
-
-
-
-
-
-
       <div class="detail-wrap-content">
 
         <!-- detail-content-header -->
@@ -114,9 +95,6 @@
           	</c:forEach>
         </div>
         <!-- //detail-content-header -->
-        
-
-
 
         <!-- detail-content-body-top -->
         <div class="detail-content-body-top">
@@ -125,12 +103,7 @@
           </c:forEach>
           
           <div><button type="button" style="outline: 0; border: 0; color: #ff00ff; background-color: #f8f9fa;">[댓글 모두 보기]</button></div>
-
-<%--           
-          <c:forEach items="${drList }" var="result" varStatus="status">
-        	  <div class="share-basic share-font-weight">- ${result.replyId } : ${result.replyContent }</div>
-          </c:forEach>
- --%>          
+        
         <div id="shareReplyListArea"></div>
         </div>
         <!-- //detail-content-body-top -->
@@ -158,22 +131,17 @@
      			<c:if test="${session ne null }">
      				<c:forEach items="${selectDetail }" var="result">
      					<input type="hidden" value="${result.shareNo }" id="input-shareNo" name="shareNo">
-     					<input type="hidden" value="${result.id }" id="input-replyId" name="replyId">
-     				</c:forEach>		     			    				
-		     			<input type="hidden" value="${shareReplyVo.replyNo }" id="input-replyNo" name="replyNo">
-		     			<input type="hidden" value="${session.userNo }" id="input-userNo" name="userNo">
-		     			
-		     			<textarea rows="3" id="input-replyContent" name="replyContent" style="width: 87.5%; height: 100%; border: 0; outline: 0; background-color: #f8f9fa;" placeholder="  댓글달기.."></textarea>
-		          		<button type="submit" class="btn-sm btn-primary" id="btnSubmit" style="margin-right: 0.5%; float: right; height: 100%; border: 0; outline: 0; background-color: #f8f9fa; color: black;">게시</button>
-		     		     			
+     				</c:forEach>     				
+   					<input type="hidden" value="${shareReplyVo.replyNo }" id="input-replyNo" name="replyNo">
+   					<input type="hidden" value="${session.userNo }" id="input-userNo" name="userNo">
+     				<input type="hidden" value="${session.userId }" id="input-replyId" name="replyId">
+	     			<textarea rows="3" id="input-replyContent" name="replyContent" style="width: 87.5%; height: 100%; border: 0; outline: 0; background-color: #f8f9fa;" placeholder="  댓글달기.."></textarea>
+	          		<button type="button" class="btn-sm btn-primary" id="btnSubmit" style="margin-right: 0.5%; float: right; height: 100%; border: 0; outline: 0; background-color: #f8f9fa; color: black;">게시</button>
      			</c:if>
      			
      			<c:if test="${session eq null }">
      				<div class="text-center pt-4"><a href="${pageContext.request.contextPath }/user/loginForm">로그인을 해주세요.</a></div>
      			</c:if>
-     		
-							
-     		
      		
      		</form>
      		
@@ -185,20 +153,10 @@
     </div>
 
 
-
-
-
-
-
     <hr>
 
-
-
-
-
-
-
-    <p class="mt-4 mb-4">
+    <p 
+ass="mt-4 mb-4">
 		<c:forEach items="${selectDetail }" var="result">
 			[<strong> ${result.id } </strong>]님의 게시물 더 보기
 		</c:forEach>
@@ -210,18 +168,17 @@
     		<c:when test="${fn:length(usList) == 1 }">
     			<div class="center-block pt-4 mt-5 pb-4 mb-4">다른 게시물이 없습니다.</div>
     		</c:when>
-    		
-	    	<c:forEach items="${usList }" var="result">	
-	    	
-	    		<c:otherwise>
-		          <div class="col-md-4">
+	    		
+    		<c:otherwise>
+	    		<c:forEach items="${usList }" var="result">
+		          <div class="col-md-4" onclick = "location.href = '${pageContext.request.contextPath }/shareDetail/${result.shareNo }/${result.userNo }' ">
 		            <figure class="snip1273 pointer-cursor">
-		             <img src="${pageContext.request.contextPath }/dogshop/${result.shareImg}">
+		             <img src="${pageContext.request.contextPath }/dogshop/${result.shareImg}" >
 		              <figcaption>
-		                <div class="detail-main-img mt-5">
+		                <div class="detail-main-img mt-5" >
 		                  <div>                
 		                    -Name
-		                    <div style="width: 70%; float: right;">${result.dogName }</div>           
+		                    <div style="width: 70%; float: right;" >${result.dogName }</div>           
 		                  </div>
 		    
 		                  <div>
@@ -248,8 +205,8 @@
 		              </figcaption>
 		           </figure>
 		          </div>	
-	          </c:otherwise>
-          </c:forEach>
+	          </c:forEach>
+          </c:otherwise>          
        </c:choose>
     </div>
 
@@ -292,10 +249,6 @@
 	 <!-- /.Footer -->
 	<c:import url="/WEB-INF/views/include/main-footer.jsp"></c:import>  
 	 <!-- /.Footer -->
-
-	<!-- Bootstrap core JavaScript -->
-	<script src="${pageContext.request.contextPath }/assets/bootstrap/jquery/jquery.min.js"></script>
-	<script src="${pageContext.request.contextPath }/assets/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 
 
@@ -338,8 +291,8 @@
 		//데이터 전송
 		$.ajax({
 
-			url : "${pageContext.request.contextPath }/write", //위치 확인하세요	
-			type : "post", //항상post방식을 사용하세요.
+			url : "${pageContext.request.contextPath }/write/{shareNo}", //위치 확인하세요	
+			type : "Post", //항상post방식을 사용하세요.
 			contentType : "application/json",
 			data : JSON.stringify(shareReplyVo),
 
@@ -357,7 +310,7 @@
 				$("#input-replyContent").val("");
 			},
 			error : function(XHR, status, error) {
-				console.error(status + " : " + error);
+				console.error(request.status + " : " + error);
 			}
 
 		});
@@ -367,7 +320,7 @@
 	//전체리스트 불러오기
 	function fetchList() {
 		$.ajax({
-			url : "${pageContext.request.contextPath }/detailList/{shareNo}", //위치 확인하세요	
+			url : "${pageContext.request.contextPath }/shareDetail/{shareNo}/{userNo}", //위치 확인하세요	
 			type : "Post", //항상post방식을 사용하세요.
 			//contentType : "application/json",
 			//data : {name: ”홍길동"},
@@ -377,22 +330,23 @@
 			success : function(drList) {
 				console.log(drList);
 				/*성공시 처리해야될 코드 작성*/
-				//$("#guestbookListArea").html("");
+				//$("#shareReplyListArea").html("");
 				for (var i = 0; i < drList.length; i++) {
 					render(drList[i], "down");
+					console.log(drList);
 				}
 			},
 			error : function(XHR, status, error) {
-				console.error(status + " : " + error);
+				console.error(request.status + " : " + error);
 			}
 		});
 	};
-
+ 
 	//리스트 그리기(1개씩)
 	function render(shareReplyVo, direction) {
 		var str = "";
 	  	str += "<div class='share-basic share-font-weight'>";
-	  	str += "	- " + shareReplyVo.replyId + " : " + shareReplyVo.replyContent;
+	  	str += "	- " + drList.userId + " : " + drList.replyContent;
 		str += "</div>";
 	
 		if (direction == "up") {
