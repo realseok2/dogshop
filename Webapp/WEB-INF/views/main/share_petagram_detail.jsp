@@ -320,7 +320,7 @@ ass="mt-4 mb-4">
 	//전체리스트 불러오기
 	function fetchList() {
 		$.ajax({
-			url : "${pageContext.request.contextPath }/detailList/{shareNo}", //위치 확인하세요	
+			url : "${pageContext.request.contextPath }/shareDetail/{shareNo}/{userNo}", //위치 확인하세요	
 			type : "Post", //항상post방식을 사용하세요.
 			//contentType : "application/json",
 			//data : {name: ”홍길동"},
@@ -333,6 +333,7 @@ ass="mt-4 mb-4">
 				//$("#shareReplyListArea").html("");
 				for (var i = 0; i < drList.length; i++) {
 					render(drList[i], "down");
+					console.log(drList);
 				}
 			},
 			error : function(XHR, status, error) {
@@ -345,7 +346,7 @@ ass="mt-4 mb-4">
 	function render(shareReplyVo, direction) {
 		var str = "";
 	  	str += "<div class='share-basic share-font-weight'>";
-	  	str += "	- " + session.userId + " : " + shareReplyVo.replyContent;
+	  	str += "	- " + drList.userId + " : " + drList.replyContent;
 		str += "</div>";
 	
 		if (direction == "up") {

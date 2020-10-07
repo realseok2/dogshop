@@ -18,30 +18,35 @@ public class ShareReplyDao {
 	
 	//댓글 리스트
 	public List<ShareReplyVo> getList(int shareNo) {
-		System.out.println("dao getList");
+		System.out.println("dao getList 댓글");
 		
 		List<ShareReplyVo> drList = sqlSession.selectList("shareReply.getList", shareNo);
-		System.out.println("dao getList return"+drList.toString());
+		System.out.println("dao getList return 댓글"+drList.toString());
 		return drList;
 	}	
 	
 	//댓글 갯수
-	public int replyCount() {
-		return sqlSession.selectOne("shareReply.replyCount");
+	public int replyCount(int shareNo) {
+		return sqlSession.selectOne("shareReply.replyCount", shareNo);
 	}
+	
+	/*
+	 * //아이디 가져오기 public String getId(int userNo) { return
+	 * sqlSession.selectOne("user.getid", userNo); }
+	 */
 //------------------------------------------------------------------------------------- 댓글 추가
 
 	public void insertSelectKey(ShareReplyVo shareReplyVo) {
 		System.out.println("shareReplyDao:insertSelectKey@@@@@@@@@@@");
 		
 		System.out.println("전~~~~~~~~~~~"+shareReplyVo.toString());			//no값 없음
-		sqlSession.insert("shareReply.insertSelectKey", shareReplyVo);
+		sqlSession.insert("shareReply.insertSelectKey", shareReplyVo.toString());
 		System.out.println("후~~~~~~~~~~~"+shareReplyVo.toString());			//no값 있음
 	}
 	
 	//댓글 가져오기
-	public ShareReplyVo selectByNo(int replyNo) {
-		return sqlSession.selectOne("shareReply.selectByNo");
+	public ShareReplyVo selectByNo(int shareNo) {
+		return sqlSession.selectOne("shareReply.selectByNo", shareNo);
 	}
 	
 	

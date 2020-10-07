@@ -133,7 +133,7 @@
 				
 <!-- 캐러셀 메인 페이지--------------------------------------------------------------------------------------------------- -->				
 				<c:if test="${fn:length(cList) > 3 }">
-					<div id="demo" class="carousel slide" data-ride="carousel" data-interval="false">
+					<div id="demo" class="carousel slide" data-ride="carousel">
 						<div class="carousel-inner rounded">
 							<div class="carousel-item active">
          							<div class="row mb-5">
@@ -350,7 +350,7 @@
 				
 <!-- 캐러셀 메인 페이지--------------------------------------------------------------------------------------------------- -->				
 				<c:if test="${fn:length(sList) > 3 }">
-					<div id="demo1" class="carousel slide" data-ride="carousel" data-interval="false">
+					<div id="demo1" class="carousel slide" data-ride="carousel">
 						<div class="carousel-inner rounded">
 							<div class="carousel-item active">
          							<div class="row mb-5">

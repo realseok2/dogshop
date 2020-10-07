@@ -8,44 +8,45 @@
 	<!-- 댓글 리스트 -->
 	<select id="getList" parameterType="integer" resultType="com.javaex.vo.ShareReplyVo">
 		<![CDATA[
-			select      h.rn,
-			            h.replyNo,
-			            h.userNo,
-			            h.replyContent,
-			            h.shareNo,
-			            h.id,
-			            to_char(h.regDate,'YYYY"년" MM"월" DD"일" HH24"시" MI"분"') regDate,
-			            h.hit,
-			            h.liked
-			from        (select     s.rn,
-			                        s.replyNo,
-			                        s.userNo,
-			                        s.replyContent,
-			                        p.shareNo,
-			                        p.id,
-			                        p.regDate,
-			                        p.hit,
-			                        p.liked
-			            from        (select     rownum rn,
+			select      rownum,
+			            s.shareNo,
+			            s.replyNo,
+			            s.userNo,
+			            s.replyContent,
+			            p.shareNo,
+			            p.id,
+			            to_char(p.regDate,'YYYY"년" MM"월" DD"일" HH24"시" MI"분"') regDate,
+			            p.hit,
+			            p.liked
+			from        (select     h.shareNo,
+			                        h.replyNo,
+			                        h.userNo,
+			                        h.replyContent
+			            from        (select     r.shareNo,
 			                                    r.replyNo,
 			                                    r.userNo,
 			                                    r.replyContent
-			                        from        (select		replyNo,
+			                        from        (select		shareNo,
+			                                                replyNo,
 			                                                userNo,
 			                                                replyContent
 			                                    from		reply_petagram
-			                                    order by	replyNo		asc)r
-			                        )s, share_petagram p
-			            where p.shareNo = #{shareNo})h
-			where       h.rn > 0
-			and         h.rn < 8
-			order by    h.rn desc
+			                                    order by	replyNo		asc
+			                                    )r
+			                        )h
+			            
+			            )s, share_petagram p
+			where       rownum > 0
+			and         rownum < 8
+			and         s.shareNo = p.shareNo
+			and         p.shareNo = #{shareNo}
+			order by    rownum desc
 		]]>
 	</select>
 
 	<!-- 댓글 작성(ajax) -->
 	<insert id="insertSelectKey" parameterType="com.javaex.vo.ShareReplyVo">
-		<selectKey keyProperty="replyNo" resultType="integer" order="BEFORE">	
+		<selectKey keyProperty="replyNo" resultType="int" order="BEFORE">	
 			select seq_reply_no.nextval from dual
 		</selectKey>
 		<![CDATA[
@@ -58,21 +59,23 @@
 		]]>
 	</insert>
 
-	<!-- 게시물 별 디테일 페이지(ajax) -->
-	<select id="selectByNo" parameterType="integer" resultType="com.javaex.vo.ShareReplyVo">
+	<!-- 게시물 별 디테일 댓글 가져오기 페이지(ajax) -->
+	<select id="selectByNo" parameterType="int" resultType="com.javaex.vo.ShareReplyVo">
 
 		<![CDATA[
 			select		p.shareNo,
+			            r.shareNo,
 			            r.replyNo,
 			            r.userNo,
 			            r.replyContent
 			from		reply_petagram r, share_petagram p
-			where		p.shareNo = #{shareNo}
+			where		p.shareNo = r.shareNo
+			and         r.shareNo = #{shareNo}
 		]]>
 	</select>
 	
 	<!-- 댓글갯수 가져오기 -->
-	<select id="replyCount" resultType="integer">
+	<select id="replyCount" resultType="int">
 		<![CDATA[
 			select		count(*)
 			from		reply_petagram

@@ -7,6 +7,7 @@ public class ShareReplyVo {
 	private int shareNo;
 	private int replyNo;
 	private int userNo;
+	private String userId;
 	private String replyContent;
 	
 //------------------------------------------------------------	생성자
@@ -15,10 +16,11 @@ public class ShareReplyVo {
 		
 	}
 	
-	public ShareReplyVo(int shareNo, int replyNo, int userNo, String replyContent) {
+	public ShareReplyVo(int shareNo, int replyNo, int userNo, String userId, String replyContent) {
 		this.shareNo = shareNo;
 		this.replyNo = replyNo;
 		this.userNo = userNo;
+		this.userId = userId;
 		this.replyContent = replyContent;
 	}
 	
@@ -48,6 +50,14 @@ public class ShareReplyVo {
 		this.userNo = userNo;
 	}
 	
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+	
 	public String getReplyContent() {
 		return replyContent;
 	}
@@ -66,6 +76,6 @@ public class ShareReplyVo {
 	
 	@Override
 	public String toString() {
-		return "ShareReplyVo [shareNo=" + shareNo + ", replyNo=" + replyNo + ", userNo=" + userNo + ", replyContent=" + replyContent + "]";
+		return "ShareReplyVo [shareNo=" + shareNo + ", replyNo=" + replyNo + ", userNo=" + userNo + ", userId=" + userId + ", replyContent=" + replyContent + "]";
 	}	
 }
