@@ -15,9 +15,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.javaex.service.ShareReplyService;
 import com.javaex.service.ShareService;
 import com.javaex.vo.DogVo;
 import com.javaex.vo.SessionVo;
+import com.javaex.vo.ShareReplyVo;
 import com.javaex.vo.ShareVo;
 
 @Controller
@@ -25,6 +27,8 @@ public class ShareController {
 
 	@Autowired
 	private ShareService shareService;
+	@Autowired
+	private ShareReplyService shareReplyService;
 
 //	자랑하기 메인------------------------------------------------------------------------------	
 	// 메인 폼
@@ -85,15 +89,19 @@ public class ShareController {
 	@RequestMapping("/shareDetail/{shareNo}/{userNo}")
 	public String shareDetail(Model model, @PathVariable("shareNo") int shareNo, @PathVariable("userNo") int userNo) {
 		
+		//자세히 보기 게시물 큰 이미지
 		List<ShareVo> selectDetail = shareService.read(shareNo);
-		model.addAttribute("selectDetail", selectDetail);
-		
+		model.addAttribute("selectDetail", selectDetail);		
 		System.out.println("selectDetail@@@@@@@@@@@@@" + selectDetail);
 		
 		//유저넘버 별 게시물
 		List<ShareVo> usList = shareService.getUsList(userNo);
 		System.out.println("usList" + usList);
 		model.addAttribute("usList", usList);
+		
+		//디테일 댓글 리스트
+		List<ShareReplyVo> drList = shareReplyService.getList(shareNo);
+		System.out.println("shareController drList 제발점되라 시발 댓글"+drList.toString());
 				
 		return "main/share_petagram_detail";
 	}
