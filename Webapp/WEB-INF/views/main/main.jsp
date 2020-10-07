@@ -24,7 +24,8 @@
 	 overflow: hidden; text-overflow: ellipsis; display: -webkit-box; 
 	 -webkit-line-clamp: 5; /* 라인수 */ -webkit-box-orient: vertical; 
 	 word-wrap:break-word; line-height: 1.3em; height: 3.6em;
-}
+	}
+	
 </style>
 </head> 
 
