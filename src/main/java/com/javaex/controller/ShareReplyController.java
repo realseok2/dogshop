@@ -1,10 +1,9 @@
 package com.javaex.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -29,37 +28,38 @@ public class ShareReplyController {
 	
 //------------------------------------------------------------------------------------- 댓글 리스트
 	
-	//댓글 리스트
-	@ResponseBody
-	@RequestMapping("/detailList/{shareNo}")
-	public List<ShareReplyVo> detailList(@PathVariable("shareNo") int shareNo) {
-		System.out.println("detailList@#@#@#@#@");
-		
-		List<ShareReplyVo> drList = shareReplyService.getList(shareNo);
-		
-		System.out.println(drList.toString());
-		
-		return drList;
-	}
+//	//댓글 리스트
+//	@ResponseBody
+//	@RequestMapping("/detailList/{shareNo}")
+//	public List<ShareReplyVo> detailList(@PathVariable("shareNo") int shareNo) {
+//		System.out.println("detailList@#@#@#@#@");
+//		
+//		List<ShareReplyVo> drList = shareReplyService.getList(shareNo);
+//		
+//		System.out.println(drList.toString());
+//		
+//		return drList;
+//	}
 	
 //------------------------------------------------------------------------------------- 댓글 추가
 	
 	//댓글 작성
 	@ResponseBody
 	@RequestMapping("/write/{shareNo}")
-	public List<ShareReplyVo> write(ShareReplyVo shareReplyVo, @PathVariable("shareNo") int shareNo) {
+	public ShareReplyVo write(@RequestBody ShareReplyVo shareReplyVo, @PathVariable("shareNo") int shareNo) {
 		System.out.println("shareReplyController전-----@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
 		System.out.println(shareReplyVo.toString());
 		
-		List<ShareReplyVo> reply = shareReplyService.addReply(shareReplyVo, shareNo);
-		
+		ShareReplyVo replyAdd = shareReplyService.addReply(shareReplyVo, shareNo);
+		int count = shareReplyService.replyCount(shareNo);
+		System.out.println("count 댓글 갯수 시발아"+count);
 		
 //		int count = 0;
 //		count++;		
 //		replyNo = count;		
 //		insert (shareReplyVo);
 		
-		return reply;
+		return replyAdd;
 	}
 
 //------------------------------------------------------------------------------------- 댓글 삭제

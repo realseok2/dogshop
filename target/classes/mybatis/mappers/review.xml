@@ -41,7 +41,7 @@
 	
 	<select id="getreviewList" parameterType="int"
 	resultType="com.javaex.vo.ReviewVo">
-			select   u.id id,
+			select   u.userName userName,
 					 r.spoint spoint,
 					 r.sdesc sdesc,
 					 to_char(r.regdate,'YYYY-MM-DD') regdate

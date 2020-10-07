@@ -60,7 +60,7 @@
           				</span>
           </div>
           <div class="card-body">
-            <h4 class="card-title">${reviewListvo.id}</h4>
+            <h4 class="card-title">${reviewListvo.userName}</h4>
             <p class="card-text">${reviewListvo.sdesc}</p>
           </div>
           <div class="card-footer">
@@ -75,9 +75,6 @@
     <!-- /. 컨텐츠 -->
      <div class="row">
             <div class="col-md-2"></div>
-            <div class="col-md-7 text-center">
-              &lt; 1 2 3 4 5 &gt;
-            </div>
             <div class="col-md-2"></div>
           </div>
   </main>

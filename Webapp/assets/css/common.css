@@ -382,6 +382,7 @@ a:hover {text-decoration: none; color: blueviolet;}
     .star-input>.input>input:focus+label,
     .star-input>.input>input:checked+label{background-size: 100px; background-position: 0 bottom;}
     .star-input>.input>label:hover~label{background-image: none;}
+    .star-input>.input>label[for="p"]{width: 0px;}
     .star-input>.input>label[for="p0"]{width: 0px;}
     .star-input>.input>label[for="p0.0"]{width: 0px;}
     .star-input>.input>label[for="p0.1"]{width: 2px;}

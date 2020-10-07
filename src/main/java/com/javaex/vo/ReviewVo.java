@@ -9,6 +9,7 @@ public class ReviewVo {
 	private String sdesc;
 	private String regdate;
 	private String id;
+	private String userName;
 	
 	
 	public String getId() {
@@ -43,6 +44,12 @@ public class ReviewVo {
 	}
 	public int getRegno() {
 		return regno;
+	}
+	public String getUserName() {
+		return userName;
+	}
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 	public void setRegno(int regno) {
 		this.regno = regno;

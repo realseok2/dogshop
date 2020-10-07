@@ -20,7 +20,8 @@
 	<!-- 매장리스트.  -->
 	<select id="getStoreList2" resultType="com.javaex.vo.ShopVo">
 		<![CDATA[			
-			SELECT  	s.shopTitle,
+			SELECT  	s.shopNo,
+						s.shopTitle,
 			        	s.shopDomain,
 			        	s.shopDesc,
 			        	s.shopLogo,
@@ -31,7 +32,8 @@
 			group by 	s.shopTitle,
 						s.shopDomain,
 						s.shopDesc,
-						s.shopLogo
+						s.shopLogo,
+						s.shopNo
 			order by 	avg(r.spoint) desc
 		]]>
 	</select>
