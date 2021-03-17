@@ -46,7 +46,7 @@ public class DogController {
 	}
 
 	//	마이펫 추가
-	@RequestMapping("/add") 
+	@RequestMapping("/add")
 	public String add(@ModelAttribute DogVo dogVo , MultipartFile file, HttpSession session ,Model model) {
 		SessionVo sessionVo = (SessionVo)session.getAttribute("session");
 		
